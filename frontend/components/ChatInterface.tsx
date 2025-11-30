@@ -109,26 +109,26 @@ export function ChatInterface({ onDataEvent, piiMapping, sessionId }: ChatInterf
             </button>
 
             {showScenarios && (
-              <div className="absolute right-0 mt-2 w-96 max-h-80 overflow-y-auto bg-card border border-border rounded-lg shadow-lg z-50">
+              <div className="absolute right-0 mt-2 w-96 max-h-80 overflow-y-auto bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700 rounded-lg shadow-xl z-50">
                 <div className="p-2">
-                  <p className="text-xs text-muted-foreground px-2 py-1 mb-1">
+                  <p className="text-xs text-gray-500 dark:text-gray-400 px-2 py-1 mb-1">
                     Select a test scenario (Golden Set)
                   </p>
                   {scenarios.map((scenario) => (
                     <button
                       key={scenario.id}
                       onClick={() => handleScenarioSelect(scenario.prompt)}
-                      className="w-full text-left px-3 py-2 hover:bg-muted rounded-md transition-colors"
+                      className="w-full text-left px-3 py-2 hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-md transition-colors"
                     >
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="text-xs font-mono text-muted-foreground">
+                        <span className="text-xs font-mono text-gray-500 dark:text-gray-400">
                           {scenario.id}
                         </span>
-                        <span className="text-xs px-1.5 py-0.5 rounded-full bg-primary/10 text-primary">
+                        <span className="text-xs px-1.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400">
                           {scenario.category}
                         </span>
                       </div>
-                      <p className="text-sm line-clamp-2">{scenario.prompt}</p>
+                      <p className="text-sm text-gray-900 dark:text-gray-100 line-clamp-2">{scenario.prompt}</p>
                     </button>
                   ))}
                 </div>
