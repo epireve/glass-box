@@ -301,16 +301,78 @@ HR Department"""
         else:
             response = "Based on the employee records provided, I can identify employees with lower salaries."
 
+    elif any(word in query_part for word in ["direct deposit", "bank", "account", "routing"]):
+        # Banking / direct deposit update
+        ssns = [k for k in mapping.keys() if "US_SSN" in k]
+        bank_accounts = [k for k in mapping.keys() if "US_BANK_NUMBER" in k]
+        persons = [k for k in mapping.keys() if "PERSON" in k]
+
+        response = "I'll help you update the direct deposit information.\n\n"
+        response += "**Request Details:**\n"
+        if ssns:
+            response += f"- Employee SSN: {ssns[0]}\n"
+        if bank_accounts:
+            response += f"- New Account: {bank_accounts[0]}\n"
+        if persons:
+            response += f"- Employee: {persons[0]}\n"
+        response += "\n⚠️ **Note:** For security, direct deposit changes require employee verification. A confirmation email will be sent to the employee on file."
+
+    elif any(word in query_part for word in ["meeting", "invite", "schedule", "call", "contact"]):
+        # Meeting / contact request
+        emails = [k for k in mapping.keys() if "EMAIL" in k]
+        phones = [k for k in mapping.keys() if "PHONE" in k]
+        persons = [k for k in mapping.keys() if "PERSON" in k]
+
+        response = "I'll help you with this communication request.\n\n"
+        response += "**Contact Details:**\n"
+        if persons:
+            response += f"- Name: {persons[0]}\n"
+        if emails:
+            response += f"- Email: {emails[0]}\n"
+        if phones:
+            response += f"- Phone: {phones[0]}\n"
+        response += "\n✅ Meeting invite will be sent to the specified contacts."
+
+    elif any(word in query_part for word in ["find", "lookup", "search", "get", "show", "what is", "who is"]):
+        # Lookup / search query
+        persons = [k for k in mapping.keys() if "PERSON" in k]
+        emails = [k for k in mapping.keys() if "EMAIL" in k]
+        phones = [k for k in mapping.keys() if "PHONE" in k]
+        salaries = [k for k in mapping.keys() if "SALARY" in k]
+
+        response = "Here's the information I found:\n\n"
+        if persons:
+            for person in persons[:3]:
+                response += f"**{person}**\n"
+        if emails:
+            response += f"- Email: {', '.join(emails[:2])}\n"
+        if phones:
+            response += f"- Phone: {', '.join(phones[:2])}\n"
+        if salaries:
+            response += f"- Salary: {', '.join(salaries[:2])}\n"
+
     else:
-        # Generic response
-        response = "I understand your request. Based on the employee information provided, I can help you with that. "
-        if mapping:
-            persons = [k for k in mapping.keys() if "PERSON" in k]
-            salaries = [k for k in mapping.keys() if "SALARY" in k]
-            if persons:
-                response += f"\n\nI found information about: {', '.join(persons[:3])}"
-            if salaries:
-                response += f"\nSalary data: {', '.join(salaries[:3])}"
+        # Generic response - build based on what PII was detected
+        pii_types = {
+            "PERSON": [k for k in mapping.keys() if "PERSON" in k],
+            "EMAIL": [k for k in mapping.keys() if "EMAIL" in k],
+            "PHONE": [k for k in mapping.keys() if "PHONE" in k],
+            "SSN": [k for k in mapping.keys() if "US_SSN" in k],
+            "SALARY": [k for k in mapping.keys() if "SALARY" in k],
+            "BANK": [k for k in mapping.keys() if "US_BANK" in k],
+            "CREDIT_CARD": [k for k in mapping.keys() if "CREDIT_CARD" in k],
+        }
+
+        response = "I've processed your request. Here's a summary of the information involved:\n\n"
+
+        has_data = False
+        for pii_type, values in pii_types.items():
+            if values:
+                has_data = True
+                response += f"**{pii_type}:** {', '.join(values[:3])}\n"
+
+        if not has_data:
+            response = "I understand your request. No sensitive PII was detected in this query."
 
     # Split response into chunks for streaming effect
     words = response.split(" ")
