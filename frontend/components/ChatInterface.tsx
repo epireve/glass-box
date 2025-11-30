@@ -8,6 +8,7 @@ import { PIIAnalysis, CompletionMetrics } from '@/app/page'
 
 interface ChatInterfaceProps {
   onDataEvent: (data: PIIAnalysis | CompletionMetrics) => void
+  onRawResponse: (content: string) => void
   piiMapping: Record<string, string>
   sessionId: string
 }
@@ -19,9 +20,10 @@ interface Scenario {
   description: string
 }
 
-export function ChatInterface({ onDataEvent, piiMapping, sessionId }: ChatInterfaceProps) {
+export function ChatInterface({ onDataEvent, onRawResponse, piiMapping, sessionId }: ChatInterfaceProps) {
   const [scenarios, setScenarios] = useState<Scenario[]>([])
   const [showScenarios, setShowScenarios] = useState(false)
+  const [rawContent, setRawContent] = useState<string>('')
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const scenarioRef = useRef<HTMLDivElement>(null)
 
@@ -55,8 +57,11 @@ export function ChatInterface({ onDataEvent, piiMapping, sessionId }: ChatInterf
   } = useChat({
     api: 'http://localhost:8000/api/chat',
     streamProtocol: 'data',
-    onFinish: () => {
-      // Stream complete
+    onFinish: (message) => {
+      // Stream complete - pass raw response (before de-anonymization)
+      if (message.role === 'assistant') {
+        onRawResponse(message.content)
+      }
     },
   })
 

@@ -17,13 +17,18 @@ import {
   MapPin,
   Calendar,
   DollarSign,
-  Building
+  Building,
+  ArrowDown,
+  MessageSquare,
+  Bot,
+  Shuffle
 } from 'lucide-react'
 import { PIIAnalysis, CompletionMetrics } from '@/app/page'
 
 interface InspectorPanelProps {
   piiAnalysis: PIIAnalysis | null
   completionMetrics: CompletionMetrics | null
+  rawLLMResponse: string
 }
 
 const entityIcons: Record<string, React.ReactNode> = {
@@ -50,12 +55,13 @@ const entityColors: Record<string, string> = {
   SALARY: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
 }
 
-export function InspectorPanel({ piiAnalysis, completionMetrics }: InspectorPanelProps) {
+export function InspectorPanel({ piiAnalysis, completionMetrics, rawLLMResponse }: InspectorPanelProps) {
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
-    mapping: true,
-    entities: true,
-    prompts: true,
+    input: true,
     rag: true,
+    anonymized: true,
+    output: true,
+    mapping: true,
     metrics: true,
   })
 
@@ -71,20 +77,20 @@ export function InspectorPanel({ piiAnalysis, completionMetrics }: InspectorPane
       <div className="px-4 py-3 border-b border-border bg-card/50">
         <div className="flex items-center gap-2">
           <Shield className="h-5 w-5 text-primary" />
-          <h2 className="font-medium">Inspector Panel</h2>
+          <h2 className="font-medium">Pipeline Inspector</h2>
         </div>
         <p className="text-xs text-muted-foreground mt-1">
-          Real-time view of PII detection and anonymization
+          Trace data flow through the Glass Box
         </p>
       </div>
 
       {/* Content */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto p-4 space-y-3">
         {!piiAnalysis ? (
           <div className="flex flex-col items-center justify-center h-full text-center">
             <Shield className="h-12 w-12 text-muted-foreground/30 mb-4" />
             <p className="text-muted-foreground text-sm">
-              Send a message to see the PII analysis
+              Send a message to see the pipeline
             </p>
           </div>
         ) : (
@@ -100,7 +106,7 @@ export function InspectorPanel({ piiAnalysis, completionMetrics }: InspectorPane
                   )}
                   <span className="text-sm font-medium">
                     {totalEntities > 0
-                      ? `${totalEntities} PII entities detected`
+                      ? `${totalEntities} PII entities anonymized`
                       : 'No PII detected'}
                   </span>
                 </div>
@@ -112,116 +118,132 @@ export function InspectorPanel({ piiAnalysis, completionMetrics }: InspectorPane
               </div>
             </div>
 
-            {/* PII Mapping */}
-            <CollapsibleSection
-              title="PII Mapping"
-              icon={<Database className="h-4 w-4" />}
-              expanded={expandedSections.mapping}
-              onToggle={() => toggleSection('mapping')}
-              badge={Object.keys(piiAnalysis.mapping).length}
-            >
-              {Object.keys(piiAnalysis.mapping).length > 0 ? (
-                <div className="space-y-2">
-                  {Object.entries(piiAnalysis.mapping).map(([placeholder, original]) => {
-                    const entityType = placeholder.match(/<([A-Z_]+)_\d+>/)?.[1] || ''
-                    return (
-                      <div
-                        key={placeholder}
-                        className="flex items-center justify-between gap-2 text-xs"
-                      >
-                        <code className={`px-2 py-1 rounded border ${entityColors[entityType] || 'bg-muted'}`}>
-                          {placeholder}
-                        </code>
-                        <span className="text-muted-foreground">→</span>
-                        <span className="font-medium truncate max-w-[150px]" title={original}>
-                          {original}
-                        </span>
-                      </div>
-                    )
-                  })}
+            {/* Pipeline Flow */}
+            <div className="space-y-2">
+              {/* Step 1: User Input */}
+              <PipelineStep
+                step={1}
+                title="User Input"
+                icon={<MessageSquare className="h-4 w-4" />}
+                expanded={expandedSections.input}
+                onToggle={() => toggleSection('input')}
+                color="blue"
+              >
+                <div className="bg-blue-950/30 border border-blue-500/20 rounded p-3 text-sm">
+                  {piiAnalysis.original_prompt}
                 </div>
-              ) : (
-                <p className="text-xs text-muted-foreground">No mappings</p>
-              )}
-            </CollapsibleSection>
+              </PipelineStep>
 
-            {/* Detected Entities */}
-            <CollapsibleSection
-              title="Detected Entities"
-              icon={<Shield className="h-4 w-4" />}
-              expanded={expandedSections.entities}
-              onToggle={() => toggleSection('entities')}
-              badge={totalEntities}
-            >
-              {piiAnalysis.entity_stats && Object.keys(piiAnalysis.entity_stats).length > 0 ? (
-                <div className="space-y-2">
-                  {Object.entries(piiAnalysis.entity_stats).map(([type, count]) => (
-                    <div
-                      key={type}
-                      className={`flex items-center justify-between px-2 py-1.5 rounded border ${entityColors[type] || 'bg-muted'}`}
-                    >
-                      <div className="flex items-center gap-2">
-                        {entityIcons[type] || <Shield className="h-3 w-3" />}
-                        <span className="text-xs font-medium">{type}</span>
-                      </div>
-                      <span className="text-xs font-mono">{count}</span>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-xs text-muted-foreground">No entities detected</p>
-              )}
-            </CollapsibleSection>
+              <PipelineArrow />
 
-            {/* Anonymized Prompt */}
-            <CollapsibleSection
-              title="Anonymized Prompt"
-              icon={<FileText className="h-4 w-4" />}
-              expanded={expandedSections.prompts}
-              onToggle={() => toggleSection('prompts')}
-            >
-              <div className="space-y-3">
-                <div>
-                  <p className="text-xs text-muted-foreground mb-1">Original:</p>
-                  <div className="bg-background rounded p-2 text-xs font-mono break-words">
-                    {piiAnalysis.original_prompt}
-                  </div>
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground mb-1">Sent to LLM:</p>
-                  <div className="bg-background rounded p-2 text-xs font-mono break-words">
-                    <HighlightPlaceholders text={piiAnalysis.anonymized_prompt} />
-                  </div>
-                </div>
-              </div>
-            </CollapsibleSection>
-
-            {/* RAG Context */}
-            {piiAnalysis.rag_context && (
-              <CollapsibleSection
-                title="RAG Context"
+              {/* Step 2: RAG Retrieval */}
+              <PipelineStep
+                step={2}
+                title="RAG Context Retrieved"
                 icon={<Database className="h-4 w-4" />}
                 expanded={expandedSections.rag}
                 onToggle={() => toggleSection('rag')}
-                badge={piiAnalysis.retrieved_employees.length}
+                badge={piiAnalysis.retrieved_employees?.length || 0}
+                color="purple"
               >
-                <div className="space-y-2">
-                  <div className="flex flex-wrap gap-1">
-                    {piiAnalysis.retrieved_employees.map((name) => (
-                      <span
-                        key={name}
-                        className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary"
-                      >
-                        {name}
-                      </span>
-                    ))}
+                {piiAnalysis.rag_context ? (
+                  <div className="space-y-2">
+                    <div className="flex flex-wrap gap-1">
+                      {piiAnalysis.retrieved_employees.map((name) => (
+                        <span
+                          key={name}
+                          className="text-xs px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30"
+                        >
+                          {name}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="bg-purple-950/30 border border-purple-500/20 rounded p-2 text-xs font-mono max-h-28 overflow-y-auto">
+                      <HighlightPlaceholders text={piiAnalysis.rag_context} />
+                    </div>
                   </div>
-                  <div className="bg-background rounded p-2 text-xs font-mono break-words max-h-32 overflow-y-auto">
-                    <HighlightPlaceholders text={piiAnalysis.rag_context} />
-                  </div>
+                ) : (
+                  <p className="text-xs text-muted-foreground italic">No RAG context needed for this query</p>
+                )}
+              </PipelineStep>
+
+              <PipelineArrow />
+
+              {/* Step 3: Anonymized Input to LLM */}
+              <PipelineStep
+                step={3}
+                title="Sent to LLM (Anonymized)"
+                icon={<Shield className="h-4 w-4" />}
+                expanded={expandedSections.anonymized}
+                onToggle={() => toggleSection('anonymized')}
+                badge={Object.keys(piiAnalysis.mapping).length}
+                color="yellow"
+              >
+                <div className="bg-yellow-950/30 border border-yellow-500/20 rounded p-2 text-xs font-mono max-h-40 overflow-y-auto">
+                  <HighlightPlaceholders text={piiAnalysis.anonymized_prompt} />
                 </div>
-              </CollapsibleSection>
-            )}
+              </PipelineStep>
+
+              <PipelineArrow />
+
+              {/* Step 4: LLM Response (Raw) */}
+              <PipelineStep
+                step={4}
+                title="LLM Response (Raw)"
+                icon={<Bot className="h-4 w-4" />}
+                expanded={expandedSections.output}
+                onToggle={() => toggleSection('output')}
+                color="orange"
+              >
+                {rawLLMResponse ? (
+                  <div className="bg-orange-950/30 border border-orange-500/20 rounded p-2 text-xs font-mono max-h-40 overflow-y-auto whitespace-pre-wrap">
+                    <HighlightPlaceholders text={rawLLMResponse} />
+                  </div>
+                ) : (
+                  <p className="text-xs text-muted-foreground italic">Waiting for LLM response...</p>
+                )}
+              </PipelineStep>
+
+              <PipelineArrow />
+
+              {/* Step 5: De-anonymization Mapping */}
+              <PipelineStep
+                step={5}
+                title="De-anonymization Mapping"
+                icon={<Shuffle className="h-4 w-4" />}
+                expanded={expandedSections.mapping}
+                onToggle={() => toggleSection('mapping')}
+                badge={Object.keys(piiAnalysis.mapping).length}
+                color="green"
+              >
+                {Object.keys(piiAnalysis.mapping).length > 0 ? (
+                  <div className="space-y-1.5">
+                    {Object.entries(piiAnalysis.mapping).map(([placeholder, original]) => {
+                      const entityType = placeholder.match(/<([A-Z_]+)_\d+>/)?.[1] || ''
+                      return (
+                        <div
+                          key={placeholder}
+                          className="flex items-center gap-2 text-xs bg-green-950/30 border border-green-500/20 rounded px-2 py-1.5"
+                        >
+                          <span className="flex items-center gap-1">
+                            {entityIcons[entityType]}
+                            <code className={`px-1.5 py-0.5 rounded ${entityColors[entityType] || 'bg-muted'}`}>
+                              {placeholder}
+                            </code>
+                          </span>
+                          <span className="text-green-400">→</span>
+                          <span className="font-medium text-green-300 truncate" title={original}>
+                            {original}
+                          </span>
+                        </div>
+                      )
+                    })}
+                  </div>
+                ) : (
+                  <p className="text-xs text-muted-foreground italic">No PII to de-anonymize</p>
+                )}
+              </PipelineStep>
+            </div>
 
             {/* Performance Metrics */}
             <CollapsibleSection
@@ -232,7 +254,7 @@ export function InspectorPanel({ piiAnalysis, completionMetrics }: InspectorPane
             >
               <div className="grid grid-cols-2 gap-2">
                 <MetricCard
-                  label="Retrieval"
+                  label="RAG Retrieval"
                   value={`${piiAnalysis.metrics.retrieval_time_ms.toFixed(1)}ms`}
                 />
                 <MetricCard
@@ -253,9 +275,103 @@ export function InspectorPanel({ piiAnalysis, completionMetrics }: InspectorPane
                 )}
               </div>
             </CollapsibleSection>
+
+            {/* Entity Stats */}
+            {piiAnalysis.entity_stats && Object.keys(piiAnalysis.entity_stats).length > 0 && (
+              <div className="bg-card rounded-lg border border-border p-3">
+                <p className="text-xs text-muted-foreground mb-2">Entity Types Detected</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {Object.entries(piiAnalysis.entity_stats).map(([type, count]) => (
+                    <span
+                      key={type}
+                      className={`flex items-center gap-1 text-xs px-2 py-1 rounded border ${entityColors[type] || 'bg-muted'}`}
+                    >
+                      {entityIcons[type]}
+                      {type}: {count}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
           </>
         )}
       </div>
+    </div>
+  )
+}
+
+interface PipelineStepProps {
+  step: number
+  title: string
+  icon: React.ReactNode
+  expanded: boolean
+  onToggle: () => void
+  badge?: number
+  color: 'blue' | 'purple' | 'yellow' | 'orange' | 'green'
+  children: React.ReactNode
+}
+
+const colorClasses = {
+  blue: 'border-blue-500/30 bg-blue-500/10',
+  purple: 'border-purple-500/30 bg-purple-500/10',
+  yellow: 'border-yellow-500/30 bg-yellow-500/10',
+  orange: 'border-orange-500/30 bg-orange-500/10',
+  green: 'border-green-500/30 bg-green-500/10',
+}
+
+const stepColors = {
+  blue: 'bg-blue-500 text-white',
+  purple: 'bg-purple-500 text-white',
+  yellow: 'bg-yellow-500 text-black',
+  orange: 'bg-orange-500 text-white',
+  green: 'bg-green-500 text-white',
+}
+
+function PipelineStep({
+  step,
+  title,
+  icon,
+  expanded,
+  onToggle,
+  badge,
+  color,
+  children,
+}: PipelineStepProps) {
+  return (
+    <div className={`rounded-lg border overflow-hidden ${colorClasses[color]}`}>
+      <button
+        onClick={onToggle}
+        className="w-full flex items-center justify-between px-3 py-2 hover:bg-white/5 transition-colors"
+      >
+        <div className="flex items-center gap-2">
+          <span className={`flex items-center justify-center w-5 h-5 rounded-full text-xs font-bold ${stepColors[color]}`}>
+            {step}
+          </span>
+          {icon}
+          <span className="text-sm font-medium">{title}</span>
+        </div>
+        <div className="flex items-center gap-2">
+          {badge !== undefined && badge > 0 && (
+            <span className="text-xs px-1.5 py-0.5 rounded-full bg-white/10">
+              {badge}
+            </span>
+          )}
+          {expanded ? (
+            <ChevronDown className="h-4 w-4 text-muted-foreground" />
+          ) : (
+            <ChevronRight className="h-4 w-4 text-muted-foreground" />
+          )}
+        </div>
+      </button>
+      {expanded && <div className="px-3 pb-3">{children}</div>}
+    </div>
+  )
+}
+
+function PipelineArrow() {
+  return (
+    <div className="flex justify-center py-1">
+      <ArrowDown className="h-4 w-4 text-muted-foreground" />
     </div>
   )
 }

@@ -36,21 +36,31 @@ export interface CompletionMetrics {
   total_time_ms?: number
 }
 
+export interface RawLLMResponse {
+  content: string
+}
+
 export default function Home() {
   const [piiAnalysis, setPiiAnalysis] = useState<PIIAnalysis | null>(null)
   const [completionMetrics, setCompletionMetrics] = useState<CompletionMetrics | null>(null)
+  const [rawLLMResponse, setRawLLMResponse] = useState<string>('')
   const [inspectorCollapsed, setInspectorCollapsed] = useState(false)
   const [sessionId, setSessionId] = useState<string>('')
 
   const handleDataEvent = (data: PIIAnalysis | CompletionMetrics) => {
     if (data.type === 'pii_analysis') {
       setPiiAnalysis(data as PIIAnalysis)
+      setRawLLMResponse('') // Reset on new query
       if ((data as PIIAnalysis).session_id) {
         setSessionId((data as PIIAnalysis).session_id)
       }
     } else if (data.type === 'completion') {
       setCompletionMetrics(data as CompletionMetrics)
     }
+  }
+
+  const handleRawResponse = (content: string) => {
+    setRawLLMResponse(content)
   }
 
   return (
@@ -94,6 +104,7 @@ export default function Home() {
         >
           <ChatInterface
             onDataEvent={handleDataEvent}
+            onRawResponse={handleRawResponse}
             piiMapping={piiAnalysis?.mapping || {}}
             sessionId={sessionId}
           />
@@ -105,6 +116,7 @@ export default function Home() {
             <InspectorPanel
               piiAnalysis={piiAnalysis}
               completionMetrics={completionMetrics}
+              rawLLMResponse={rawLLMResponse}
             />
           </div>
         )}
