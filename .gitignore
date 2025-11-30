@@ -1,0 +1,23 @@
+# Environment files (NEVER commit these)
+.env
+.env.local
+.env.*.local
+backend/.env
+
+# Dependencies
+node_modules/
+venv/
+__pycache__/
+*.pyc
+
+# Build outputs
+.next/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
