@@ -242,9 +242,28 @@ def generate_mock_response(anonymized_text: str, mapping: Dict[str, str]) -> Lis
     Uses the anonymized placeholders in the response.
     """
     # Detect what type of query this is
-    text_lower = anonymized_text.lower()
+    # Use only the user query portion if present
+    if "user query:" in anonymized_text.lower():
+        query_part = anonymized_text.lower().split("user query:")[-1].strip()
+    else:
+        query_part = anonymized_text.lower()
 
-    if "salary" in text_lower and "higher" in text_lower:
+    # Check for top earners / most salary queries FIRST
+    if any(word in query_part for word in ["most", "top", "highest", "maximum", "max"]) and "salary" in query_part:
+        # Top earners query
+        persons = [k for k in mapping.keys() if "PERSON" in k]
+        salaries = [k for k in mapping.keys() if "SALARY" in k]
+
+        if persons and salaries:
+            response = f"Based on the employee records, {persons[0]} has the highest salary at {salaries[0]}."
+            if len(persons) > 1:
+                response += f"\n\nTop earners:\n"
+                for i, (person, salary) in enumerate(zip(persons[:3], salaries[:3]), 1):
+                    response += f"{i}. {person}: {salary}\n"
+        else:
+            response = "Based on the employee records provided, I can identify the top earners for you."
+
+    elif "salary" in query_part and "higher" in query_part:
         # Salary comparison query
         persons = [k for k in mapping.keys() if "PERSON" in k]
         salaries = [k for k in mapping.keys() if "SALARY" in k]
@@ -254,8 +273,8 @@ def generate_mock_response(anonymized_text: str, mapping: Dict[str, str]) -> Lis
         else:
             response = "I can see the salary information in the records. Let me compare them for you."
 
-    elif "email" in text_lower or "draft" in text_lower:
-        # Email drafting query
+    elif any(phrase in query_part for phrase in ["draft email", "write email", "send email", "compose email", "draft an email", "write an email"]):
+        # Email drafting query - check for explicit email writing intent
         person = next((k for k in mapping.keys() if "PERSON" in k), "the employee")
         salary = next((k for k in mapping.keys() if "SALARY" in k), "the discussed amount")
 
@@ -272,20 +291,26 @@ Please let me know if you have any questions.
 Best regards,
 HR Department"""
 
-    elif "top" in text_lower or "highest" in text_lower:
-        # Top earners query
-        response = "Based on the employee records provided, here are the top earners:\n\n"
+    elif any(word in query_part for word in ["lowest", "minimum", "min", "least"]) and "salary" in query_part:
+        # Lowest salary query
         persons = [k for k in mapping.keys() if "PERSON" in k]
         salaries = [k for k in mapping.keys() if "SALARY" in k]
 
-        for i, (person, salary) in enumerate(zip(persons[:3], salaries[:3]), 1):
-            response += f"{i}. {person}: {salary}\n"
+        if persons and salaries:
+            response = f"Based on the employee records, {persons[-1] if len(persons) > 1 else persons[0]} has the lowest salary at {salaries[-1] if len(salaries) > 1 else salaries[0]}."
+        else:
+            response = "Based on the employee records provided, I can identify employees with lower salaries."
 
     else:
         # Generic response
         response = "I understand your request. Based on the employee information provided, I can help you with that. "
         if mapping:
-            response += "I notice this involves sensitive employee information which I'll handle appropriately."
+            persons = [k for k in mapping.keys() if "PERSON" in k]
+            salaries = [k for k in mapping.keys() if "SALARY" in k]
+            if persons:
+                response += f"\n\nI found information about: {', '.join(persons[:3])}"
+            if salaries:
+                response += f"\nSalary data: {', '.join(salaries[:3])}"
 
     # Split response into chunks for streaming effect
     words = response.split(" ")
