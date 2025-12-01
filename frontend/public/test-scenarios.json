@@ -1,0 +1,148 @@
+{
+  "scenarios": [
+    {
+      "id": "HR-001",
+      "category": "compensation",
+      "prompt": "Draft an email to Alice Chen about her salary increase from $145,000 to $165,000",
+      "expected_pii": ["PERSON", "SALARY", "SALARY"],
+      "description": "Salary discussion with named employee"
+    },
+    {
+      "id": "HR-002",
+      "category": "comparison",
+      "prompt": "Whose salary is higher, Alice or David?",
+      "expected_pii": ["PERSON", "PERSON"],
+      "requires_rag": true,
+      "description": "RAG comparison query"
+    },
+    {
+      "id": "HR-003",
+      "category": "payroll",
+      "prompt": "Update direct deposit for employee SSN 123-45-6789 to account ending 4521",
+      "expected_pii": ["US_SSN", "US_BANK_NUMBER"],
+      "description": "Sensitive payroll update"
+    },
+    {
+      "id": "HR-004",
+      "category": "contact",
+      "prompt": "Send meeting invite to maria.garcia@acmecorp.com and call (555) 345-6789 to confirm",
+      "expected_pii": ["EMAIL_ADDRESS", "PHONE_NUMBER"],
+      "description": "Contact information handling"
+    },
+    {
+      "id": "HR-005",
+      "category": "onboarding",
+      "prompt": "Process new hire paperwork for Raj Patel, born April 18, 1988, SSN 345-67-8901",
+      "expected_pii": ["PERSON", "DATE_TIME", "US_SSN"],
+      "description": "New employee onboarding"
+    },
+    {
+      "id": "HR-006",
+      "category": "compensation",
+      "prompt": "Calculate bonus for Jennifer Williams earning $250,000 with 15% target",
+      "expected_pii": ["PERSON", "SALARY"],
+      "description": "Executive bonus calculation"
+    },
+    {
+      "id": "HR-007",
+      "category": "location",
+      "prompt": "Send tax documents to Michael Johnson at 1100 Main Street, Austin, TX 78701",
+      "expected_pii": ["PERSON", "LOCATION"],
+      "description": "Address handling"
+    },
+    {
+      "id": "HR-008",
+      "category": "comparison",
+      "prompt": "Compare the salaries of all employees in the Engineering department",
+      "expected_pii": [],
+      "requires_rag": true,
+      "description": "Department-wide salary comparison"
+    },
+    {
+      "id": "HR-009",
+      "category": "benefits",
+      "prompt": "Enroll Yuki Tanaka in health insurance, DOB August 14, 1992",
+      "expected_pii": ["PERSON", "DATE_TIME"],
+      "description": "Benefits enrollment"
+    },
+    {
+      "id": "HR-010",
+      "category": "payroll",
+      "prompt": "Set up direct deposit for Sarah Thompson to bank account ending in 7890",
+      "expected_pii": ["PERSON", "US_BANK_NUMBER"],
+      "description": "Banking information"
+    },
+    {
+      "id": "HR-011",
+      "category": "contact",
+      "prompt": "Update contact info: ahmed.hassan@acmecorp.com, phone (555) 901-2345, address 2800 Research Blvd",
+      "expected_pii": ["EMAIL_ADDRESS", "PHONE_NUMBER", "LOCATION"],
+      "description": "Multiple contact fields"
+    },
+    {
+      "id": "HR-012",
+      "category": "compensation",
+      "prompt": "Who are the top 3 highest paid employees?",
+      "expected_pii": [],
+      "requires_rag": true,
+      "description": "Top earners query"
+    },
+    {
+      "id": "HR-013",
+      "category": "termination",
+      "prompt": "Process final paycheck for Emily Rodriguez, SSN 901-23-4567, at $75,000 annual",
+      "expected_pii": ["PERSON", "US_SSN", "SALARY"],
+      "description": "Termination processing"
+    },
+    {
+      "id": "HR-014",
+      "category": "promotion",
+      "prompt": "Prepare promotion letter for James Kim with new salary of $175,000",
+      "expected_pii": ["PERSON", "SALARY"],
+      "description": "Promotion documentation"
+    },
+    {
+      "id": "HR-015",
+      "category": "verification",
+      "prompt": "Verify employment for Priya Sharma at (555) 234-5679 or priya.sharma@acmecorp.com",
+      "expected_pii": ["PERSON", "PHONE_NUMBER", "EMAIL_ADDRESS"],
+      "description": "Employment verification"
+    },
+    {
+      "id": "HR-016",
+      "category": "comparison",
+      "prompt": "What is the salary difference between Robert Taylor and Marcus Brown?",
+      "expected_pii": ["PERSON", "PERSON"],
+      "requires_rag": true,
+      "description": "Specific salary comparison"
+    },
+    {
+      "id": "HR-017",
+      "category": "relocation",
+      "prompt": "Process relocation package for Lisa Nguyen moving from 2100 Guadalupe Street to 500 East 7th Street",
+      "expected_pii": ["PERSON", "LOCATION", "LOCATION"],
+      "description": "Relocation with addresses"
+    },
+    {
+      "id": "HR-018",
+      "category": "payroll",
+      "prompt": "Issue emergency payment of $5,000 to account ****4567 for Marcus Brown",
+      "expected_pii": ["SALARY", "US_BANK_NUMBER", "PERSON"],
+      "description": "Emergency payment"
+    },
+    {
+      "id": "HR-019",
+      "category": "contact",
+      "prompt": "Call David Okonkwo at (555) 876-5432 regarding the budget meeting",
+      "expected_pii": ["PERSON", "PHONE_NUMBER"],
+      "description": "Phone contact"
+    },
+    {
+      "id": "HR-020",
+      "category": "comprehensive",
+      "prompt": "Send offer letter to new hire: John Smith, SSN 111-22-3333, starting salary $95,000, DOB Jan 15, 1990, address 123 New Street Austin TX, email john.smith@email.com, phone (555) 999-8888",
+      "expected_pii": ["PERSON", "US_SSN", "SALARY", "DATE_TIME", "LOCATION", "EMAIL_ADDRESS", "PHONE_NUMBER"],
+      "description": "Comprehensive PII test - all entity types"
+    }
+  ]
+}

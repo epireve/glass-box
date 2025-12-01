@@ -21,3 +21,6 @@ build/
 
 # OS
 .DS_Store
+
+# Local planning docs
+BENCHMARK_PLAN.md

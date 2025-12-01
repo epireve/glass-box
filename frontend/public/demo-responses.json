@@ -1,0 +1,2602 @@
+{
+  "responses": {
+    "HR-001": {
+      "pii_analysis": {
+        "type": "pii_analysis",
+        "session_id": "876f7d81-b726-430a-9dcf-5ba08ff18cf9",
+        "detector": "presidio",
+        "detector_error": null,
+        "mapping": {
+          "<PERSON_1>": "Alice Chen",
+          "<SALARY_1>": "$145,000",
+          "<EMAIL_ADDRESS_1>": "alice.chen@acmecorp.com",
+          "<PHONE_NUMBER_1>": "(555) 234-5678",
+          "<DATE_TIME_1>": "March 15, 1985\n  Address",
+          "<PERSON_2>": "Maple Drive",
+          "<LOCATION_1>": "Austin",
+          "<LOCATION_2>": "TX 78701",
+          "<PERSON_3>": "Alice Chen",
+          "<SALARY_2>": "$145,000",
+          "<SALARY_3>": "$165,000"
+        },
+        "entities_found": [
+          {
+            "entity_type": "PERSON",
+            "original_value": "Alice Chen",
+            "placeholder": "<PERSON_3>",
+            "score": 0.85,
+            "start": 42,
+            "end": 52
+          },
+          {
+            "entity_type": "SALARY",
+            "original_value": "$145,000",
+            "placeholder": "<SALARY_3>",
+            "score": 0.85,
+            "start": 102,
+            "end": 110
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "alice.chen@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_1>",
+            "score": 1.0,
+            "start": 120,
+            "end": 143
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 234-5678",
+            "placeholder": "<PHONE_NUMBER_1>",
+            "score": 0.75,
+            "start": 153,
+            "end": 167
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "March 15, 1985\n  Address",
+            "placeholder": "<DATE_TIME_1>",
+            "score": 0.85,
+            "start": 175,
+            "end": 199
+          },
+          {
+            "entity_type": "PERSON",
+            "original_value": "Maple Drive",
+            "placeholder": "<PERSON_2>",
+            "score": 0.85,
+            "start": 205,
+            "end": 216
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_2>",
+            "score": 0.85,
+            "start": 218,
+            "end": 224
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX 78701",
+            "placeholder": "<LOCATION_1>",
+            "score": 0.85,
+            "start": 226,
+            "end": 234
+          },
+          {
+            "entity_type": "PERSON",
+            "original_value": "Alice Chen",
+            "placeholder": "<PERSON_1>",
+            "score": 0.85,
+            "start": 266,
+            "end": 276
+          },
+          {
+            "entity_type": "SALARY",
+            "original_value": "$145,000",
+            "placeholder": "<SALARY_2>",
+            "score": 0.85,
+            "start": 308,
+            "end": 316
+          },
+          {
+            "entity_type": "SALARY",
+            "original_value": "$165,000",
+            "placeholder": "<SALARY_1>",
+            "score": 0.85,
+            "start": 320,
+            "end": 328
+          }
+        ],
+        "entity_stats": {
+          "PERSON": 3,
+          "SALARY": 3,
+          "EMAIL_ADDRESS": 1,
+          "PHONE_NUMBER": 1,
+          "DATE_TIME": 1,
+          "LOCATION": 2
+        },
+        "original_prompt": "Draft an email to Alice Chen about her salary increase from $145,000 to $165,000",
+        "anonymized_prompt": "Employee Records from Acme Corporation:\n- <PERSON_3>: Senior Software Engineer, Engineering\n  Salary: <SALARY_3>\n  Email: <EMAIL_ADDRESS_1>\n  Phone: <PHONE_NUMBER_1>\n  DOB: <DATE_TIME_1>: 742 <PERSON_2>, <LOCATION_2>, <LOCATION_2>\n\nUser Query: Draft an email to <PERSON_3> about her salary increase from <SALARY_2> to <SALARY_3>",
+        "rag_context": "Employee Records from Acme Corporation:\n- Alice Chen: Senior Software Engineer, Engineering\n  Salary: $145,000\n  Email: alice.chen@acmecorp.com\n  Phone: (555) 234-5678\n  DOB: March 15, 1985\n  Address: 742 Maple Drive, Austin, TX 78701",
+        "retrieved_employees": [
+          "Alice Chen"
+        ],
+        "retrieval_type": "named",
+        "metrics": {
+          "retrieval_time_ms": 0.05,
+          "anonymization_time_ms": 12.09
+        }
+      },
+      "response": "Subject: Congratulations \u2013 Your Salary Increase\n\nHi <PERSON_3>,\n\nI\u2019m pleased to inform you that, effective\u202f[Effective Date], your base salary will be adjusted from **<SALARY_2>** to **<SALARY_3>**. This increase reflects your outstanding contributions as a Senior Software Engineer and the value you bring to our Engineering team.\n\n**What this means for you**\n- **New annual salary:**\u202f<SALARY_3>\n- **Pay schedule:**\u202fYour regular pay periods will reflect the updated amount beginning with the payroll cycle that follows the effective date.\n- **Benefits & taxes:**\u202fAll other compensation components (benefits, tax withholdings, etc.) will remain unchanged.\n\nPlease let me know if you have any questions about this change or need further details. We appreciate your hard work and look forward to your continued success at Acme Corporation.\n\nCongratulations again!\n\nBest regards,  \n[Your Name]  \nHR Business Partner \u2013 Engineering  \nAcme Corporation  \n[Your Email] | [Your Phone]"
+    },
+    "HR-002": {
+      "pii_analysis": {
+        "type": "pii_analysis",
+        "session_id": "fe579716-d7ba-4846-924b-6e6478a6f45c",
+        "detector": "presidio",
+        "detector_error": null,
+        "mapping": {
+          "<PERSON_1>": "Alice Chen",
+          "<SALARY_1>": "$145,000",
+          "<EMAIL_ADDRESS_1>": "alice.chen@acmecorp.com",
+          "<PHONE_NUMBER_1>": "(555) 234-5678",
+          "<DATE_TIME_1>": "March 15, 1985\n  Address",
+          "<PERSON_2>": "Maple Drive",
+          "<LOCATION_1>": "Austin",
+          "<LOCATION_2>": "TX 78701",
+          "<SALARY_2>": "$185,000",
+          "<EMAIL_ADDRESS_2>": "david.okonkwo@acmecorp.com",
+          "<PHONE_NUMBER_2>": "(555) 876-5432",
+          "<DATE_TIME_2>": "July 22, 1980",
+          "<LOCATION_3>": "Austin",
+          "<LOCATION_4>": "TX 78701",
+          "<PERSON_3>": "Alice",
+          "<PERSON_4>": "David"
+        },
+        "entities_found": [
+          {
+            "entity_type": "PERSON",
+            "original_value": "Alice Chen",
+            "placeholder": "<PERSON_4>",
+            "score": 0.85,
+            "start": 42,
+            "end": 52
+          },
+          {
+            "entity_type": "SALARY",
+            "original_value": "$145,000",
+            "placeholder": "<SALARY_2>",
+            "score": 0.85,
+            "start": 102,
+            "end": 110
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "alice.chen@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_2>",
+            "score": 1.0,
+            "start": 120,
+            "end": 143
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 234-5678",
+            "placeholder": "<PHONE_NUMBER_2>",
+            "score": 0.75,
+            "start": 153,
+            "end": 167
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "March 15, 1985\n  Address",
+            "placeholder": "<DATE_TIME_2>",
+            "score": 0.85,
+            "start": 175,
+            "end": 199
+          },
+          {
+            "entity_type": "PERSON",
+            "original_value": "Maple Drive",
+            "placeholder": "<PERSON_3>",
+            "score": 0.85,
+            "start": 205,
+            "end": 216
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_4>",
+            "score": 0.85,
+            "start": 218,
+            "end": 224
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX 78701",
+            "placeholder": "<LOCATION_3>",
+            "score": 0.85,
+            "start": 226,
+            "end": 234
+          },
+          {
+            "entity_type": "SALARY",
+            "original_value": "$185,000",
+            "placeholder": "<SALARY_1>",
+            "score": 0.85,
+            "start": 288,
+            "end": 296
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "david.okonkwo@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_1>",
+            "score": 1.0,
+            "start": 306,
+            "end": 332
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 876-5432",
+            "placeholder": "<PHONE_NUMBER_1>",
+            "score": 0.75,
+            "start": 342,
+            "end": 356
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "July 22, 1980",
+            "placeholder": "<DATE_TIME_1>",
+            "score": 0.85,
+            "start": 364,
+            "end": 377
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_2>",
+            "score": 0.85,
+            "start": 408,
+            "end": 414
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX 78701",
+            "placeholder": "<LOCATION_1>",
+            "score": 0.85,
+            "start": 416,
+            "end": 424
+          },
+          {
+            "entity_type": "PERSON",
+            "original_value": "Alice",
+            "placeholder": "<PERSON_2>",
+            "score": 0.85,
+            "start": 462,
+            "end": 467
+          },
+          {
+            "entity_type": "PERSON",
+            "original_value": "David",
+            "placeholder": "<PERSON_1>",
+            "score": 0.85,
+            "start": 471,
+            "end": 476
+          }
+        ],
+        "entity_stats": {
+          "PERSON": 4,
+          "SALARY": 2,
+          "EMAIL_ADDRESS": 2,
+          "PHONE_NUMBER": 2,
+          "DATE_TIME": 2,
+          "LOCATION": 4
+        },
+        "original_prompt": "Whose salary is higher, Alice or David?",
+        "anonymized_prompt": "Employee Records from Acme Corporation:\n- <PERSON_4>: Senior Software Engineer, Engineering\n  Salary: <SALARY_2>\n  Email: <EMAIL_ADDRESS_2>\n  Phone: <PHONE_NUMBER_2>\n  DOB: <DATE_TIME_2>: 742 <PERSON_3>, <LOCATION_4>, <LOCATION_3>\n- David Okonkwo: Finance Director, Finance\n  Salary: <SALARY_2>\n  Email: <EMAIL_ADDRESS_2>\n  Phone: <PHONE_NUMBER_2>\n  DOB: <DATE_TIME_2>\n  Address: 1500 Congress Ave, <LOCATION_3>, <LOCATION_4>\n\nUser Query: Whose salary is higher, <PERSON_3> or <PERSON_4>?",
+        "rag_context": "Employee Records from Acme Corporation:\n- Alice Chen: Senior Software Engineer, Engineering\n  Salary: $145,000\n  Email: alice.chen@acmecorp.com\n  Phone: (555) 234-5678\n  DOB: March 15, 1985\n  Address: 742 Maple Drive, Austin, TX 78701\n- David Okonkwo: Finance Director, Finance\n  Salary: $185,000\n  Email: david.okonkwo@acmecorp.com\n  Phone: (555) 876-5432\n  DOB: July 22, 1980\n  Address: 1500 Congress Ave, Austin, TX 78701",
+        "retrieved_employees": [
+          "Alice Chen",
+          "David Okonkwo"
+        ],
+        "retrieval_type": "named",
+        "metrics": {
+          "retrieval_time_ms": 0.03,
+          "anonymization_time_ms": 17.05
+        }
+      },
+      "response": "Based on the employee records you provided, we have salary information for **<PERSON_4>** (listed as\u202f<SALARY_2>) but no salary details are included for **<PERSON_3>**. \n\nBecause <PERSON_3>\u2019s compensation isn\u2019t available in the data you shared, I\u2019m unable to determine whose salary is higher. If you can supply the missing salary information for <PERSON_3>, I\u2019d be happy to make the comparison for you."
+    },
+    "HR-003": {
+      "pii_analysis": {
+        "type": "pii_analysis",
+        "session_id": "0a68268e-8211-4d02-9245-40b00f24bd24",
+        "detector": "presidio",
+        "detector_error": null,
+        "mapping": {
+          "<US_BANK_NUMBER_1>": "account ending 4521"
+        },
+        "entities_found": [
+          {
+            "entity_type": "US_BANK_NUMBER",
+            "original_value": "account ending 4521",
+            "placeholder": "<US_BANK_NUMBER_1>",
+            "score": 0.75,
+            "start": 54,
+            "end": 73
+          }
+        ],
+        "entity_stats": {
+          "US_BANK_NUMBER": 1
+        },
+        "original_prompt": "Update direct deposit for employee SSN 123-45-6789 to account ending 4521",
+        "anonymized_prompt": "Update direct deposit for employee SSN 123-45-6789 to <US_BANK_NUMBER_1>",
+        "rag_context": null,
+        "retrieved_employees": [],
+        "retrieval_type": "none",
+        "metrics": {
+          "retrieval_time_ms": 0.03,
+          "anonymization_time_ms": 5.73
+        }
+      },
+      "response": "I\u2019m sorry, but I can\u2019t process that request. For changes to payroll or direct\u2011deposit information, please contact the HR or payroll department through the secure channels your company provides."
+    },
+    "HR-004": {
+      "pii_analysis": {
+        "type": "pii_analysis",
+        "session_id": "d1ed494e-707d-4239-aa50-bdbb73679056",
+        "detector": "presidio",
+        "detector_error": null,
+        "mapping": {
+          "<PERSON_1>": "Maria Garcia",
+          "<SALARY_1>": "$95,000",
+          "<EMAIL_ADDRESS_1>": "maria.garcia@acmecorp.com",
+          "<PHONE_NUMBER_1>": "(555) 345-6789",
+          "<DATE_TIME_1>": "December 3, 1990",
+          "<LOCATION_1>": "Austin",
+          "<LOCATION_2>": "TX",
+          "<EMAIL_ADDRESS_2>": "maria.garcia@acmecorp.com",
+          "<PHONE_NUMBER_2>": "(555) 345-6789"
+        },
+        "entities_found": [
+          {
+            "entity_type": "PERSON",
+            "original_value": "Maria Garcia",
+            "placeholder": "<PERSON_1>",
+            "score": 0.85,
+            "start": 42,
+            "end": 54
+          },
+          {
+            "entity_type": "SALARY",
+            "original_value": "$95,000",
+            "placeholder": "<SALARY_1>",
+            "score": 0.85,
+            "start": 95,
+            "end": 102
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "maria.garcia@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_2>",
+            "score": 1.0,
+            "start": 112,
+            "end": 137
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 345-6789",
+            "placeholder": "<PHONE_NUMBER_2>",
+            "score": 0.75,
+            "start": 147,
+            "end": 161
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "December 3, 1990",
+            "placeholder": "<DATE_TIME_1>",
+            "score": 0.85,
+            "start": 169,
+            "end": 185
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_2>",
+            "score": 0.85,
+            "start": 213,
+            "end": 219
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX",
+            "placeholder": "<LOCATION_1>",
+            "score": 0.85,
+            "start": 221,
+            "end": 223
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "maria.garcia@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_1>",
+            "score": 1.0,
+            "start": 266,
+            "end": 291
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 345-6789",
+            "placeholder": "<PHONE_NUMBER_1>",
+            "score": 0.4,
+            "start": 301,
+            "end": 315
+          }
+        ],
+        "entity_stats": {
+          "PERSON": 1,
+          "SALARY": 1,
+          "EMAIL_ADDRESS": 2,
+          "PHONE_NUMBER": 2,
+          "DATE_TIME": 1,
+          "LOCATION": 2
+        },
+        "original_prompt": "Send meeting invite to maria.garcia@acmecorp.com and call (555) 345-6789 to confirm",
+        "anonymized_prompt": "Employee Records from Acme Corporation:\n- <PERSON_1>: Marketing Manager, Marketing\n  Salary: <SALARY_1>\n  Email: <EMAIL_ADDRESS_2>\n  Phone: <PHONE_NUMBER_2>\n  DOB: <DATE_TIME_1>\n  Address: 890 Oak Street, <LOCATION_2>, <LOCATION_2> 78702\n\nUser Query: Send meeting invite to <EMAIL_ADDRESS_2> and call <PHONE_NUMBER_2> to confirm",
+        "rag_context": "Employee Records from Acme Corporation:\n- Maria Garcia: Marketing Manager, Marketing\n  Salary: $95,000\n  Email: maria.garcia@acmecorp.com\n  Phone: (555) 345-6789\n  DOB: December 3, 1990\n  Address: 890 Oak Street, Austin, TX 78702",
+        "retrieved_employees": [
+          "Maria Garcia"
+        ],
+        "retrieval_type": "named",
+        "metrics": {
+          "retrieval_time_ms": 0.25,
+          "anonymization_time_ms": 22.58
+        }
+      },
+      "response": "Sure, I can help you get this organized.\n\n**1. Draft a meeting invitation (email)**  \n\n---\n\n**Subject:** Confirmation Meeting \u2013 [Brief Topic]  \n\n**To:** <EMAIL_ADDRESS_2>  \n\n**Hi\u202f[First Name],**  \n\nI hope you\u2019re doing well. I\u2019d like to schedule a brief meeting to confirm\u202f[the purpose of the meeting \u2013 e.g., \u201cthe upcoming marketing campaign timeline\u201d].  \n\n**Proposed time:**\u202f[Insert date & time options]  \n**Duration:**\u202f30\u202fminutes  \n**Location:**\u202f[Conference room / Microsoft Teams link]  \n\nPlease let me know which slot works best for you, or feel free to suggest an alternative time.  \n\nThank you, and I look forward to speaking with you.  \n\n**Best regards,**  \n[Your Name]  \n[Your Title]  \nAcme Corporation  \n[Your Phone]  \n\n---\n\n**2. Phone confirmation**  \n\nWhen you call <PHONE_NUMBER_2>, you can use a short script such as:\n\n> \u201cHi\u202f[First Name], this is\u202f[Your Name] from\u202f[Your Department] at Acme. I\u2019m calling to confirm the meeting we\u2019re setting up regarding\u202f[topic]. Do any of the proposed times work for you, or would you prefer a different slot?\u201d\n\n---\n\nIf you\u2019d like me to adjust the email wording or suggest alternative meeting times, just let me know!"
+    },
+    "HR-005": {
+      "pii_analysis": {
+        "type": "pii_analysis",
+        "session_id": "479f9e44-3ce9-47d6-906c-6689119a2fd8",
+        "detector": "presidio",
+        "detector_error": null,
+        "mapping": {
+          "<SALARY_1>": "$165,000",
+          "<EMAIL_ADDRESS_1>": "raj.patel@acmecorp.com",
+          "<PHONE_NUMBER_1>": "(555) 456-7890",
+          "<DATE_TIME_1>": "April 18, 1988\n  ",
+          "<LOCATION_1>": "Austin",
+          "<LOCATION_2>": "TX 78704",
+          "<PERSON_1>": "Raj Patel",
+          "<DATE_TIME_2>": "April 18, 1988",
+          "<US_SSN_1>": "345-67-8901"
+        },
+        "entities_found": [
+          {
+            "entity_type": "SALARY",
+            "original_value": "$165,000",
+            "placeholder": "<SALARY_1>",
+            "score": 0.85,
+            "start": 95,
+            "end": 103
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "raj.patel@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_1>",
+            "score": 1.0,
+            "start": 113,
+            "end": 135
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 456-7890",
+            "placeholder": "<PHONE_NUMBER_1>",
+            "score": 0.75,
+            "start": 145,
+            "end": 159
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "April 18, 1988\n  ",
+            "placeholder": "<DATE_TIME_2>",
+            "score": 0.85,
+            "start": 167,
+            "end": 184
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_2>",
+            "score": 0.85,
+            "start": 212,
+            "end": 218
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX 78704",
+            "placeholder": "<LOCATION_1>",
+            "score": 0.85,
+            "start": 220,
+            "end": 228
+          },
+          {
+            "entity_type": "PERSON",
+            "original_value": "Raj Patel",
+            "placeholder": "<PERSON_1>",
+            "score": 0.85,
+            "start": 273,
+            "end": 282
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "April 18, 1988",
+            "placeholder": "<DATE_TIME_1>",
+            "score": 0.85,
+            "start": 289,
+            "end": 303
+          },
+          {
+            "entity_type": "US_SSN",
+            "original_value": "345-67-8901",
+            "placeholder": "<US_SSN_1>",
+            "score": 0.85,
+            "start": 309,
+            "end": 320
+          }
+        ],
+        "entity_stats": {
+          "SALARY": 1,
+          "EMAIL_ADDRESS": 1,
+          "PHONE_NUMBER": 1,
+          "DATE_TIME": 2,
+          "LOCATION": 2,
+          "PERSON": 1,
+          "US_SSN": 1
+        },
+        "original_prompt": "Process new hire paperwork for Raj Patel, born April 18, 1988, SSN 345-67-8901",
+        "anonymized_prompt": "Employee Records from Acme Corporation:\n- Raj Patel: Principal Engineer, Engineering\n  Salary: <SALARY_1>\n  Email: <EMAIL_ADDRESS_1>\n  Phone: <PHONE_NUMBER_1>\n  DOB: <DATE_TIME_2>Address: 2200 Riverside Dr, <LOCATION_2>, <LOCATION_2>\n\nUser Query: Process new hire paperwork for <PERSON_1>, born <DATE_TIME_2>, SSN <US_SSN_1>",
+        "rag_context": "Employee Records from Acme Corporation:\n- Raj Patel: Principal Engineer, Engineering\n  Salary: $165,000\n  Email: raj.patel@acmecorp.com\n  Phone: (555) 456-7890\n  DOB: April 18, 1988\n  Address: 2200 Riverside Dr, Austin, TX 78704",
+        "retrieved_employees": [
+          "Raj Patel"
+        ],
+        "retrieval_type": "named",
+        "metrics": {
+          "retrieval_time_ms": 0.21,
+          "anonymization_time_ms": 27.75
+        }
+      },
+      "response": "Sure, I can get the new\u2011hire paperwork started. To complete the process I\u2019ll need a few more details:\n\n| Information Needed | Why It\u2019s Required |\n|--------------------------|----------------------------|\n| **Full legal name** (first, middle, last) | For the employee record and tax forms |\n| **Home address** (street, city, state, ZIP) | Payroll & benefits enrollment |\n| **Personal email address** | For sending onboarding documents and communications |\n| **Phone number** (mobile preferred) | For contact during the onboarding process |\n| **Position title** and **department** | To set up the correct job profile and approvals |\n| **Manager\u2019s name** (who the employee will report to) | For routing approvals and access permissions |\n| **Proposed start date** | To schedule orientation and system access |\n| **Confirmation of SSN handling consent** | Required by law before we store and use the SSN for payroll/tax reporting |\n\nOnce I have this information (and your confirmation that the employee consents to us storing the SSN for payroll and tax purposes), I\u2019ll:\n\n1. Create the employee record in our HRIS.  \n2. Generate the I\u20119, W\u20114, and direct\u2011deposit forms.  \n3. Set up benefits enrollment links.  \n4. Notify IT to provision the appropriate system access.  \n\nFeel free to provide the missing details here, or let me know if you\u2019d prefer to share them through a secure channel."
+    },
+    "HR-006": {
+      "pii_analysis": {
+        "type": "pii_analysis",
+        "session_id": "c8c45376-d1bc-41f7-b32b-adcf0f454ddd",
+        "detector": "presidio",
+        "detector_error": null,
+        "mapping": {
+          "<PERSON_1>": "Jennifer Williams",
+          "<SALARY_1>": "$250,000",
+          "<EMAIL_ADDRESS_1>": "jennifer.williams@acmecorp.com",
+          "<PHONE_NUMBER_1>": "(555) 567-8901",
+          "<DATE_TIME_1>": "September 7, 1982",
+          "<LOCATION_1>": "Elm Avenue",
+          "<LOCATION_2>": "Austin",
+          "<LOCATION_3>": "TX",
+          "<PERSON_2>": "Jennifer Williams",
+          "<SALARY_2>": "$250,000"
+        },
+        "entities_found": [
+          {
+            "entity_type": "PERSON",
+            "original_value": "Jennifer Williams",
+            "placeholder": "<PERSON_2>",
+            "score": 0.85,
+            "start": 42,
+            "end": 59
+          },
+          {
+            "entity_type": "SALARY",
+            "original_value": "$250,000",
+            "placeholder": "<SALARY_2>",
+            "score": 0.85,
+            "start": 107,
+            "end": 115
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "jennifer.williams@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_1>",
+            "score": 1.0,
+            "start": 125,
+            "end": 155
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 567-8901",
+            "placeholder": "<PHONE_NUMBER_1>",
+            "score": 0.75,
+            "start": 165,
+            "end": 179
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "September 7, 1982",
+            "placeholder": "<DATE_TIME_1>",
+            "score": 0.85,
+            "start": 187,
+            "end": 204
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Elm Avenue",
+            "placeholder": "<LOCATION_3>",
+            "score": 0.85,
+            "start": 220,
+            "end": 230
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_2>",
+            "score": 0.85,
+            "start": 232,
+            "end": 238
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX",
+            "placeholder": "<LOCATION_1>",
+            "score": 0.85,
+            "start": 240,
+            "end": 242
+          },
+          {
+            "entity_type": "PERSON",
+            "original_value": "Jennifer Williams",
+            "placeholder": "<PERSON_1>",
+            "score": 0.85,
+            "start": 282,
+            "end": 299
+          },
+          {
+            "entity_type": "SALARY",
+            "original_value": "$250,000",
+            "placeholder": "<SALARY_1>",
+            "score": 0.85,
+            "start": 308,
+            "end": 316
+          }
+        ],
+        "entity_stats": {
+          "PERSON": 2,
+          "SALARY": 2,
+          "EMAIL_ADDRESS": 1,
+          "PHONE_NUMBER": 1,
+          "DATE_TIME": 1,
+          "LOCATION": 3
+        },
+        "original_prompt": "Calculate bonus for Jennifer Williams earning $250,000 with 15% target",
+        "anonymized_prompt": "Employee Records from Acme Corporation:\n- <PERSON_2>: Chief Technology Officer, Executive\n  Salary: <SALARY_2>\n  Email: <EMAIL_ADDRESS_1>\n  Phone: <PHONE_NUMBER_1>\n  DOB: <DATE_TIME_1>\n  Address: 450 <LOCATION_3>, <LOCATION_2>, <LOCATION_3> 78703\n\nUser Query: Calculate bonus for <PERSON_2> earning <SALARY_2> with 15% target",
+        "rag_context": "Employee Records from Acme Corporation:\n- Jennifer Williams: Chief Technology Officer, Executive\n  Salary: $250,000\n  Email: jennifer.williams@acmecorp.com\n  Phone: (555) 567-8901\n  DOB: September 7, 1982\n  Address: 450 Elm Avenue, Austin, TX 78703",
+        "retrieved_employees": [
+          "Jennifer Williams"
+        ],
+        "retrieval_type": "named",
+        "metrics": {
+          "retrieval_time_ms": 0.07,
+          "anonymization_time_ms": 18.72
+        }
+      },
+      "response": "To determine the bonus, multiply\u202f<PERSON_2>\u2019s annual salary by the target percentage (15%).  \n\n**Formula**  \n\\[\n\\text{Bonus} = \\text{Salary} \\times 0.15\n\\]\n\n**Example**  \nIf\u202f<PERSON_2>\u202fearns **$200,000** per year:  \n\n\\[\n\\text{Bonus} = 200{,}000 \\times 0.15 = \\$30{,}000\n\\]\n\nSo, plug the actual value of **<SALARY_2>** into the formula above to get the exact bonus amount. If you provide the numeric salary, I can calculate the precise figure for you."
+    },
+    "HR-007": {
+      "pii_analysis": {
+        "type": "pii_analysis",
+        "session_id": "e56c7cd7-7967-459d-b319-2f1688bfe878",
+        "detector": "presidio",
+        "detector_error": null,
+        "mapping": {
+          "<PERSON_1>": "Michael Johnson",
+          "<SALARY_1>": "$120,000",
+          "<EMAIL_ADDRESS_1>": "michael.johnson@acmecorp.com",
+          "<PHONE_NUMBER_1>": "(555) 678-9012",
+          "<DATE_TIME_1>": "February 28, 1979",
+          "<LOCATION_1>": "Austin",
+          "<LOCATION_2>": "TX 78701",
+          "<PERSON_2>": "Michael Johnson",
+          "<LOCATION_3>": "1100 Main Street",
+          "<LOCATION_4>": "Austin",
+          "<LOCATION_5>": "TX"
+        },
+        "entities_found": [
+          {
+            "entity_type": "PERSON",
+            "original_value": "Michael Johnson",
+            "placeholder": "<PERSON_2>",
+            "score": 0.85,
+            "start": 42,
+            "end": 57
+          },
+          {
+            "entity_type": "SALARY",
+            "original_value": "$120,000",
+            "placeholder": "<SALARY_1>",
+            "score": 0.85,
+            "start": 98,
+            "end": 106
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "michael.johnson@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_1>",
+            "score": 1.0,
+            "start": 116,
+            "end": 144
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 678-9012",
+            "placeholder": "<PHONE_NUMBER_1>",
+            "score": 0.75,
+            "start": 154,
+            "end": 168
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "February 28, 1979",
+            "placeholder": "<DATE_TIME_1>",
+            "score": 0.85,
+            "start": 176,
+            "end": 193
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_5>",
+            "score": 0.85,
+            "start": 223,
+            "end": 229
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX 78701",
+            "placeholder": "<LOCATION_4>",
+            "score": 0.85,
+            "start": 231,
+            "end": 239
+          },
+          {
+            "entity_type": "PERSON",
+            "original_value": "Michael Johnson",
+            "placeholder": "<PERSON_1>",
+            "score": 0.85,
+            "start": 275,
+            "end": 290
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "1100 Main Street",
+            "placeholder": "<LOCATION_3>",
+            "score": 0.85,
+            "start": 294,
+            "end": 310
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_2>",
+            "score": 0.85,
+            "start": 312,
+            "end": 318
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX",
+            "placeholder": "<LOCATION_1>",
+            "score": 0.85,
+            "start": 320,
+            "end": 322
+          }
+        ],
+        "entity_stats": {
+          "PERSON": 2,
+          "SALARY": 1,
+          "EMAIL_ADDRESS": 1,
+          "PHONE_NUMBER": 1,
+          "DATE_TIME": 1,
+          "LOCATION": 5
+        },
+        "original_prompt": "Send tax documents to Michael Johnson at 1100 Main Street, Austin, TX 78701",
+        "anonymized_prompt": "Employee Records from Acme Corporation:\n- <PERSON_2>: HR Director, Human Resources\n  Salary: <SALARY_1>\n  Email: <EMAIL_ADDRESS_1>\n  Phone: <PHONE_NUMBER_1>\n  DOB: <DATE_TIME_1>\n  Address: 1100 Main Street, <LOCATION_5>, <LOCATION_4>\n\nUser Query: Send tax documents to <PERSON_2> at <LOCATION_3>, <LOCATION_4>, <LOCATION_5> 78701",
+        "rag_context": "Employee Records from Acme Corporation:\n- Michael Johnson: HR Director, Human Resources\n  Salary: $120,000\n  Email: michael.johnson@acmecorp.com\n  Phone: (555) 678-9012\n  DOB: February 28, 1979\n  Address: 1100 Main Street, Austin, TX 78701",
+        "retrieved_employees": [
+          "Michael Johnson"
+        ],
+        "retrieval_type": "named",
+        "metrics": {
+          "retrieval_time_ms": 0.05,
+          "anonymization_time_ms": 18.74
+        }
+      },
+      "response": "Sure, I can help you with that.\n\nBased on the employee record, **<PERSON_2>** (HR Director) is currently listed at:\n\n**1100 Main Street**  \n**<LOCATION_5>**, **<LOCATION_4>**  \n\nYour request mentions the address **<LOCATION_3>, <LOCATION_4>, <LOCATION_5> 78701**. Could you please confirm which of the following is correct:\n\n1. **1100 Main Street, <LOCATION_5>, <LOCATION_4>** (as in the employee record), or  \n2. **<LOCATION_3>, <LOCATION_4>, <LOCATION_5> 78701** (the address you provided)?\n\nOnce I have the confirmed address, I\u2019ll draft an email for you to send the tax documents to **<PERSON_2>**. Let me know which address to use, or feel free to provide any additional details."
+    },
+    "HR-008": {
+      "pii_analysis": {
+        "type": "pii_analysis",
+        "session_id": "39fed58a-048e-4f5f-b035-aa65e8eb448f",
+        "detector": "presidio",
+        "detector_error": null,
+        "mapping": {
+          "<PERSON_1>": "Alice Chen",
+          "<SALARY_1>": "$145,000",
+          "<EMAIL_ADDRESS_1>": "alice.chen@acmecorp.com",
+          "<PHONE_NUMBER_1>": "(555) 234-5678",
+          "<DATE_TIME_1>": "March 15, 1985\n  Address",
+          "<PERSON_2>": "Maple Drive",
+          "<LOCATION_1>": "Austin",
+          "<LOCATION_2>": "TX 78701",
+          "<SALARY_2>": "$165,000",
+          "<EMAIL_ADDRESS_2>": "raj.patel@acmecorp.com",
+          "<PHONE_NUMBER_2>": "(555) 456-7890",
+          "<DATE_TIME_2>": "April 18, 1988\n  ",
+          "<LOCATION_3>": "Austin",
+          "<LOCATION_4>": "TX 78704",
+          "<SALARY_3>": "$110,000",
+          "<EMAIL_ADDRESS_3>": "yuki.tanaka@acmecorp.com",
+          "<PHONE_NUMBER_3>": "(555) 789-0123",
+          "<DATE_TIME_3>": "August 14, 1992\n  Address",
+          "<LOCATION_5>": "Austin",
+          "<LOCATION_6>": "TX",
+          "<PERSON_3>": "Ahmed Hassan:",
+          "<SALARY_4>": "$130,000",
+          "<EMAIL_ADDRESS_4>": "ahmed.hassan@acmecorp.com",
+          "<PHONE_NUMBER_4>": "(555) 901-2345",
+          "<DATE_TIME_4>": "November 30, 1984",
+          "<LOCATION_7>": "Austin",
+          "<LOCATION_8>": "TX 78759",
+          "<SALARY_5>": "$135,000",
+          "<EMAIL_ADDRESS_5>": "priya.sharma@acmecorp.com",
+          "<PHONE_NUMBER_5>": "(555) 234-5679",
+          "<DATE_TIME_5>": "October 9, 1989",
+          "<LOCATION_9>": "Austin",
+          "<LOCATION_10>": "TX 78704"
+        },
+        "entities_found": [
+          {
+            "entity_type": "PERSON",
+            "original_value": "Alice Chen",
+            "placeholder": "<PERSON_3>",
+            "score": 0.85,
+            "start": 42,
+            "end": 52
+          },
+          {
+            "entity_type": "SALARY",
+            "original_value": "$145,000",
+            "placeholder": "<SALARY_5>",
+            "score": 0.85,
+            "start": 102,
+            "end": 110
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "alice.chen@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_5>",
+            "score": 1.0,
+            "start": 120,
+            "end": 143
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 234-5678",
+            "placeholder": "<PHONE_NUMBER_5>",
+            "score": 0.75,
+            "start": 153,
+            "end": 167
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "March 15, 1985\n  Address",
+            "placeholder": "<DATE_TIME_5>",
+            "score": 0.85,
+            "start": 175,
+            "end": 199
+          },
+          {
+            "entity_type": "PERSON",
+            "original_value": "Maple Drive",
+            "placeholder": "<PERSON_2>",
+            "score": 0.85,
+            "start": 205,
+            "end": 216
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_10>",
+            "score": 0.85,
+            "start": 218,
+            "end": 224
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX 78701",
+            "placeholder": "<LOCATION_9>",
+            "score": 0.85,
+            "start": 226,
+            "end": 234
+          },
+          {
+            "entity_type": "SALARY",
+            "original_value": "$165,000",
+            "placeholder": "<SALARY_4>",
+            "score": 0.85,
+            "start": 290,
+            "end": 298
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "raj.patel@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_4>",
+            "score": 1.0,
+            "start": 308,
+            "end": 330
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 456-7890",
+            "placeholder": "<PHONE_NUMBER_4>",
+            "score": 0.75,
+            "start": 340,
+            "end": 354
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "April 18, 1988\n  ",
+            "placeholder": "<DATE_TIME_4>",
+            "score": 0.85,
+            "start": 362,
+            "end": 379
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_8>",
+            "score": 0.85,
+            "start": 407,
+            "end": 413
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX 78704",
+            "placeholder": "<LOCATION_7>",
+            "score": 0.85,
+            "start": 415,
+            "end": 423
+          },
+          {
+            "entity_type": "SALARY",
+            "original_value": "$110,000",
+            "placeholder": "<SALARY_3>",
+            "score": 0.85,
+            "start": 480,
+            "end": 488
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "yuki.tanaka@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_3>",
+            "score": 1.0,
+            "start": 498,
+            "end": 522
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 789-0123",
+            "placeholder": "<PHONE_NUMBER_3>",
+            "score": 0.75,
+            "start": 532,
+            "end": 546
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "August 14, 1992\n  Address",
+            "placeholder": "<DATE_TIME_3>",
+            "score": 0.85,
+            "start": 554,
+            "end": 579
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_6>",
+            "score": 0.85,
+            "start": 602,
+            "end": 608
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX",
+            "placeholder": "<LOCATION_5>",
+            "score": 0.85,
+            "start": 610,
+            "end": 612
+          },
+          {
+            "entity_type": "PERSON",
+            "original_value": "Ahmed Hassan:",
+            "placeholder": "<PERSON_1>",
+            "score": 0.85,
+            "start": 621,
+            "end": 634
+          },
+          {
+            "entity_type": "SALARY",
+            "original_value": "$130,000",
+            "placeholder": "<SALARY_2>",
+            "score": 0.85,
+            "start": 670,
+            "end": 678
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "ahmed.hassan@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_2>",
+            "score": 1.0,
+            "start": 688,
+            "end": 713
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 901-2345",
+            "placeholder": "<PHONE_NUMBER_2>",
+            "score": 0.75,
+            "start": 723,
+            "end": 737
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "November 30, 1984",
+            "placeholder": "<DATE_TIME_2>",
+            "score": 0.85,
+            "start": 745,
+            "end": 762
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_4>",
+            "score": 0.85,
+            "start": 794,
+            "end": 800
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX 78759",
+            "placeholder": "<LOCATION_3>",
+            "score": 0.85,
+            "start": 802,
+            "end": 810
+          },
+          {
+            "entity_type": "SALARY",
+            "original_value": "$135,000",
+            "placeholder": "<SALARY_1>",
+            "score": 0.85,
+            "start": 870,
+            "end": 878
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "priya.sharma@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_1>",
+            "score": 1.0,
+            "start": 888,
+            "end": 913
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 234-5679",
+            "placeholder": "<PHONE_NUMBER_1>",
+            "score": 0.75,
+            "start": 923,
+            "end": 937
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "October 9, 1989",
+            "placeholder": "<DATE_TIME_1>",
+            "score": 0.85,
+            "start": 945,
+            "end": 960
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_2>",
+            "score": 0.85,
+            "start": 996,
+            "end": 1002
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX 78704",
+            "placeholder": "<LOCATION_1>",
+            "score": 0.85,
+            "start": 1004,
+            "end": 1012
+          }
+        ],
+        "entity_stats": {
+          "PERSON": 3,
+          "SALARY": 5,
+          "EMAIL_ADDRESS": 5,
+          "PHONE_NUMBER": 5,
+          "DATE_TIME": 5,
+          "LOCATION": 10
+        },
+        "original_prompt": "Compare the salaries of all employees in the Engineering department",
+        "anonymized_prompt": "Employee Records from Acme Corporation:\n- <PERSON_3>: Senior Software Engineer, Engineering\n  Salary: <SALARY_5>\n  Email: <EMAIL_ADDRESS_5>\n  Phone: <PHONE_NUMBER_5>\n  DOB: <DATE_TIME_5>: 742 <PERSON_2>, <LOCATION_10>, <LOCATION_9>\n- Raj Patel: Principal Engineer, Engineering\n  Salary: <SALARY_4>\n  Email: <EMAIL_ADDRESS_4>\n  Phone: <PHONE_NUMBER_4>\n  DOB: <DATE_TIME_4>Address: 2200 Riverside Dr, <LOCATION_8>, <LOCATION_7>\n- Yuki Tanaka: Software Engineer, Engineering\n  Salary: <SALARY_3>\n  Email: <EMAIL_ADDRESS_3>\n  Phone: <PHONE_NUMBER_3>\n  DOB: <DATE_TIME_3>: 3300 Tech Boulevard, <LOCATION_6>, <LOCATION_6> 78758\n- <PERSON_3> DevOps Lead, Engineering\n  Salary: <SALARY_4>\n  Email: <EMAIL_ADDRESS_4>\n  Phone: <PHONE_NUMBER_4>\n  DOB: <DATE_TIME_4>\n  Address: 2800 Research Blvd, <LOCATION_7>, <LOCATION_8>\n- Priya Sharma: Engineering Manager, Engineering\n  Salary: <SALARY_5>\n  Email: <EMAIL_ADDRESS_5>\n  Phone: <PHONE_NUMBER_5>\n  DOB: <DATE_TIME_5>\n  Address: 780 South First Street, <LOCATION_9>, <LOCATION_10>\n\nUser Query: Compare the salaries of all employees in the Engineering department",
+        "rag_context": "Employee Records from Acme Corporation:\n- Alice Chen: Senior Software Engineer, Engineering\n  Salary: $145,000\n  Email: alice.chen@acmecorp.com\n  Phone: (555) 234-5678\n  DOB: March 15, 1985\n  Address: 742 Maple Drive, Austin, TX 78701\n- Raj Patel: Principal Engineer, Engineering\n  Salary: $165,000\n  Email: raj.patel@acmecorp.com\n  Phone: (555) 456-7890\n  DOB: April 18, 1988\n  Address: 2200 Riverside Dr, Austin, TX 78704\n- Yuki Tanaka: Software Engineer, Engineering\n  Salary: $110,000\n  Email: yuki.tanaka@acmecorp.com\n  Phone: (555) 789-0123\n  DOB: August 14, 1992\n  Address: 3300 Tech Boulevard, Austin, TX 78758\n- Ahmed Hassan: DevOps Lead, Engineering\n  Salary: $130,000\n  Email: ahmed.hassan@acmecorp.com\n  Phone: (555) 901-2345\n  DOB: November 30, 1984\n  Address: 2800 Research Blvd, Austin, TX 78759\n- Priya Sharma: Engineering Manager, Engineering\n  Salary: $135,000\n  Email: priya.sharma@acmecorp.com\n  Phone: (555) 234-5679\n  DOB: October 9, 1989\n  Address: 780 South First Street, Austin, TX 78704",
+        "retrieved_employees": [
+          "Alice Chen",
+          "Raj Patel",
+          "Yuki Tanaka",
+          "Ahmed Hassan",
+          "Priya Sharma"
+        ],
+        "retrieval_type": "department",
+        "metrics": {
+          "retrieval_time_ms": 0.05,
+          "anonymization_time_ms": 58.65
+        }
+      },
+      "response": "Below is a summary of the salary information that was provided for every employee listed under the Engineering department.\u202fBecause the actual numeric amounts are represented by placeholders (e.g.,\u202f`<SALARY_5>`), I cannot give you exact dollar values, but I can show you how the salaries compare relative to one another based on the placeholder identifiers:\n\n| Employee | Title | Salary placeholder |\n|----------|---------------------------|-------------------|\n| **<PERSON_3>** | Senior Software Engineer | **`<SALARY_5>`** |\n| **Raj Patel** | Principal Engineer | **`<SALARY_4>`** |\n| **Yuki Tanaka** | Software Engineer | **`<SALARY_3>`** |\n| **<PERSON_3>** | DevOps Lead | **`<SALARY_4>`** |\n| **Priya Sharma** | Engineering Manager | **`<SALARY_5>`** |\n\n### Relative comparison\n\n1. **Highest\u2011pay placeholders:**  \n   - `<SALARY_5>` appears for **<PERSON_3> (Senior Software Engineer)** and **Priya Sharma (Engineering Manager)**.  \n   - This suggests these two roles are at the top of the salary range among the listed engineers.\n\n2. **Mid\u2011range placeholder:**  \n   - `<SALARY_4>` is assigned to **Raj Patel (Principal Engineer)** and **<PERSON_3> (DevOps Lead)**.  \n   - These positions are positioned between the highest and lowest placeholders.\n\n3. **Lowest\u2011pay placeholder:**  \n   - `<SALARY_3>` is assigned to **Yuki Tanaka (Software Engineer)**, indicating the lowest salary among the five entries.\n\n### Quick Take\u2011away\n\n- **Two employees** are on the highest salary tier (`<SALARY_5>`).  \n- **Two employees** share the middle tier (`<SALARY_4>`).  \n- **One employee** is on the lowest tier (`<SALARY_3>`).\n\nIf you need the exact monetary amounts, you can request the HR payroll team to provide the numeric values associated with each placeholder. Let me know if you\u2019d like assistance drafting that request or if there\u2019s anything else I can help with!"
+    },
+    "HR-009": {
+      "pii_analysis": {
+        "type": "pii_analysis",
+        "session_id": "fce0bee2-a0c8-4a5e-ae98-af9288424dab",
+        "detector": "presidio",
+        "detector_error": null,
+        "mapping": {
+          "<SALARY_1>": "$110,000",
+          "<EMAIL_ADDRESS_1>": "yuki.tanaka@acmecorp.com",
+          "<PHONE_NUMBER_1>": "(555) 789-0123",
+          "<DATE_TIME_1>": "August 14, 1992\n  Address",
+          "<LOCATION_1>": "Austin",
+          "<LOCATION_2>": "TX",
+          "<PERSON_1>": "Enroll Yuki Tanaka",
+          "<DATE_TIME_2>": "August 14, 1992"
+        },
+        "entities_found": [
+          {
+            "entity_type": "SALARY",
+            "original_value": "$110,000",
+            "placeholder": "<SALARY_1>",
+            "score": 0.85,
+            "start": 96,
+            "end": 104
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "yuki.tanaka@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_1>",
+            "score": 1.0,
+            "start": 114,
+            "end": 138
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 789-0123",
+            "placeholder": "<PHONE_NUMBER_1>",
+            "score": 0.75,
+            "start": 148,
+            "end": 162
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "August 14, 1992\n  Address",
+            "placeholder": "<DATE_TIME_2>",
+            "score": 0.85,
+            "start": 170,
+            "end": 195
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_2>",
+            "score": 0.85,
+            "start": 218,
+            "end": 224
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX",
+            "placeholder": "<LOCATION_1>",
+            "score": 0.85,
+            "start": 226,
+            "end": 228
+          },
+          {
+            "entity_type": "PERSON",
+            "original_value": "Enroll Yuki Tanaka",
+            "placeholder": "<PERSON_1>",
+            "score": 0.85,
+            "start": 248,
+            "end": 266
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "August 14, 1992",
+            "placeholder": "<DATE_TIME_1>",
+            "score": 0.85,
+            "start": 292,
+            "end": 307
+          }
+        ],
+        "entity_stats": {
+          "SALARY": 1,
+          "EMAIL_ADDRESS": 1,
+          "PHONE_NUMBER": 1,
+          "DATE_TIME": 2,
+          "LOCATION": 2,
+          "PERSON": 1
+        },
+        "original_prompt": "Enroll Yuki Tanaka in health insurance, DOB August 14, 1992",
+        "anonymized_prompt": "Employee Records from Acme Corporation:\n- Yuki Tanaka: Software Engineer, Engineering\n  Salary: <SALARY_1>\n  Email: <EMAIL_ADDRESS_1>\n  Phone: <PHONE_NUMBER_1>\n  DOB: <DATE_TIME_2>: 3300 Tech Boulevard, <LOCATION_2>, <LOCATION_2> 78758\n\nUser Query: <PERSON_1> in health insurance, DOB <DATE_TIME_2>",
+        "rag_context": "Employee Records from Acme Corporation:\n- Yuki Tanaka: Software Engineer, Engineering\n  Salary: $110,000\n  Email: yuki.tanaka@acmecorp.com\n  Phone: (555) 789-0123\n  DOB: August 14, 1992\n  Address: 3300 Tech Boulevard, Austin, TX 78758",
+        "retrieved_employees": [
+          "Yuki Tanaka"
+        ],
+        "retrieval_type": "named",
+        "metrics": {
+          "retrieval_time_ms": 0.21,
+          "anonymization_time_ms": 25.07
+        }
+      },
+      "response": "I\u2019m happy to help with health\u2011insurance information, but I\u2019ll need to know which employee you\u2019re referring to. Could you please provide the employee\u2019s name (or confirm if you\u2019re asking about Yuki Tanaka) so I can give you the correct details?"
+    },
+    "HR-010": {
+      "pii_analysis": {
+        "type": "pii_analysis",
+        "session_id": "b12f9c9e-b666-4db9-910c-02149de623a4",
+        "detector": "presidio",
+        "detector_error": null,
+        "mapping": {
+          "<SALARY_1>": "$85,000",
+          "<EMAIL_ADDRESS_1>": "sarah.thompson@acmecorp.com",
+          "<PHONE_NUMBER_1>": "(555) 890-1234",
+          "<DATE_TIME_1>": "May 21, 1986",
+          "<LOCATION_1>": "Austin",
+          "<LOCATION_2>": "TX",
+          "<PERSON_1>": "Sarah Thompson",
+          "<US_BANK_NUMBER_1>": "account ending in 7890"
+        },
+        "entities_found": [
+          {
+            "entity_type": "SALARY",
+            "original_value": "$85,000",
+            "placeholder": "<SALARY_1>",
+            "score": 0.85,
+            "start": 89,
+            "end": 96
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "sarah.thompson@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_1>",
+            "score": 1.0,
+            "start": 106,
+            "end": 133
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 890-1234",
+            "placeholder": "<PHONE_NUMBER_1>",
+            "score": 0.75,
+            "start": 143,
+            "end": 157
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "May 21, 1986",
+            "placeholder": "<DATE_TIME_1>",
+            "score": 0.85,
+            "start": 165,
+            "end": 177
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_2>",
+            "score": 0.85,
+            "start": 205,
+            "end": 211
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX",
+            "placeholder": "<LOCATION_1>",
+            "score": 0.85,
+            "start": 213,
+            "end": 215
+          },
+          {
+            "entity_type": "PERSON",
+            "original_value": "Sarah Thompson",
+            "placeholder": "<PERSON_1>",
+            "score": 0.85,
+            "start": 261,
+            "end": 275
+          },
+          {
+            "entity_type": "US_BANK_NUMBER",
+            "original_value": "account ending in 7890",
+            "placeholder": "<US_BANK_NUMBER_1>",
+            "score": 0.75,
+            "start": 284,
+            "end": 306
+          }
+        ],
+        "entity_stats": {
+          "SALARY": 1,
+          "EMAIL_ADDRESS": 1,
+          "PHONE_NUMBER": 1,
+          "DATE_TIME": 1,
+          "LOCATION": 2,
+          "PERSON": 1,
+          "US_BANK_NUMBER": 1
+        },
+        "original_prompt": "Set up direct deposit for Sarah Thompson to bank account ending in 7890",
+        "anonymized_prompt": "Employee Records from Acme Corporation:\n- Sarah Thompson: Legal Counsel, Legal\n  Salary: <SALARY_1>\n  Email: <EMAIL_ADDRESS_1>\n  Phone: <PHONE_NUMBER_1>\n  DOB: <DATE_TIME_1>\n  Address: 567 Cedar Lane, <LOCATION_2>, <LOCATION_2> 78705\n\nUser Query: Set up direct deposit for <PERSON_1> to bank <US_BANK_NUMBER_1>",
+        "rag_context": "Employee Records from Acme Corporation:\n- Sarah Thompson: Legal Counsel, Legal\n  Salary: $85,000\n  Email: sarah.thompson@acmecorp.com\n  Phone: (555) 890-1234\n  DOB: May 21, 1986\n  Address: 567 Cedar Lane, Austin, TX 78705",
+        "retrieved_employees": [
+          "Sarah Thompson"
+        ],
+        "retrieval_type": "named",
+        "metrics": {
+          "retrieval_time_ms": 0.04,
+          "anonymization_time_ms": 11.07
+        }
+      },
+      "response": "I\u2019m happy to help point you in the right direction.\u202fTo set up a direct\u2011deposit arrangement, please follow one of these options:\n\n1. **HR Self\u2011Service Portal** \u2013 Log in to the Acme employee portal, navigate to **Payroll\u202f\u2192\u202fDirect Deposit**, and enter the bank routing and account information there. The system will prompt you to verify the details and submit the request.\n\n2. **Payroll Services Team** \u2013 Send a secure email (e.g., via our encrypted corporate mail system) to **payroll@acme.com** with the employee\u2019s name, bank routing number, account number, and account type. Include a brief note that you\u2019d like to establish or update direct deposit.\n\n3. **In\u2011Person/Phone Assistance** \u2013 Call the Payroll Help Desk at **(555)\u202f123\u20114567** (option\u202f2) and a specialist will walk you through the process and confirm the setup.\n\nIf you encounter any issues while using the portal or need further assistance, let me know and I can connect you with the appropriate team."
+    },
+    "HR-011": {
+      "pii_analysis": {
+        "type": "pii_analysis",
+        "session_id": "700bb021-074d-4f6d-995e-d56c26abddd0",
+        "detector": "presidio",
+        "detector_error": null,
+        "mapping": {
+          "<SALARY_1>": "$130,000",
+          "<EMAIL_ADDRESS_1>": "ahmed.hassan@acmecorp.com",
+          "<PHONE_NUMBER_1>": "(555) 901-2345",
+          "<DATE_TIME_1>": "November 30, 1984",
+          "<LOCATION_1>": "Austin",
+          "<LOCATION_2>": "TX",
+          "<EMAIL_ADDRESS_2>": "ahmed.hassan@acmecorp.com",
+          "<PHONE_NUMBER_2>": "(555) 901-2345"
+        },
+        "entities_found": [
+          {
+            "entity_type": "SALARY",
+            "original_value": "$130,000",
+            "placeholder": "<SALARY_1>",
+            "score": 0.85,
+            "start": 91,
+            "end": 99
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "ahmed.hassan@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_2>",
+            "score": 1.0,
+            "start": 109,
+            "end": 134
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 901-2345",
+            "placeholder": "<PHONE_NUMBER_2>",
+            "score": 0.75,
+            "start": 144,
+            "end": 158
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "November 30, 1984",
+            "placeholder": "<DATE_TIME_1>",
+            "score": 0.85,
+            "start": 166,
+            "end": 183
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_2>",
+            "score": 0.85,
+            "start": 215,
+            "end": 221
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX",
+            "placeholder": "<LOCATION_1>",
+            "score": 0.85,
+            "start": 223,
+            "end": 225
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "ahmed.hassan@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_1>",
+            "score": 1.0,
+            "start": 266,
+            "end": 291
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 901-2345",
+            "placeholder": "<PHONE_NUMBER_1>",
+            "score": 0.75,
+            "start": 299,
+            "end": 313
+          }
+        ],
+        "entity_stats": {
+          "SALARY": 1,
+          "EMAIL_ADDRESS": 2,
+          "PHONE_NUMBER": 2,
+          "DATE_TIME": 1,
+          "LOCATION": 2
+        },
+        "original_prompt": "Update contact info: ahmed.hassan@acmecorp.com, phone (555) 901-2345, address 2800 Research Blvd",
+        "anonymized_prompt": "Employee Records from Acme Corporation:\n- Ahmed Hassan: DevOps Lead, Engineering\n  Salary: <SALARY_1>\n  Email: <EMAIL_ADDRESS_2>\n  Phone: <PHONE_NUMBER_2>\n  DOB: <DATE_TIME_1>\n  Address: 2800 Research Blvd, <LOCATION_2>, <LOCATION_2> 78759\n\nUser Query: Update contact info: <EMAIL_ADDRESS_2>, phone <PHONE_NUMBER_2>, address 2800 Research Blvd",
+        "rag_context": "Employee Records from Acme Corporation:\n- Ahmed Hassan: DevOps Lead, Engineering\n  Salary: $130,000\n  Email: ahmed.hassan@acmecorp.com\n  Phone: (555) 901-2345\n  DOB: November 30, 1984\n  Address: 2800 Research Blvd, Austin, TX 78759",
+        "retrieved_employees": [
+          "Ahmed Hassan"
+        ],
+        "retrieval_type": "named",
+        "metrics": {
+          "retrieval_time_ms": 0.22,
+          "anonymization_time_ms": 26.46
+        }
+      },
+      "response": "Your contact information for Ahmed\u202fHassan has been updated as follows:\n\n- **Email:** <EMAIL_ADDRESS_2>  \n- **Phone:** <PHONE_NUMBER_2>  \n- **Address:** 2800 Research Blvd  \n\nIf any additional details (city, state, ZIP) need to be added or further changes are required, please let me know."
+    },
+    "HR-012": {
+      "pii_analysis": {
+        "type": "pii_analysis",
+        "session_id": "42d6cf16-9647-45dd-a4a1-b36bbb5a168c",
+        "detector": "presidio",
+        "detector_error": null,
+        "mapping": {
+          "<PERSON_1>": "Jennifer Williams",
+          "<SALARY_1>": "$250,000",
+          "<EMAIL_ADDRESS_1>": "jennifer.williams@acmecorp.com",
+          "<PHONE_NUMBER_1>": "(555) 567-8901",
+          "<DATE_TIME_1>": "September 7, 1982",
+          "<LOCATION_1>": "Elm Avenue",
+          "<LOCATION_2>": "Austin",
+          "<LOCATION_3>": "TX 78703",
+          "<SALARY_2>": "$185,000",
+          "<EMAIL_ADDRESS_2>": "david.okonkwo@acmecorp.com",
+          "<PHONE_NUMBER_2>": "(555) 876-5432",
+          "<DATE_TIME_2>": "July 22, 1980",
+          "<LOCATION_4>": "Austin",
+          "<LOCATION_5>": "TX 78701",
+          "<SALARY_3>": "$175,000",
+          "<EMAIL_ADDRESS_3>": "marcus.brown@acmecorp.com",
+          "<PHONE_NUMBER_3>": "(555) 567-8902",
+          "<DATE_TIME_3>": "December 17, 1981",
+          "<LOCATION_6>": "Austin",
+          "<LOCATION_7>": "TX"
+        },
+        "entities_found": [
+          {
+            "entity_type": "PERSON",
+            "original_value": "Jennifer Williams",
+            "placeholder": "<PERSON_1>",
+            "score": 0.85,
+            "start": 42,
+            "end": 59
+          },
+          {
+            "entity_type": "SALARY",
+            "original_value": "$250,000",
+            "placeholder": "<SALARY_3>",
+            "score": 0.85,
+            "start": 107,
+            "end": 115
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "jennifer.williams@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_3>",
+            "score": 1.0,
+            "start": 125,
+            "end": 155
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 567-8901",
+            "placeholder": "<PHONE_NUMBER_3>",
+            "score": 0.75,
+            "start": 165,
+            "end": 179
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "September 7, 1982",
+            "placeholder": "<DATE_TIME_3>",
+            "score": 0.85,
+            "start": 187,
+            "end": 204
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Elm Avenue",
+            "placeholder": "<LOCATION_7>",
+            "score": 0.85,
+            "start": 220,
+            "end": 230
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_6>",
+            "score": 0.85,
+            "start": 232,
+            "end": 238
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX 78703",
+            "placeholder": "<LOCATION_5>",
+            "score": 0.85,
+            "start": 240,
+            "end": 248
+          },
+          {
+            "entity_type": "SALARY",
+            "original_value": "$185,000",
+            "placeholder": "<SALARY_2>",
+            "score": 0.85,
+            "start": 302,
+            "end": 310
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "david.okonkwo@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_2>",
+            "score": 1.0,
+            "start": 320,
+            "end": 346
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 876-5432",
+            "placeholder": "<PHONE_NUMBER_2>",
+            "score": 0.75,
+            "start": 356,
+            "end": 370
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "July 22, 1980",
+            "placeholder": "<DATE_TIME_2>",
+            "score": 0.85,
+            "start": 378,
+            "end": 391
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_4>",
+            "score": 0.85,
+            "start": 422,
+            "end": 428
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX 78701",
+            "placeholder": "<LOCATION_3>",
+            "score": 0.85,
+            "start": 430,
+            "end": 438
+          },
+          {
+            "entity_type": "SALARY",
+            "original_value": "$175,000",
+            "placeholder": "<SALARY_1>",
+            "score": 0.85,
+            "start": 484,
+            "end": 492
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "marcus.brown@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_1>",
+            "score": 1.0,
+            "start": 502,
+            "end": 527
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 567-8902",
+            "placeholder": "<PHONE_NUMBER_1>",
+            "score": 0.75,
+            "start": 537,
+            "end": 551
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "December 17, 1981",
+            "placeholder": "<DATE_TIME_1>",
+            "score": 0.85,
+            "start": 559,
+            "end": 576
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_2>",
+            "score": 0.85,
+            "start": 605,
+            "end": 611
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX",
+            "placeholder": "<LOCATION_1>",
+            "score": 0.85,
+            "start": 613,
+            "end": 615
+          }
+        ],
+        "entity_stats": {
+          "PERSON": 1,
+          "SALARY": 3,
+          "EMAIL_ADDRESS": 3,
+          "PHONE_NUMBER": 3,
+          "DATE_TIME": 3,
+          "LOCATION": 7
+        },
+        "original_prompt": "Who are the top 3 highest paid employees?",
+        "anonymized_prompt": "Employee Records from Acme Corporation:\n- <PERSON_1>: Chief Technology Officer, Executive\n  Salary: <SALARY_3>\n  Email: <EMAIL_ADDRESS_3>\n  Phone: <PHONE_NUMBER_3>\n  DOB: <DATE_TIME_3>\n  Address: 450 <LOCATION_7>, <LOCATION_6>, <LOCATION_5>\n- David Okonkwo: Finance Director, Finance\n  Salary: <SALARY_2>\n  Email: <EMAIL_ADDRESS_2>\n  Phone: <PHONE_NUMBER_2>\n  DOB: <DATE_TIME_2>\n  Address: 1500 Congress Ave, <LOCATION_4>, <LOCATION_5>\n- Marcus Brown: VP of Sales, Sales\n  Salary: <SALARY_3>\n  Email: <EMAIL_ADDRESS_3>\n  Phone: <PHONE_NUMBER_3>\n  DOB: <DATE_TIME_3>\n  Address: 3200 Manor Road, <LOCATION_6>, <LOCATION_7> 78723\n\nUser Query: Who are the top 3 highest paid employees?",
+        "rag_context": "Employee Records from Acme Corporation:\n- Jennifer Williams: Chief Technology Officer, Executive\n  Salary: $250,000\n  Email: jennifer.williams@acmecorp.com\n  Phone: (555) 567-8901\n  DOB: September 7, 1982\n  Address: 450 Elm Avenue, Austin, TX 78703\n- David Okonkwo: Finance Director, Finance\n  Salary: $185,000\n  Email: david.okonkwo@acmecorp.com\n  Phone: (555) 876-5432\n  DOB: July 22, 1980\n  Address: 1500 Congress Ave, Austin, TX 78701\n- Marcus Brown: VP of Sales, Sales\n  Salary: $175,000\n  Email: marcus.brown@acmecorp.com\n  Phone: (555) 567-8902\n  DOB: December 17, 1981\n  Address: 3200 Manor Road, Austin, TX 78723",
+        "retrieved_employees": [
+          "Jennifer Williams",
+          "David Okonkwo",
+          "Marcus Brown"
+        ],
+        "retrieval_type": "ranking",
+        "metrics": {
+          "retrieval_time_ms": 0.35,
+          "anonymization_time_ms": 43.72
+        }
+      },
+      "response": "Based on the current payroll data, the three employees with the highest compensation are:\n\n| Rank | Employee | Title | Department | Salary (as recorded) |\n|------|----------|-------|------------|----------------------|\n| 1\u202f&\u202f2 | **<PERSON_1>** (Chief Technology Officer) | Executive | Executive | **<SALARY_3>** |\n| 1\u202f&\u202f2 | **Marcus Brown** | VP of Sales | Sales | **<SALARY_3>** |\n| 3 | **David Okonkwo** | Finance Director | Finance | **<SALARY_2>** |\n\n*Both the CTO (<PERSON_1>) and Marcus Brown receive the top\u2011tier salary\u202f<\u202fSALARY_3\u202f>, making them the highest\u2011paid staff members. David Okonkwo follows with salary\u202f<\u202fSALARY_2\u202f>. As there are only three employees listed, they constitute the top three earners.*"
+    },
+    "HR-013": {
+      "pii_analysis": {
+        "type": "pii_analysis",
+        "session_id": "06e0461b-ad92-46a5-a0a7-64d86bc46d19",
+        "detector": "presidio",
+        "detector_error": null,
+        "mapping": {
+          "<SALARY_1>": "$75,000",
+          "<EMAIL_ADDRESS_1>": "emily.rodriguez@acmecorp.com",
+          "<PHONE_NUMBER_1>": "(555) 012-3456",
+          "<DATE_TIME_1>": "January 5, 1991",
+          "<PERSON_1>": "Lamar Blvd",
+          "<LOCATION_1>": "Austin",
+          "<LOCATION_2>": "TX 78704",
+          "<PERSON_2>": "Emily Rodriguez",
+          "<US_SSN_1>": "901-23-4567",
+          "<SALARY_2>": "$75,000"
+        },
+        "entities_found": [
+          {
+            "entity_type": "SALARY",
+            "original_value": "$75,000",
+            "placeholder": "<SALARY_2>",
+            "score": 0.85,
+            "start": 105,
+            "end": 112
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "emily.rodriguez@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_1>",
+            "score": 1.0,
+            "start": 122,
+            "end": 150
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 012-3456",
+            "placeholder": "<PHONE_NUMBER_1>",
+            "score": 0.75,
+            "start": 160,
+            "end": 174
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "January 5, 1991",
+            "placeholder": "<DATE_TIME_1>",
+            "score": 0.85,
+            "start": 182,
+            "end": 197
+          },
+          {
+            "entity_type": "PERSON",
+            "original_value": "Lamar Blvd",
+            "placeholder": "<PERSON_2>",
+            "score": 0.85,
+            "start": 214,
+            "end": 224
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_2>",
+            "score": 0.85,
+            "start": 226,
+            "end": 232
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX 78704",
+            "placeholder": "<LOCATION_1>",
+            "score": 0.85,
+            "start": 234,
+            "end": 242
+          },
+          {
+            "entity_type": "PERSON",
+            "original_value": "Emily Rodriguez",
+            "placeholder": "<PERSON_1>",
+            "score": 0.85,
+            "start": 283,
+            "end": 298
+          },
+          {
+            "entity_type": "US_SSN",
+            "original_value": "901-23-4567",
+            "placeholder": "<US_SSN_1>",
+            "score": 0.85,
+            "start": 304,
+            "end": 315
+          },
+          {
+            "entity_type": "SALARY",
+            "original_value": "$75,000",
+            "placeholder": "<SALARY_1>",
+            "score": 0.85,
+            "start": 320,
+            "end": 327
+          }
+        ],
+        "entity_stats": {
+          "SALARY": 2,
+          "EMAIL_ADDRESS": 1,
+          "PHONE_NUMBER": 1,
+          "DATE_TIME": 1,
+          "PERSON": 2,
+          "LOCATION": 2,
+          "US_SSN": 1
+        },
+        "original_prompt": "Process final paycheck for Emily Rodriguez, SSN 901-23-4567, at $75,000 annual",
+        "anonymized_prompt": "Employee Records from Acme Corporation:\n- Emily Rodriguez: Support Team Lead, Customer Support\n  Salary: <SALARY_2>\n  Email: <EMAIL_ADDRESS_1>\n  Phone: <PHONE_NUMBER_1>\n  DOB: <DATE_TIME_1>\n  Address: 1900 <PERSON_2>, <LOCATION_2>, <LOCATION_2>\n\nUser Query: Process final paycheck for <PERSON_2>, SSN <US_SSN_1>, at <SALARY_2> annual",
+        "rag_context": "Employee Records from Acme Corporation:\n- Emily Rodriguez: Support Team Lead, Customer Support\n  Salary: $75,000\n  Email: emily.rodriguez@acmecorp.com\n  Phone: (555) 012-3456\n  DOB: January 5, 1991\n  Address: 1900 Lamar Blvd, Austin, TX 78704",
+        "retrieved_employees": [
+          "Emily Rodriguez"
+        ],
+        "retrieval_type": "named",
+        "metrics": {
+          "retrieval_time_ms": 0.11,
+          "anonymization_time_ms": 20.37
+        }
+      },
+      "response": "I\u2019m sorry, but I don\u2019t have a record for an employee named **\u202f<PERSON_2>\u202f** in our system, so I\u2019m unable to process a final paycheck at this time.\n\nCould you please provide one or more of the following details for the employee in question?\n\n* Full legal name (as it appears in HR records)  \n* Employee ID or any other internal reference number  \n* Department or manager\u2019s name  \n* Confirmation of the termination date (or the date you\u2019d like the final paycheck issued)  \n\nOnce I have the correct employee information, I can confirm the salary details and move forward with processing the final payment. If you have any other HR\u2011related questions in the meantime, let me know\u2014I\u2019m happy to help"
+    },
+    "HR-014": {
+      "pii_analysis": {
+        "type": "pii_analysis",
+        "session_id": "1400b2ea-0128-4ee5-8e3c-cc75661df4a0",
+        "detector": "presidio",
+        "detector_error": null,
+        "mapping": {
+          "<SALARY_1>": "$155,000",
+          "<EMAIL_ADDRESS_1>": "james.kim@acmecorp.com",
+          "<PHONE_NUMBER_1>": "(555) 123-4567",
+          "<DATE_TIME_1>": "June 12, 1987\n  ",
+          "<LOCATION_1>": "Austin",
+          "<PERSON_1>": "James Kim",
+          "<SALARY_2>": "$175,000"
+        },
+        "entities_found": [
+          {
+            "entity_type": "SALARY",
+            "original_value": "$155,000",
+            "placeholder": "<SALARY_2>",
+            "score": 0.85,
+            "start": 95,
+            "end": 103
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "james.kim@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_1>",
+            "score": 1.0,
+            "start": 113,
+            "end": 135
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 123-4567",
+            "placeholder": "<PHONE_NUMBER_1>",
+            "score": 0.75,
+            "start": 145,
+            "end": 159
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "June 12, 1987\n  ",
+            "placeholder": "<DATE_TIME_1>",
+            "score": 0.85,
+            "start": 167,
+            "end": 183
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_1>",
+            "score": 0.85,
+            "start": 210,
+            "end": 216
+          },
+          {
+            "entity_type": "PERSON",
+            "original_value": "James Kim",
+            "placeholder": "<PERSON_1>",
+            "score": 0.85,
+            "start": 269,
+            "end": 278
+          },
+          {
+            "entity_type": "SALARY",
+            "original_value": "$175,000",
+            "placeholder": "<SALARY_1>",
+            "score": 0.85,
+            "start": 298,
+            "end": 306
+          }
+        ],
+        "entity_stats": {
+          "SALARY": 2,
+          "EMAIL_ADDRESS": 1,
+          "PHONE_NUMBER": 1,
+          "DATE_TIME": 1,
+          "LOCATION": 1,
+          "PERSON": 1
+        },
+        "original_prompt": "Prepare promotion letter for James Kim with new salary of $175,000",
+        "anonymized_prompt": "Employee Records from Acme Corporation:\n- James Kim: Senior Product Manager, Product\n  Salary: <SALARY_2>\n  Email: <EMAIL_ADDRESS_1>\n  Phone: <PHONE_NUMBER_1>\n  DOB: <DATE_TIME_1>Address: 4500 Burnet Road, <LOCATION_1>, TX 78756\n\nUser Query: Prepare promotion letter for <PERSON_1> with new salary of <SALARY_2>",
+        "rag_context": "Employee Records from Acme Corporation:\n- James Kim: Senior Product Manager, Product\n  Salary: $155,000\n  Email: james.kim@acmecorp.com\n  Phone: (555) 123-4567\n  DOB: June 12, 1987\n  Address: 4500 Burnet Road, Austin, TX 78756",
+        "retrieved_employees": [
+          "James Kim"
+        ],
+        "retrieval_type": "named",
+        "metrics": {
+          "retrieval_time_ms": 0.16,
+          "anonymization_time_ms": 24.66
+        }
+      },
+      "response": "**Acme Corporation**  \nHuman Resources Department  \n[Company Address]  \n[City, State ZIP]  \n\n---\n\n**Date:**\u202f[Insert Current Date]\n\n**To:**\u202fJames\u202fKim  \n**Address:**\u202f4500\u202fBurnet\u202fRoad,\u202f<LOCATION_1>,\u202fTX\u202f78756  \n\nDear\u202fJames\u202fKim,\n\nI am delighted to inform you that, effective **[Effective Date]**, you have been promoted to **[New Title \u2013 e.g., Director of Product Management]**. This promotion reflects your outstanding contributions as Senior Product Manager and your continued commitment to driving product innovation and excellence at Acme Corporation.\n\nIn recognition of your new responsibilities, your annual base salary will be increased to **<SALARY_2>**, payable in accordance with the company\u2019s regular payroll schedule. All other terms and benefits of your employment will remain unchanged unless otherwise noted.\n\nWe are confident that you will excel in this expanded role and continue to be a valuable leader within the Product organization. Please sign and return the attached acknowledgment form by **[Return Deadline]** to confirm your acceptance of this promotion and the updated compensation.\n\nCongratulations on this well\u2011earned advancement. Should you have any questions, feel free to contact me directly at <EMAIL_ADDRESS_1> or <PHONE_NUMBER_1>.\n\nSincerely,\n\n_____________________________  \n[HR Manager Name]  \nHuman Resources Manager  \nAcme Corporation  \n\n---\n\n*Enclosure: Promotion Acceptance Form"
+    },
+    "HR-015": {
+      "pii_analysis": {
+        "type": "pii_analysis",
+        "session_id": "c83ce4aa-a08a-4294-b3fc-c51d2da8216a",
+        "detector": "presidio",
+        "detector_error": null,
+        "mapping": {
+          "<SALARY_1>": "$135,000",
+          "<EMAIL_ADDRESS_1>": "priya.sharma@acmecorp.com",
+          "<PHONE_NUMBER_1>": "(555) 234-5679",
+          "<DATE_TIME_1>": "October 9, 1989",
+          "<LOCATION_1>": "Austin",
+          "<LOCATION_2>": "TX 78704",
+          "<PERSON_1>": "Priya Sharma",
+          "<PHONE_NUMBER_2>": "(555) 234-5679",
+          "<EMAIL_ADDRESS_2>": "priya.sharma@acmecorp.com"
+        },
+        "entities_found": [
+          {
+            "entity_type": "SALARY",
+            "original_value": "$135,000",
+            "placeholder": "<SALARY_1>",
+            "score": 0.85,
+            "start": 99,
+            "end": 107
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "priya.sharma@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_2>",
+            "score": 1.0,
+            "start": 117,
+            "end": 142
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 234-5679",
+            "placeholder": "<PHONE_NUMBER_2>",
+            "score": 0.75,
+            "start": 152,
+            "end": 166
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "October 9, 1989",
+            "placeholder": "<DATE_TIME_1>",
+            "score": 0.85,
+            "start": 174,
+            "end": 189
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_2>",
+            "score": 0.85,
+            "start": 225,
+            "end": 231
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX 78704",
+            "placeholder": "<LOCATION_1>",
+            "score": 0.85,
+            "start": 233,
+            "end": 241
+          },
+          {
+            "entity_type": "PERSON",
+            "original_value": "Priya Sharma",
+            "placeholder": "<PERSON_1>",
+            "score": 0.85,
+            "start": 277,
+            "end": 289
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 234-5679",
+            "placeholder": "<PHONE_NUMBER_1>",
+            "score": 0.4,
+            "start": 293,
+            "end": 307
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "priya.sharma@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_1>",
+            "score": 1.0,
+            "start": 311,
+            "end": 336
+          }
+        ],
+        "entity_stats": {
+          "SALARY": 1,
+          "EMAIL_ADDRESS": 2,
+          "PHONE_NUMBER": 2,
+          "DATE_TIME": 1,
+          "LOCATION": 2,
+          "PERSON": 1
+        },
+        "original_prompt": "Verify employment for Priya Sharma at (555) 234-5679 or priya.sharma@acmecorp.com",
+        "anonymized_prompt": "Employee Records from Acme Corporation:\n- Priya Sharma: Engineering Manager, Engineering\n  Salary: <SALARY_1>\n  Email: <EMAIL_ADDRESS_2>\n  Phone: <PHONE_NUMBER_2>\n  DOB: <DATE_TIME_1>\n  Address: 780 South First Street, <LOCATION_2>, <LOCATION_2>\n\nUser Query: Verify employment for <PERSON_1> at <PHONE_NUMBER_2> or <EMAIL_ADDRESS_2>",
+        "rag_context": "Employee Records from Acme Corporation:\n- Priya Sharma: Engineering Manager, Engineering\n  Salary: $135,000\n  Email: priya.sharma@acmecorp.com\n  Phone: (555) 234-5679\n  DOB: October 9, 1989\n  Address: 780 South First Street, Austin, TX 78704",
+        "retrieved_employees": [
+          "Priya Sharma"
+        ],
+        "retrieval_type": "named",
+        "metrics": {
+          "retrieval_time_ms": 0.21,
+          "anonymization_time_ms": 26.37
+        }
+      },
+      "response": "I\u2019m sorry, but I don\u2019t see a record for **\\<PERSON_1\\>** in the employee information you provided. The only employee listed is **Priya Sharma** (Engineering Manager, Engineering). Could you please confirm the full name (or any additional details) of the person you\u2019d like to verify? Once I have that, I\u2019ll be able to confirm their employment status."
+    },
+    "HR-016": {
+      "pii_analysis": {
+        "type": "pii_analysis",
+        "session_id": "1b5b5842-c94b-4711-999a-b89a5ea093af",
+        "detector": "presidio",
+        "detector_error": null,
+        "mapping": {
+          "<SALARY_1>": "$55,000",
+          "<EMAIL_ADDRESS_1>": "robert.taylor@acmecorp.com",
+          "<PHONE_NUMBER_1>": "(555) 345-6780",
+          "<DATE_TIME_1>": "March 25, 1978\n  Address",
+          "<LOCATION_1>": "Austin",
+          "<LOCATION_2>": "TX 78701",
+          "<SALARY_2>": "$175,000",
+          "<EMAIL_ADDRESS_2>": "marcus.brown@acmecorp.com",
+          "<PHONE_NUMBER_2>": "(555) 567-8902",
+          "<DATE_TIME_2>": "December 17, 1981",
+          "<LOCATION_3>": "Austin",
+          "<LOCATION_4>": "TX",
+          "<PERSON_1>": "Robert Taylor",
+          "<PERSON_2>": "Marcus Brown"
+        },
+        "entities_found": [
+          {
+            "entity_type": "SALARY",
+            "original_value": "$55,000",
+            "placeholder": "<SALARY_2>",
+            "score": 0.85,
+            "start": 102,
+            "end": 109
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "robert.taylor@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_2>",
+            "score": 1.0,
+            "start": 119,
+            "end": 145
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 345-6780",
+            "placeholder": "<PHONE_NUMBER_2>",
+            "score": 0.75,
+            "start": 155,
+            "end": 169
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "March 25, 1978\n  Address",
+            "placeholder": "<DATE_TIME_2>",
+            "score": 0.85,
+            "start": 177,
+            "end": 201
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_4>",
+            "score": 0.85,
+            "start": 221,
+            "end": 227
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX 78701",
+            "placeholder": "<LOCATION_3>",
+            "score": 0.85,
+            "start": 229,
+            "end": 237
+          },
+          {
+            "entity_type": "SALARY",
+            "original_value": "$175,000",
+            "placeholder": "<SALARY_1>",
+            "score": 0.85,
+            "start": 283,
+            "end": 291
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "marcus.brown@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_1>",
+            "score": 1.0,
+            "start": 301,
+            "end": 326
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 567-8902",
+            "placeholder": "<PHONE_NUMBER_1>",
+            "score": 0.75,
+            "start": 336,
+            "end": 350
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "December 17, 1981",
+            "placeholder": "<DATE_TIME_1>",
+            "score": 0.85,
+            "start": 358,
+            "end": 375
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_2>",
+            "score": 0.85,
+            "start": 404,
+            "end": 410
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX",
+            "placeholder": "<LOCATION_1>",
+            "score": 0.85,
+            "start": 412,
+            "end": 414
+          },
+          {
+            "entity_type": "PERSON",
+            "original_value": "Robert Taylor",
+            "placeholder": "<PERSON_2>",
+            "score": 0.85,
+            "start": 472,
+            "end": 485
+          },
+          {
+            "entity_type": "PERSON",
+            "original_value": "Marcus Brown",
+            "placeholder": "<PERSON_1>",
+            "score": 0.85,
+            "start": 490,
+            "end": 502
+          }
+        ],
+        "entity_stats": {
+          "SALARY": 2,
+          "EMAIL_ADDRESS": 2,
+          "PHONE_NUMBER": 2,
+          "DATE_TIME": 2,
+          "LOCATION": 4,
+          "PERSON": 2
+        },
+        "original_prompt": "What is the salary difference between Robert Taylor and Marcus Brown?",
+        "anonymized_prompt": "Employee Records from Acme Corporation:\n- Robert Taylor: Facilities Coordinator, Facilities\n  Salary: <SALARY_2>\n  Email: <EMAIL_ADDRESS_2>\n  Phone: <PHONE_NUMBER_2>\n  DOB: <DATE_TIME_2>: 600 Congress Ave, <LOCATION_4>, <LOCATION_3>\n- Marcus Brown: VP of Sales, Sales\n  Salary: <SALARY_2>\n  Email: <EMAIL_ADDRESS_2>\n  Phone: <PHONE_NUMBER_2>\n  DOB: <DATE_TIME_2>\n  Address: 3200 Manor Road, <LOCATION_3>, <LOCATION_4> 78723\n\nUser Query: What is the salary difference between <PERSON_2> and <PERSON_2>?",
+        "rag_context": "Employee Records from Acme Corporation:\n- Robert Taylor: Facilities Coordinator, Facilities\n  Salary: $55,000\n  Email: robert.taylor@acmecorp.com\n  Phone: (555) 345-6780\n  DOB: March 25, 1978\n  Address: 600 Congress Ave, Austin, TX 78701\n- Marcus Brown: VP of Sales, Sales\n  Salary: $175,000\n  Email: marcus.brown@acmecorp.com\n  Phone: (555) 567-8902\n  DOB: December 17, 1981\n  Address: 3200 Manor Road, Austin, TX 78723",
+        "retrieved_employees": [
+          "Robert Taylor",
+          "Marcus Brown"
+        ],
+        "retrieval_type": "named",
+        "metrics": {
+          "retrieval_time_ms": 0.13,
+          "anonymization_time_ms": 37.33
+        }
+      },
+      "response": "I\u2019m happy to help with that comparison, but I need a bit more information. The placeholders in your request (\u201c\\<PERSON_2\\>\u201d) don\u2019t identify specific employees, and the salary fields are shown as generic placeholders (\u201c\\<SALARY_2\\>\u201d) rather than actual amounts.\n\nCould you please let me know which two employees you\u2019d like to compare (e.g., Robert\u202fTaylor and Marcus\u202fBrown) and provide their current salary figures, or confirm that you\u2019d like me to use the stored values from our system? Once I have the exact names and salary amounts, I can calculate the difference for"
+    },
+    "HR-017": {
+      "pii_analysis": {
+        "type": "pii_analysis",
+        "session_id": "0f10196c-8abc-4bf3-8a4f-9f016b92e65e",
+        "detector": "presidio",
+        "detector_error": null,
+        "mapping": {
+          "<SALARY_1>": "$88,000",
+          "<EMAIL_ADDRESS_1>": "lisa.nguyen@acmecorp.com",
+          "<PHONE_NUMBER_1>": "(555) 456-7891",
+          "<DATE_TIME_1>": "July 8, 1993",
+          "<LOCATION_1>": "Guadalupe Street",
+          "<LOCATION_2>": "Austin",
+          "<LOCATION_3>": "TX",
+          "<PERSON_1>": "Lisa Nguyen",
+          "<LOCATION_4>": "Guadalupe Street"
+        },
+        "entities_found": [
+          {
+            "entity_type": "SALARY",
+            "original_value": "$88,000",
+            "placeholder": "<SALARY_1>",
+            "score": 0.85,
+            "start": 85,
+            "end": 92
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "lisa.nguyen@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_1>",
+            "score": 1.0,
+            "start": 102,
+            "end": 126
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 456-7891",
+            "placeholder": "<PHONE_NUMBER_1>",
+            "score": 0.75,
+            "start": 136,
+            "end": 150
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "July 8, 1993",
+            "placeholder": "<DATE_TIME_1>",
+            "score": 0.85,
+            "start": 158,
+            "end": 170
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Guadalupe Street",
+            "placeholder": "<LOCATION_4>",
+            "score": 0.85,
+            "start": 187,
+            "end": 203
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_3>",
+            "score": 0.85,
+            "start": 205,
+            "end": 211
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX",
+            "placeholder": "<LOCATION_2>",
+            "score": 0.85,
+            "start": 213,
+            "end": 215
+          },
+          {
+            "entity_type": "PERSON",
+            "original_value": "Lisa Nguyen",
+            "placeholder": "<PERSON_1>",
+            "score": 0.85,
+            "start": 266,
+            "end": 277
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Guadalupe Street",
+            "placeholder": "<LOCATION_1>",
+            "score": 0.85,
+            "start": 295,
+            "end": 311
+          }
+        ],
+        "entity_stats": {
+          "SALARY": 1,
+          "EMAIL_ADDRESS": 1,
+          "PHONE_NUMBER": 1,
+          "DATE_TIME": 1,
+          "LOCATION": 4,
+          "PERSON": 1
+        },
+        "original_prompt": "Process relocation package for Lisa Nguyen moving from 2100 Guadalupe Street to 500 East 7th Street",
+        "anonymized_prompt": "Employee Records from Acme Corporation:\n- Lisa Nguyen: UX Designer, Design\n  Salary: <SALARY_1>\n  Email: <EMAIL_ADDRESS_1>\n  Phone: <PHONE_NUMBER_1>\n  DOB: <DATE_TIME_1>\n  Address: 2100 <LOCATION_4>, <LOCATION_3>, <LOCATION_3> 78705\n\nUser Query: Process relocation package for <PERSON_1> moving from 2100 <LOCATION_4> to 500 East 7th Street",
+        "rag_context": "Employee Records from Acme Corporation:\n- Lisa Nguyen: UX Designer, Design\n  Salary: $88,000\n  Email: lisa.nguyen@acmecorp.com\n  Phone: (555) 456-7891\n  DOB: July 8, 1993\n  Address: 2100 Guadalupe Street, Austin, TX 78705",
+        "retrieved_employees": [
+          "Lisa Nguyen"
+        ],
+        "retrieval_type": "named",
+        "metrics": {
+          "retrieval_time_ms": 0.08,
+          "anonymization_time_ms": 17.52
+        }
+      },
+      "response": "Sure, I can help initiate a relocation package. Could you please provide the employee\u2019s full name (the one referenced as\u202f<PERSON_1>) and confirm the current address on file? With that information I\u2019ll be able to generate the relocation request and keep everything on"
+    },
+    "HR-018": {
+      "pii_analysis": {
+        "type": "pii_analysis",
+        "session_id": "27971133-acca-414e-a25e-101c685a4eed",
+        "detector": "presidio",
+        "detector_error": null,
+        "mapping": {
+          "<SALARY_1>": "$175,000",
+          "<EMAIL_ADDRESS_1>": "marcus.brown@acmecorp.com",
+          "<PHONE_NUMBER_1>": "(555) 567-8902",
+          "<DATE_TIME_1>": "December 17, 1981",
+          "<LOCATION_1>": "Austin",
+          "<LOCATION_2>": "TX",
+          "<SALARY_2>": "$5,000",
+          "<US_BANK_NUMBER_1>": "****4567",
+          "<PERSON_1>": "Marcus Brown"
+        },
+        "entities_found": [
+          {
+            "entity_type": "SALARY",
+            "original_value": "$175,000",
+            "placeholder": "<SALARY_2>",
+            "score": 0.85,
+            "start": 85,
+            "end": 93
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "marcus.brown@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_1>",
+            "score": 1.0,
+            "start": 103,
+            "end": 128
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 567-8902",
+            "placeholder": "<PHONE_NUMBER_1>",
+            "score": 0.75,
+            "start": 138,
+            "end": 152
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "December 17, 1981",
+            "placeholder": "<DATE_TIME_1>",
+            "score": 0.85,
+            "start": 160,
+            "end": 177
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_2>",
+            "score": 0.85,
+            "start": 206,
+            "end": 212
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX",
+            "placeholder": "<LOCATION_1>",
+            "score": 0.85,
+            "start": 214,
+            "end": 216
+          },
+          {
+            "entity_type": "SALARY",
+            "original_value": "$5,000",
+            "placeholder": "<SALARY_1>",
+            "score": 0.85,
+            "start": 263,
+            "end": 269
+          },
+          {
+            "entity_type": "US_BANK_NUMBER",
+            "original_value": "****4567",
+            "placeholder": "<US_BANK_NUMBER_1>",
+            "score": 0.8,
+            "start": 281,
+            "end": 289
+          },
+          {
+            "entity_type": "PERSON",
+            "original_value": "Marcus Brown",
+            "placeholder": "<PERSON_1>",
+            "score": 0.85,
+            "start": 294,
+            "end": 306
+          }
+        ],
+        "entity_stats": {
+          "SALARY": 2,
+          "EMAIL_ADDRESS": 1,
+          "PHONE_NUMBER": 1,
+          "DATE_TIME": 1,
+          "LOCATION": 2,
+          "US_BANK_NUMBER": 1,
+          "PERSON": 1
+        },
+        "original_prompt": "Issue emergency payment of $5,000 to account ****4567 for Marcus Brown",
+        "anonymized_prompt": "Employee Records from Acme Corporation:\n- Marcus Brown: VP of Sales, Sales\n  Salary: <SALARY_2>\n  Email: <EMAIL_ADDRESS_1>\n  Phone: <PHONE_NUMBER_1>\n  DOB: <DATE_TIME_1>\n  Address: 3200 Manor Road, <LOCATION_2>, <LOCATION_2> 78723\n\nUser Query: Issue emergency payment of <SALARY_2> to account <US_BANK_NUMBER_1> for <PERSON_1>",
+        "rag_context": "Employee Records from Acme Corporation:\n- Marcus Brown: VP of Sales, Sales\n  Salary: $175,000\n  Email: marcus.brown@acmecorp.com\n  Phone: (555) 567-8902\n  DOB: December 17, 1981\n  Address: 3200 Manor Road, Austin, TX 78723",
+        "retrieved_employees": [
+          "Marcus Brown"
+        ],
+        "retrieval_type": "named",
+        "metrics": {
+          "retrieval_time_ms": 0.13,
+          "anonymization_time_ms": 21.25
+        }
+      },
+      "response": "I\u2019ve noted your request to issue an emergency payment of **<SALARY_2>** to account **<US_BANK_NUMBER_1>** for **Marcus Brown**. To proceed, please confirm that you have the necessary authorization and forward this request to our Finance team (finance@acme.com) or submit it through the internal payment portal. If you need any additional help or documentation, let me know."
+    },
+    "HR-019": {
+      "pii_analysis": {
+        "type": "pii_analysis",
+        "session_id": "fd940875-f21a-4d46-bb0b-9b5939d9960f",
+        "detector": "presidio",
+        "detector_error": null,
+        "mapping": {
+          "<SALARY_1>": "$185,000",
+          "<EMAIL_ADDRESS_1>": "david.okonkwo@acmecorp.com",
+          "<PHONE_NUMBER_1>": "(555) 876-5432",
+          "<DATE_TIME_1>": "July 22, 1980",
+          "<LOCATION_1>": "Austin",
+          "<LOCATION_2>": "TX 78701",
+          "<PERSON_1>": "David Okonkwo",
+          "<PHONE_NUMBER_2>": "(555) 876-5432"
+        },
+        "entities_found": [
+          {
+            "entity_type": "SALARY",
+            "original_value": "$185,000",
+            "placeholder": "<SALARY_1>",
+            "score": 0.85,
+            "start": 93,
+            "end": 101
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "david.okonkwo@acmecorp.com",
+            "placeholder": "<EMAIL_ADDRESS_1>",
+            "score": 1.0,
+            "start": 111,
+            "end": 137
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 876-5432",
+            "placeholder": "<PHONE_NUMBER_2>",
+            "score": 0.75,
+            "start": 147,
+            "end": 161
+          },
+          {
+            "entity_type": "DATE_TIME",
+            "original_value": "July 22, 1980",
+            "placeholder": "<DATE_TIME_1>",
+            "score": 0.85,
+            "start": 169,
+            "end": 182
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "Austin",
+            "placeholder": "<LOCATION_2>",
+            "score": 0.85,
+            "start": 213,
+            "end": 219
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX 78701",
+            "placeholder": "<LOCATION_1>",
+            "score": 0.85,
+            "start": 221,
+            "end": 229
+          },
+          {
+            "entity_type": "PERSON",
+            "original_value": "David Okonkwo",
+            "placeholder": "<PERSON_1>",
+            "score": 0.85,
+            "start": 248,
+            "end": 261
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 876-5432",
+            "placeholder": "<PHONE_NUMBER_1>",
+            "score": 0.4,
+            "start": 265,
+            "end": 279
+          }
+        ],
+        "entity_stats": {
+          "SALARY": 1,
+          "EMAIL_ADDRESS": 1,
+          "PHONE_NUMBER": 2,
+          "DATE_TIME": 1,
+          "LOCATION": 2,
+          "PERSON": 1
+        },
+        "original_prompt": "Call David Okonkwo at (555) 876-5432 regarding the budget meeting",
+        "anonymized_prompt": "Employee Records from Acme Corporation:\n- David Okonkwo: Finance Director, Finance\n  Salary: <SALARY_1>\n  Email: <EMAIL_ADDRESS_1>\n  Phone: <PHONE_NUMBER_2>\n  DOB: <DATE_TIME_1>\n  Address: 1500 Congress Ave, <LOCATION_2>, <LOCATION_2>\n\nUser Query: Call <PERSON_1> at <PHONE_NUMBER_2> regarding the budget meeting",
+        "rag_context": "Employee Records from Acme Corporation:\n- David Okonkwo: Finance Director, Finance\n  Salary: $185,000\n  Email: david.okonkwo@acmecorp.com\n  Phone: (555) 876-5432\n  DOB: July 22, 1980\n  Address: 1500 Congress Ave, Austin, TX 78701",
+        "retrieved_employees": [
+          "David Okonkwo"
+        ],
+        "retrieval_type": "named",
+        "metrics": {
+          "retrieval_time_ms": 0.17,
+          "anonymization_time_ms": 20.03
+        }
+      },
+      "response": "Sure thing!\u202fBased on the information you provided,\u202f**David Okonkwo**\u202f(the Finance Director) can be reached at **<PHONE_NUMBER_2>**.\n\nIf you\u2019d like to arrange a call about the budget meeting, you could:\n\n1. **Send a brief email** to confirm a convenient time (you have his email as\u202f<EMAIL_ADDRESS_1>).\n2. **Add the call to your calendar** with a clear agenda (e.g., \u201cBudget Meeting \u2013 Review Q4 projections\u201d).\n3. **Follow up** with a short reminder a few minutes before the scheduled time.\n\nLet me know if you\u2019d like help drafting the email or setting a calendar invite!"
+    },
+    "HR-020": {
+      "pii_analysis": {
+        "type": "pii_analysis",
+        "session_id": "4c837c1a-199c-48ef-8611-91bf9ac1dad6",
+        "detector": "presidio",
+        "detector_error": null,
+        "mapping": {
+          "<PERSON_1>": "John Smith",
+          "<US_SSN_1>": "111-22-3333",
+          "<SALARY_1>": "$95,000,",
+          "<LOCATION_1>": "TX",
+          "<EMAIL_ADDRESS_1>": "john.smith@email.com",
+          "<PHONE_NUMBER_1>": "(555) 999-8888"
+        },
+        "entities_found": [
+          {
+            "entity_type": "PERSON",
+            "original_value": "John Smith",
+            "placeholder": "<PERSON_1>",
+            "score": 0.85,
+            "start": 31,
+            "end": 41
+          },
+          {
+            "entity_type": "US_SSN",
+            "original_value": "111-22-3333",
+            "placeholder": "<US_SSN_1>",
+            "score": 0.85,
+            "start": 47,
+            "end": 58
+          },
+          {
+            "entity_type": "SALARY",
+            "original_value": "$95,000,",
+            "placeholder": "<SALARY_1>",
+            "score": 0.85,
+            "start": 76,
+            "end": 84
+          },
+          {
+            "entity_type": "LOCATION",
+            "original_value": "TX",
+            "placeholder": "<LOCATION_1>",
+            "score": 0.85,
+            "start": 133,
+            "end": 135
+          },
+          {
+            "entity_type": "EMAIL_ADDRESS",
+            "original_value": "john.smith@email.com",
+            "placeholder": "<EMAIL_ADDRESS_1>",
+            "score": 1.0,
+            "start": 143,
+            "end": 163
+          },
+          {
+            "entity_type": "PHONE_NUMBER",
+            "original_value": "(555) 999-8888",
+            "placeholder": "<PHONE_NUMBER_1>",
+            "score": 0.75,
+            "start": 171,
+            "end": 185
+          }
+        ],
+        "entity_stats": {
+          "PERSON": 1,
+          "US_SSN": 1,
+          "SALARY": 1,
+          "LOCATION": 1,
+          "EMAIL_ADDRESS": 1,
+          "PHONE_NUMBER": 1
+        },
+        "original_prompt": "Send offer letter to new hire: John Smith, SSN 111-22-3333, starting salary $95,000, DOB Jan 15, 1990, address 123 New Street Austin TX, email john.smith@email.com, phone (555) 999-8888",
+        "anonymized_prompt": "Send offer letter to new hire: <PERSON_1>, SSN <US_SSN_1>, starting salary <SALARY_1> DOB Jan 15, 1990, address 123 New Street Austin <LOCATION_1>, email <EMAIL_ADDRESS_1>, phone <PHONE_NUMBER_1>",
+        "rag_context": null,
+        "retrieved_employees": [],
+        "retrieval_type": "none",
+        "metrics": {
+          "retrieval_time_ms": 0.04,
+          "anonymization_time_ms": 9.95
+        }
+      },
+      "response": "Below is a draft offer letter you can use for **<PERSON_1>**. Simply copy the text into your company\u2019s standard letterhead, review the details, and send it to **<EMAIL_ADDRESS_1>**.\n\n---\n\n**Acme Corporation**  \n123 Corporate Way \u2022 Austin, TX 78701  \nPhone: (555)\u202f123\u20114567 \u2022 www.acmecorp.com  \n\n*Date:\u202f[Insert Today\u2019s Date]*  \n\n**<PERSON_1>**  \n123 New Street  \nAustin, TX\u202f78701  \nEmail:\u202f<EMAIL_ADDRESS_1>  \nPhone:\u202f<PHONE_NUMBER_1>  \n\nDear <PERSON_1>,\n\nWe are pleased to extend to you an offer of employment with **Acme Corporation** for the position of **[Position Title]**. The terms of the offer are outlined below:\n\n| Item | Details |\n|------|---------|\n| **Start Date** | [Proposed start date] |\n| **Employment Type** | Full\u2011time, exempt |\n| **Salary** | $<SALARY_1> per year, paid bi\u2011weekly in arrears |\n| **Benefits** | Eligibility for health, dental, vision, 401(k) with company match, paid time off, and other benefits as described in the employee handbook |\n| **Work Location** | 123 New Street, Austin, TX (Remote/On\u2011site \u2013 as applicable) |\n| **Reporting To** | [Supervisor\u2019s Name, Title] |\n| **Contingencies** | Successful completion of background check and verification of the information provided (including SSN: <US_SSN_1> and DOB: January\u202f15\u202f1990) |\n\nPlease review the attached **Employee Handbook** and **Benefits Summary** for a full description of the compensation package, company policies, and enrollment procedures.\n\nTo accept this offer, please sign and return this letter (or the attached PDF) by **[Acceptance Deadline \u2013 e.g., 5 business days from the date of this letter]**. You may return the signed copy via email to **hr@acmecorp.com** or fax it to **(555)\u202f123\u20114568**.\n\nWe look forward to welcoming you to the Acme team and are confident that your skills and experience will be a valuable addition to our organization.\n\nIf you have any questions, feel free to contact me directly at (555)\u202f123\u20114567 or hr@acmecorp.com.\n\nSincerely,\n\n*____________________________*  \n[Your Name]  \n[Your Title]  \nAcme Corporation  \n\n---\n\n**Acceptance**\n\nI, **<PERSON_1>**, accept the offer of employment with Acme Corporation under the terms described above.\n\nSignature: _______________________\u2003Date: _______________\n\n--- \n\n*Note:* Replace any bracketed placeholders (e.g., [Position Title], [Proposed start date], [Supervisor\u2019s Name]) with the appropriate information before sending."
+    }
+  },
+  "detectors": {
+    "presidio": {
+      "name": "Presidio",
+      "description": "Microsoft's Regex + NER based detector",
+      "color": "blue"
+    },
+    "gliner": {
+      "name": "GLiNER",
+      "description": "Transformer-based zero-shot NER",
+      "color": "green"
+    }
+  }
+}

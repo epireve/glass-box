@@ -3,11 +3,15 @@
 import { useState } from 'react'
 import { ChatInterface } from '@/components/ChatInterface'
 import { InspectorPanel } from '@/components/InspectorPanel'
-import { Shield, Eye, EyeOff } from 'lucide-react'
+import { DemoBanner } from '@/components/DemoBanner'
+import { DemoLink } from '@/components/DemoLink'
+import { useDemoMode } from '@/lib/useDemoMode'
+import { Shield, Eye, EyeOff, BarChart3, Database, TrendingUp } from 'lucide-react'
 
 export interface PIIAnalysis {
   type: string
   session_id: string
+  detector?: string
   mapping: Record<string, string>
   entities_found: Array<{
     entity_type: string
@@ -46,6 +50,8 @@ export default function Home() {
   const [rawLLMResponse, setRawLLMResponse] = useState<string>('')
   const [inspectorCollapsed, setInspectorCollapsed] = useState(false)
   const [sessionId, setSessionId] = useState<string>('')
+  const [selectedDetector, setSelectedDetector] = useState<string>('presidio')
+  const { isLocal } = useDemoMode()
 
   const handleDataEvent = (data: PIIAnalysis | CompletionMetrics) => {
     if (data.type === 'pii_analysis') {
@@ -65,6 +71,8 @@ export default function Home() {
 
   return (
     <main className="h-screen flex flex-col">
+      <DemoBanner isLocal={isLocal} />
+
       {/* Header */}
       <header className="border-b border-border px-6 py-3 flex items-center justify-between bg-card">
         <div className="flex items-center gap-3">
@@ -76,22 +84,57 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <button
-          onClick={() => setInspectorCollapsed(!inspectorCollapsed)}
-          className="flex items-center gap-2 px-3 py-1.5 text-sm rounded-md bg-secondary hover:bg-secondary/80 transition-colors"
-        >
-          {inspectorCollapsed ? (
-            <>
-              <Eye className="h-4 w-4" />
-              Show Inspector
-            </>
-          ) : (
-            <>
-              <EyeOff className="h-4 w-4" />
-              Hide Inspector
-            </>
+        <div className="flex items-center gap-2">
+          {/* Detector Selector */}
+          <div className="flex items-center gap-2">
+            <span className="text-xs text-muted-foreground">Detector:</span>
+            <select
+              value={selectedDetector}
+              onChange={(e) => setSelectedDetector(e.target.value)}
+              className="px-2 py-1 text-sm rounded-md border border-border bg-background text-foreground"
+            >
+              <option value="presidio">Presidio (Regex + NER)</option>
+              <option value="gliner">GLiNER (Transformer)</option>
+            </select>
+          </div>
+          <div className="w-px h-6 bg-border" />
+          {!isLocal && (
+            <div className="flex items-center gap-1.5 px-2 py-1 text-xs rounded-md bg-amber-500/10 text-amber-500 border border-amber-500/20">
+              <Database className="h-3 w-3" />
+              Demo Mode
+            </div>
           )}
-        </button>
+          <DemoLink
+            href="/benchmark"
+            className="flex items-center gap-2 px-3 py-1.5 text-sm rounded-md bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+          >
+            <BarChart3 className="h-4 w-4" />
+            Benchmark
+          </DemoLink>
+          <DemoLink
+            href="/comparison"
+            className="flex items-center gap-2 px-3 py-1.5 text-sm rounded-md bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+          >
+            <TrendingUp className="h-4 w-4" />
+            Compare
+          </DemoLink>
+          <button
+            onClick={() => setInspectorCollapsed(!inspectorCollapsed)}
+            className="flex items-center gap-2 px-3 py-1.5 text-sm rounded-md bg-secondary hover:bg-secondary/80 transition-colors"
+          >
+            {inspectorCollapsed ? (
+              <>
+                <Eye className="h-4 w-4" />
+                Show Inspector
+              </>
+            ) : (
+              <>
+                <EyeOff className="h-4 w-4" />
+                Hide Inspector
+              </>
+            )}
+          </button>
+        </div>
       </header>
 
       {/* Main Content */}
@@ -107,6 +150,8 @@ export default function Home() {
             onRawResponse={handleRawResponse}
             piiMapping={piiAnalysis?.mapping || {}}
             sessionId={sessionId}
+            detector={selectedDetector}
+            isLocal={isLocal}
           />
         </div>
 

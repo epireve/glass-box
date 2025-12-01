@@ -1,0 +1,394 @@
+{
+  "runs": [
+    {
+      "filename": "2025-12-01T06-23-23.827214_presidio_test_scenarios.json",
+      "detector": "presidio",
+      "dataset": "test_scenarios",
+      "timestamp": "2025-12-01T06:23:23.827214",
+      "summary": {
+        "precision": 0.7391,
+        "recall": 1.0,
+        "f1": 0.85,
+        "total_cases": 20,
+        "passed_cases": 20
+      }
+    },
+    {
+      "filename": "2025-12-01T06-25-22.793485_presidio_golden_set.json",
+      "detector": "presidio",
+      "dataset": "golden_set",
+      "timestamp": "2025-12-01T06:25:22.793485",
+      "summary": {
+        "precision": 0.9167,
+        "recall": 0.9167,
+        "f1": 0.9167,
+        "total_cases": 30,
+        "passed_cases": 25
+      }
+    },
+    {
+      "filename": "2025-12-01T06-41-40.679150_presidio_synthetic_dataset.json",
+      "detector": "presidio",
+      "dataset": "synthetic_dataset",
+      "timestamp": "2025-12-01T06:41:40.679150",
+      "summary": {
+        "precision": 0.8104,
+        "recall": 0.9407,
+        "f1": 0.8707,
+        "total_cases": 300,
+        "passed_cases": 255
+      }
+    },
+    {
+      "filename": "2025-12-01T06-44-18.944986_presidio_adversarial_dataset.json",
+      "detector": "presidio",
+      "dataset": "adversarial_dataset",
+      "timestamp": "2025-12-01T06:44:18.944986",
+      "summary": {
+        "precision": 0.6,
+        "recall": 0.569,
+        "f1": 0.5841,
+        "total_cases": 100,
+        "passed_cases": 50
+      }
+    },
+    {
+      "filename": "2025-12-01T14-41-36.279346_presidio_golden_set.json",
+      "detector": "presidio",
+      "dataset": "golden_set",
+      "timestamp": "2025-12-01T14:41:36.279346",
+      "summary": {
+        "precision": 0.8494,
+        "recall": 0.94,
+        "f1": 0.8924,
+        "total_cases": 100,
+        "passed_cases": 91
+      }
+    },
+    {
+      "filename": "2025-12-01T14-41-50.932083_llama_guard_golden_set.json",
+      "detector": "llama_guard",
+      "dataset": "golden_set",
+      "timestamp": "2025-12-01T14:41:50.932083",
+      "summary": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "total_cases": 5,
+        "passed_cases": 0
+      }
+    },
+    {
+      "filename": "2025-12-01T14-41-54.666602_llama_guard_golden_set.json",
+      "detector": "llama_guard",
+      "dataset": "golden_set",
+      "timestamp": "2025-12-01T14:41:54.666602",
+      "summary": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "total_cases": 100,
+        "passed_cases": 18
+      }
+    },
+    {
+      "filename": "2025-12-01T14-42-21.187515_presidio_golden_set.json",
+      "detector": "presidio",
+      "dataset": "golden_set",
+      "timestamp": "2025-12-01T14:42:21.187515",
+      "summary": {
+        "precision": 0.8494,
+        "recall": 0.94,
+        "f1": 0.8924,
+        "total_cases": 100,
+        "passed_cases": 91
+      }
+    },
+    {
+      "filename": "2025-12-01T14-42-23.349701_llama_guard_test_scenarios.json",
+      "detector": "llama_guard",
+      "dataset": "test_scenarios",
+      "timestamp": "2025-12-01T14:42:23.349701",
+      "summary": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "total_cases": 20,
+        "passed_cases": 3
+      }
+    },
+    {
+      "filename": "2025-12-01T14-42-40.750795_presidio_test_scenarios.json",
+      "detector": "presidio",
+      "dataset": "test_scenarios",
+      "timestamp": "2025-12-01T14:42:40.750795",
+      "summary": {
+        "precision": 0.7391,
+        "recall": 1.0,
+        "f1": 0.85,
+        "total_cases": 20,
+        "passed_cases": 20
+      }
+    },
+    {
+      "filename": "2025-12-01T14-42-54.069335_presidio_synthetic_dataset.json",
+      "detector": "presidio",
+      "dataset": "synthetic_dataset",
+      "timestamp": "2025-12-01T14:42:54.069335",
+      "summary": {
+        "precision": 0.8104,
+        "recall": 0.9407,
+        "f1": 0.8707,
+        "total_cases": 300,
+        "passed_cases": 255
+      }
+    },
+    {
+      "filename": "2025-12-01T14-43-56.526610_presidio_golden_set.json",
+      "detector": "presidio",
+      "dataset": "golden_set",
+      "timestamp": "2025-12-01T14:43:56.526610",
+      "summary": {
+        "precision": 0.8494,
+        "recall": 0.94,
+        "f1": 0.8924,
+        "total_cases": 100,
+        "passed_cases": 91
+      }
+    },
+    {
+      "filename": "2025-12-01T14-44-01.381592_llama_guard_golden_set.json",
+      "detector": "llama_guard",
+      "dataset": "golden_set",
+      "timestamp": "2025-12-01T14:44:01.381592",
+      "summary": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "total_cases": 100,
+        "passed_cases": 18
+      }
+    },
+    {
+      "filename": "2025-12-01T14-44-42.247401_llama_guard_golden_set.json",
+      "detector": "llama_guard",
+      "dataset": "golden_set",
+      "timestamp": "2025-12-01T14:44:42.247401",
+      "summary": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "total_cases": 100,
+        "passed_cases": 18
+      }
+    },
+    {
+      "filename": "2025-12-01T14-50-31.980301_llama_guard_golden_set.json",
+      "detector": "llama_guard",
+      "dataset": "golden_set",
+      "timestamp": "2025-12-01T14:50:31.980301",
+      "summary": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "total_cases": 100,
+        "passed_cases": 18
+      }
+    },
+    {
+      "filename": "2025-12-01T14-50-56.328846_llama_guard_test_scenarios.json",
+      "detector": "llama_guard",
+      "dataset": "test_scenarios",
+      "timestamp": "2025-12-01T14:50:56.328846",
+      "summary": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "total_cases": 20,
+        "passed_cases": 3
+      }
+    },
+    {
+      "filename": "2025-12-01T15-03-12.965727_llama_guard_test_scenarios.json",
+      "detector": "llama_guard",
+      "dataset": "test_scenarios",
+      "timestamp": "2025-12-01T15:03:12.965727",
+      "summary": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "total_cases": 20,
+        "passed_cases": 3
+      }
+    },
+    {
+      "filename": "2025-12-01T15-05-19.291617_llama_guard_test_scenarios.json",
+      "detector": "llama_guard",
+      "dataset": "test_scenarios",
+      "timestamp": "2025-12-01T15:05:19.291617",
+      "summary": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "total_cases": 20,
+        "passed_cases": 3
+      }
+    },
+    {
+      "filename": "2025-12-01T15-31-15.295531_gliner_test_scenarios.json",
+      "detector": "gliner",
+      "dataset": "test_scenarios",
+      "timestamp": "2025-12-01T15:31:15.295531",
+      "summary": {
+        "precision": 0.7209,
+        "recall": 0.9118,
+        "f1": 0.8052,
+        "total_cases": 20,
+        "passed_cases": 17
+      }
+    },
+    {
+      "filename": "2025-12-01T15-36-10.189384_presidio_test_scenarios.json",
+      "detector": "presidio",
+      "dataset": "test_scenarios",
+      "timestamp": "2025-12-01T15:36:10.189384",
+      "summary": {
+        "precision": 0.7391,
+        "recall": 1.0,
+        "f1": 0.85,
+        "total_cases": 20,
+        "passed_cases": 20
+      }
+    },
+    {
+      "filename": "2025-12-01T15-36-45.531711_gliner_test_scenarios.json",
+      "detector": "gliner",
+      "dataset": "test_scenarios",
+      "timestamp": "2025-12-01T15:36:45.531711",
+      "summary": {
+        "precision": 0.7209,
+        "recall": 0.9118,
+        "f1": 0.8052,
+        "total_cases": 20,
+        "passed_cases": 17
+      }
+    },
+    {
+      "filename": "2025-12-01T15-37-24.834367_llama_guard_test_scenarios.json",
+      "detector": "llama_guard",
+      "dataset": "test_scenarios",
+      "timestamp": "2025-12-01T15:37:24.834367",
+      "summary": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "total_cases": 20,
+        "passed_cases": 3
+      }
+    },
+    {
+      "filename": "2025-12-01T15-38-44.043184_gliner_synthetic_dataset.json",
+      "detector": "gliner",
+      "dataset": "synthetic_dataset",
+      "timestamp": "2025-12-01T15:38:44.043184",
+      "summary": {
+        "precision": 0.9452,
+        "recall": 0.7273,
+        "f1": 0.822,
+        "total_cases": 300,
+        "passed_cases": 145
+      }
+    },
+    {
+      "filename": "2025-12-01T15-39-55.663053_gliner_adversarial_dataset.json",
+      "detector": "gliner",
+      "dataset": "adversarial_dataset",
+      "timestamp": "2025-12-01T15:39:55.663053",
+      "summary": {
+        "precision": 0.8226,
+        "recall": 0.8793,
+        "f1": 0.85,
+        "total_cases": 100,
+        "passed_cases": 86
+      }
+    },
+    {
+      "filename": "2025-12-01T15-40-31.325318_gliner_test_scenarios.json",
+      "detector": "gliner",
+      "dataset": "test_scenarios",
+      "timestamp": "2025-12-01T15:40:31.325318",
+      "summary": {
+        "precision": 0.7209,
+        "recall": 0.9118,
+        "f1": 0.8052,
+        "total_cases": 20,
+        "passed_cases": 17
+      }
+    },
+    {
+      "filename": "2025-12-01T15-41-29.555723_gliner_golden_set.json",
+      "detector": "gliner",
+      "dataset": "golden_set",
+      "timestamp": "2025-12-01T15:41:29.555723",
+      "summary": {
+        "precision": 0.845,
+        "recall": 0.7267,
+        "f1": 0.7814,
+        "total_cases": 100,
+        "passed_cases": 64
+      }
+    },
+    {
+      "filename": "2025-12-01T15-43-27.307082_presidio_golden_set.json",
+      "detector": "presidio",
+      "dataset": "golden_set",
+      "timestamp": "2025-12-01T15:43:27.307082",
+      "summary": {
+        "precision": 0.8494,
+        "recall": 0.94,
+        "f1": 0.8924,
+        "total_cases": 100,
+        "passed_cases": 91
+      }
+    },
+    {
+      "filename": "2025-12-01T15-43-40.837074_presidio_test_scenarios.json",
+      "detector": "presidio",
+      "dataset": "test_scenarios",
+      "timestamp": "2025-12-01T15:43:40.837074",
+      "summary": {
+        "precision": 0.7391,
+        "recall": 1.0,
+        "f1": 0.85,
+        "total_cases": 20,
+        "passed_cases": 20
+      }
+    },
+    {
+      "filename": "2025-12-01T15-43-45.055448_presidio_adversarial_dataset.json",
+      "detector": "presidio",
+      "dataset": "adversarial_dataset",
+      "timestamp": "2025-12-01T15:43:45.055448",
+      "summary": {
+        "precision": 0.6,
+        "recall": 0.569,
+        "f1": 0.5841,
+        "total_cases": 100,
+        "passed_cases": 50
+      }
+    },
+    {
+      "filename": "2025-12-01T15-43-48.591358_presidio_synthetic_dataset.json",
+      "detector": "presidio",
+      "dataset": "synthetic_dataset",
+      "timestamp": "2025-12-01T15:43:48.591358",
+      "summary": {
+        "precision": 0.8104,
+        "recall": 0.9407,
+        "f1": 0.8707,
+        "total_cases": 300,
+        "passed_cases": 255
+      }
+    }
+  ]
+}

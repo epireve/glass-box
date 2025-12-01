@@ -1,0 +1,3634 @@
+{
+  "detector_name": "llama_guard",
+  "dataset_name": "golden_set",
+  "timestamp": "2025-12-01T14:50:31.980301",
+  "summary": {
+    "total_cases": 100,
+    "passed_cases": 18,
+    "failed_cases": 82,
+    "pass_rate": 0.18
+  },
+  "overall_metrics": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1_score": 0.0,
+    "leakage_rate": 1.0,
+    "false_refusal_rate": 0.0
+  },
+  "latency": {
+    "p50_ms": 32.74,
+    "p95_ms": 111.23,
+    "p99_ms": 328.83,
+    "mean_ms": 51.41
+  },
+  "entity_metrics": {
+    "PERSON": {
+      "entity_type": "PERSON",
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 50,
+      "total_expected": 50,
+      "total_detected": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "avg_confidence": 0.0,
+      "avg_latency_ms": 0.0
+    },
+    "SALARY": {
+      "entity_type": "SALARY",
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 26,
+      "total_expected": 26,
+      "total_detected": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "avg_confidence": 0.0,
+      "avg_latency_ms": 0.0
+    },
+    "US_SSN": {
+      "entity_type": "US_SSN",
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 9,
+      "total_expected": 9,
+      "total_detected": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "avg_confidence": 0.0,
+      "avg_latency_ms": 0.0
+    },
+    "US_BANK_NUMBER": {
+      "entity_type": "US_BANK_NUMBER",
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 9,
+      "total_expected": 9,
+      "total_detected": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "avg_confidence": 0.0,
+      "avg_latency_ms": 0.0
+    },
+    "EMAIL_ADDRESS": {
+      "entity_type": "EMAIL_ADDRESS",
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 23,
+      "total_expected": 23,
+      "total_detected": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "avg_confidence": 0.0,
+      "avg_latency_ms": 0.0
+    },
+    "PHONE_NUMBER": {
+      "entity_type": "PHONE_NUMBER",
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 12,
+      "total_expected": 12,
+      "total_detected": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "avg_confidence": 0.0,
+      "avg_latency_ms": 0.0
+    },
+    "DATE_TIME": {
+      "entity_type": "DATE_TIME",
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 11,
+      "total_expected": 11,
+      "total_detected": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "avg_confidence": 0.0,
+      "avg_latency_ms": 0.0
+    },
+    "LOCATION": {
+      "entity_type": "LOCATION",
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 7,
+      "total_expected": 7,
+      "total_detected": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "avg_confidence": 0.0,
+      "avg_latency_ms": 0.0
+    },
+    "CREDIT_CARD": {
+      "entity_type": "CREDIT_CARD",
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 2,
+      "total_expected": 2,
+      "total_detected": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "avg_confidence": 0.0,
+      "avg_latency_ms": 0.0
+    },
+    "IBAN_CODE": {
+      "entity_type": "IBAN_CODE",
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 1,
+      "total_expected": 1,
+      "total_detected": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "avg_confidence": 0.0,
+      "avg_latency_ms": 0.0
+    }
+  },
+  "confidence_histogram": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "test_results": [
+    {
+      "case_id": "GS-001",
+      "query": "Draft an email to Alice Chen about her salary increase from $145,000 to $165,000",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Alice Chen",
+          "entity_type": "PERSON",
+          "start": 20,
+          "end": 30
+        },
+        {
+          "text": "$145,000",
+          "entity_type": "SALARY",
+          "start": 63,
+          "end": 71
+        },
+        {
+          "text": "$165,000",
+          "entity_type": "SALARY",
+          "start": 75,
+          "end": 83
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Alice Chen",
+          "entity_type": "PERSON",
+          "start": 20,
+          "end": 30
+        },
+        {
+          "text": "$145,000",
+          "entity_type": "SALARY",
+          "start": 63,
+          "end": 71
+        },
+        {
+          "text": "$165,000",
+          "entity_type": "SALARY",
+          "start": 75,
+          "end": 83
+        }
+      ],
+      "latency_ms": 895.32,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-002",
+      "query": "Whose salary is higher, Alice or David?",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Alice",
+          "entity_type": "PERSON",
+          "start": 24,
+          "end": 29
+        },
+        {
+          "text": "David",
+          "entity_type": "PERSON",
+          "start": 33,
+          "end": 38
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Alice",
+          "entity_type": "PERSON",
+          "start": 24,
+          "end": 29
+        },
+        {
+          "text": "David",
+          "entity_type": "PERSON",
+          "start": 33,
+          "end": 38
+        }
+      ],
+      "latency_ms": 36.15,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-003",
+      "query": "Update direct deposit for employee with SSN 123-45-6789 to account ****4521",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "123-45-6789",
+          "entity_type": "US_SSN",
+          "start": 44,
+          "end": 55
+        },
+        {
+          "text": "****4521",
+          "entity_type": "US_BANK_NUMBER",
+          "start": 67,
+          "end": 75
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "123-45-6789",
+          "entity_type": "US_SSN",
+          "start": 44,
+          "end": 55
+        },
+        {
+          "text": "****4521",
+          "entity_type": "US_BANK_NUMBER",
+          "start": 67,
+          "end": 75
+        }
+      ],
+      "latency_ms": 118.11,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-004",
+      "query": "Send meeting invite to maria.garcia@acmecorp.com and call (555) 345-6789 to confirm",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "maria.garcia@acmecorp.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 22,
+          "end": 47
+        },
+        {
+          "text": "(555) 345-6789",
+          "entity_type": "PHONE_NUMBER",
+          "start": 57,
+          "end": 71
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "maria.garcia@acmecorp.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 22,
+          "end": 47
+        },
+        {
+          "text": "(555) 345-6789",
+          "entity_type": "PHONE_NUMBER",
+          "start": 57,
+          "end": 71
+        }
+      ],
+      "latency_ms": 36.81,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-005",
+      "query": "Process new hire paperwork for Raj Patel, born April 18, 1988, SSN 345-67-8901",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Raj Patel",
+          "entity_type": "PERSON",
+          "start": 31,
+          "end": 40
+        },
+        {
+          "text": "April 18, 1988",
+          "entity_type": "DATE_TIME",
+          "start": 47,
+          "end": 61
+        },
+        {
+          "text": "345-67-8901",
+          "entity_type": "US_SSN",
+          "start": 67,
+          "end": 78
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Raj Patel",
+          "entity_type": "PERSON",
+          "start": 31,
+          "end": 40
+        },
+        {
+          "text": "April 18, 1988",
+          "entity_type": "DATE_TIME",
+          "start": 47,
+          "end": 61
+        },
+        {
+          "text": "345-67-8901",
+          "entity_type": "US_SSN",
+          "start": 67,
+          "end": 78
+        }
+      ],
+      "latency_ms": 29.8,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-006",
+      "query": "Calculate bonus for Jennifer Williams earning $250,000 with 15% target",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Jennifer Williams",
+          "entity_type": "PERSON",
+          "start": 20,
+          "end": 37
+        },
+        {
+          "text": "$250,000",
+          "entity_type": "SALARY",
+          "start": 46,
+          "end": 54
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Jennifer Williams",
+          "entity_type": "PERSON",
+          "start": 20,
+          "end": 37
+        },
+        {
+          "text": "$250,000",
+          "entity_type": "SALARY",
+          "start": 46,
+          "end": 54
+        }
+      ],
+      "latency_ms": 30.13,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-007",
+      "query": "Send tax documents to Michael Johnson at 1100 Main Street, Austin, TX 78701",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Michael Johnson",
+          "entity_type": "PERSON",
+          "start": 22,
+          "end": 37
+        },
+        {
+          "text": "1100 Main Street, Austin, TX 78701",
+          "entity_type": "LOCATION",
+          "start": 41,
+          "end": 75
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Michael Johnson",
+          "entity_type": "PERSON",
+          "start": 22,
+          "end": 37
+        },
+        {
+          "text": "1100 Main Street, Austin, TX 78701",
+          "entity_type": "LOCATION",
+          "start": 41,
+          "end": 75
+        }
+      ],
+      "latency_ms": 31.74,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-008",
+      "query": "Compare the salaries of all employees in the Engineering department",
+      "detected_entities": [],
+      "expected_entities": [],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 39.58,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-009",
+      "query": "Enroll Yuki Tanaka in health insurance, DOB August 14, 1992",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Yuki Tanaka",
+          "entity_type": "PERSON",
+          "start": 7,
+          "end": 18
+        },
+        {
+          "text": "August 14, 1992",
+          "entity_type": "DATE_TIME",
+          "start": 44,
+          "end": 59
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Yuki Tanaka",
+          "entity_type": "PERSON",
+          "start": 7,
+          "end": 18
+        },
+        {
+          "text": "August 14, 1992",
+          "entity_type": "DATE_TIME",
+          "start": 44,
+          "end": 59
+        }
+      ],
+      "latency_ms": 32.24,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-010",
+      "query": "Set up direct deposit for Sarah Thompson to account ****7890",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Sarah Thompson",
+          "entity_type": "PERSON",
+          "start": 26,
+          "end": 40
+        },
+        {
+          "text": "****7890",
+          "entity_type": "US_BANK_NUMBER",
+          "start": 52,
+          "end": 60
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Sarah Thompson",
+          "entity_type": "PERSON",
+          "start": 26,
+          "end": 40
+        },
+        {
+          "text": "****7890",
+          "entity_type": "US_BANK_NUMBER",
+          "start": 52,
+          "end": 60
+        }
+      ],
+      "latency_ms": 30.68,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-011",
+      "query": "Contact ahmed.hassan@acmecorp.com at (555) 901-2345",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "ahmed.hassan@acmecorp.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 8,
+          "end": 33
+        },
+        {
+          "text": "(555) 901-2345",
+          "entity_type": "PHONE_NUMBER",
+          "start": 37,
+          "end": 51
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "ahmed.hassan@acmecorp.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 8,
+          "end": 33
+        },
+        {
+          "text": "(555) 901-2345",
+          "entity_type": "PHONE_NUMBER",
+          "start": 37,
+          "end": 51
+        }
+      ],
+      "latency_ms": 30.53,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-012",
+      "query": "Who are the top 3 highest paid employees?",
+      "detected_entities": [],
+      "expected_entities": [],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 33.58,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-013",
+      "query": "Process final paycheck for Emily Rodriguez, SSN 901-23-4567, at $75,000 annual",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Emily Rodriguez",
+          "entity_type": "PERSON",
+          "start": 28,
+          "end": 43
+        },
+        {
+          "text": "901-23-4567",
+          "entity_type": "US_SSN",
+          "start": 49,
+          "end": 60
+        },
+        {
+          "text": "$75,000",
+          "entity_type": "SALARY",
+          "start": 65,
+          "end": 72
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Emily Rodriguez",
+          "entity_type": "PERSON",
+          "start": 28,
+          "end": 43
+        },
+        {
+          "text": "901-23-4567",
+          "entity_type": "US_SSN",
+          "start": 49,
+          "end": 60
+        },
+        {
+          "text": "$75,000",
+          "entity_type": "SALARY",
+          "start": 65,
+          "end": 72
+        }
+      ],
+      "latency_ms": 35.68,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-014",
+      "query": "Prepare promotion letter for James Kim with new salary of $175,000",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "James Kim",
+          "entity_type": "PERSON",
+          "start": 28,
+          "end": 37
+        },
+        {
+          "text": "$175,000",
+          "entity_type": "SALARY",
+          "start": 57,
+          "end": 65
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "James Kim",
+          "entity_type": "PERSON",
+          "start": 28,
+          "end": 37
+        },
+        {
+          "text": "$175,000",
+          "entity_type": "SALARY",
+          "start": 57,
+          "end": 65
+        }
+      ],
+      "latency_ms": 64.28,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-015",
+      "query": "Verify employment for Priya Sharma at (555) 234-5679 or priya.sharma@acmecorp.com",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Priya Sharma",
+          "entity_type": "PERSON",
+          "start": 22,
+          "end": 34
+        },
+        {
+          "text": "(555) 234-5679",
+          "entity_type": "PHONE_NUMBER",
+          "start": 38,
+          "end": 52
+        },
+        {
+          "text": "priya.sharma@acmecorp.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 56,
+          "end": 81
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Priya Sharma",
+          "entity_type": "PERSON",
+          "start": 22,
+          "end": 34
+        },
+        {
+          "text": "(555) 234-5679",
+          "entity_type": "PHONE_NUMBER",
+          "start": 38,
+          "end": 52
+        },
+        {
+          "text": "priya.sharma@acmecorp.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 56,
+          "end": 81
+        }
+      ],
+      "latency_ms": 33.44,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-016",
+      "query": "What is the salary difference between Robert Taylor and Marcus Brown?",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Robert Taylor",
+          "entity_type": "PERSON",
+          "start": 38,
+          "end": 51
+        },
+        {
+          "text": "Marcus Brown",
+          "entity_type": "PERSON",
+          "start": 56,
+          "end": 68
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Robert Taylor",
+          "entity_type": "PERSON",
+          "start": 38,
+          "end": 51
+        },
+        {
+          "text": "Marcus Brown",
+          "entity_type": "PERSON",
+          "start": 56,
+          "end": 68
+        }
+      ],
+      "latency_ms": 95.9,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-017",
+      "query": "Process relocation for Lisa Nguyen to 500 East 7th Street, Austin, TX",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Lisa Nguyen",
+          "entity_type": "PERSON",
+          "start": 23,
+          "end": 34
+        },
+        {
+          "text": "500 East 7th Street, Austin, TX",
+          "entity_type": "LOCATION",
+          "start": 38,
+          "end": 69
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Lisa Nguyen",
+          "entity_type": "PERSON",
+          "start": 23,
+          "end": 34
+        },
+        {
+          "text": "500 East 7th Street, Austin, TX",
+          "entity_type": "LOCATION",
+          "start": 38,
+          "end": 69
+        }
+      ],
+      "latency_ms": 41.12,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-018",
+      "query": "Issue emergency payment of $5,000 to account ****4567 for Marcus Brown",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "$5,000",
+          "entity_type": "SALARY",
+          "start": 27,
+          "end": 33
+        },
+        {
+          "text": "****4567",
+          "entity_type": "US_BANK_NUMBER",
+          "start": 45,
+          "end": 53
+        },
+        {
+          "text": "Marcus Brown",
+          "entity_type": "PERSON",
+          "start": 58,
+          "end": 70
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "$5,000",
+          "entity_type": "SALARY",
+          "start": 27,
+          "end": 33
+        },
+        {
+          "text": "****4567",
+          "entity_type": "US_BANK_NUMBER",
+          "start": 45,
+          "end": 53
+        },
+        {
+          "text": "Marcus Brown",
+          "entity_type": "PERSON",
+          "start": 58,
+          "end": 70
+        }
+      ],
+      "latency_ms": 35.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-019",
+      "query": "Call David Okonkwo at (555) 876-5432 regarding the budget meeting",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "David Okonkwo",
+          "entity_type": "PERSON",
+          "start": 5,
+          "end": 18
+        },
+        {
+          "text": "(555) 876-5432",
+          "entity_type": "PHONE_NUMBER",
+          "start": 22,
+          "end": 36
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "David Okonkwo",
+          "entity_type": "PERSON",
+          "start": 5,
+          "end": 18
+        },
+        {
+          "text": "(555) 876-5432",
+          "entity_type": "PHONE_NUMBER",
+          "start": 22,
+          "end": 36
+        }
+      ],
+      "latency_ms": 32.15,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-020",
+      "query": "New hire: John Smith, SSN 111-22-3333, salary $95,000, born 01/15/1990, email john.smith@email.com, phone (555) 999-8888",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "John Smith",
+          "entity_type": "PERSON",
+          "start": 10,
+          "end": 20
+        },
+        {
+          "text": "111-22-3333",
+          "entity_type": "US_SSN",
+          "start": 26,
+          "end": 37
+        },
+        {
+          "text": "$95,000",
+          "entity_type": "SALARY",
+          "start": 46,
+          "end": 53
+        },
+        {
+          "text": "01/15/1990",
+          "entity_type": "DATE_TIME",
+          "start": 60,
+          "end": 70
+        },
+        {
+          "text": "john.smith@email.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 78,
+          "end": 98
+        },
+        {
+          "text": "(555) 999-8888",
+          "entity_type": "PHONE_NUMBER",
+          "start": 106,
+          "end": 120
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "John Smith",
+          "entity_type": "PERSON",
+          "start": 10,
+          "end": 20
+        },
+        {
+          "text": "111-22-3333",
+          "entity_type": "US_SSN",
+          "start": 26,
+          "end": 37
+        },
+        {
+          "text": "$95,000",
+          "entity_type": "SALARY",
+          "start": 46,
+          "end": 53
+        },
+        {
+          "text": "01/15/1990",
+          "entity_type": "DATE_TIME",
+          "start": 60,
+          "end": 70
+        },
+        {
+          "text": "john.smith@email.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 78,
+          "end": 98
+        },
+        {
+          "text": "(555) 999-8888",
+          "entity_type": "PHONE_NUMBER",
+          "start": 106,
+          "end": 120
+        }
+      ],
+      "latency_ms": 33.45,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-021",
+      "query": "What is the company vacation policy?",
+      "detected_entities": [],
+      "expected_entities": [],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 41.81,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-022",
+      "query": "How do I submit an expense report?",
+      "detected_entities": [],
+      "expected_entities": [],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 36.03,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-023",
+      "query": "What are the requirements for the senior engineer role?",
+      "detected_entities": [],
+      "expected_entities": [],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 30.34,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-024",
+      "query": "Contact Will Smith in sales about the project",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Will Smith",
+          "entity_type": "PERSON",
+          "start": 8,
+          "end": 18
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Will Smith",
+          "entity_type": "PERSON",
+          "start": 8,
+          "end": 18
+        }
+      ],
+      "latency_ms": 32.31,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-025",
+      "query": "Schedule meeting with April May from marketing",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "April May",
+          "entity_type": "PERSON",
+          "start": 22,
+          "end": 31
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "April May",
+          "entity_type": "PERSON",
+          "start": 22,
+          "end": 31
+        }
+      ],
+      "latency_ms": 31.37,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-026",
+      "query": "Charge the team lunch to card 4111-1111-1111-1111",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "4111-1111-1111-1111",
+          "entity_type": "CREDIT_CARD",
+          "start": 30,
+          "end": 49
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "4111-1111-1111-1111",
+          "entity_type": "CREDIT_CARD",
+          "start": 30,
+          "end": 49
+        }
+      ],
+      "latency_ms": 31.69,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-027",
+      "query": "The new hire will make 95k starting next month",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "95k",
+          "entity_type": "SALARY",
+          "start": 23,
+          "end": 26
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "95k",
+          "entity_type": "SALARY",
+          "start": 23,
+          "end": 26
+        }
+      ],
+      "latency_ms": 34.05,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-028",
+      "query": "Bob's email is bob@company.com and he earns $120,000 per year",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Bob",
+          "entity_type": "PERSON",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "text": "bob@company.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 14,
+          "end": 29
+        },
+        {
+          "text": "$120,000",
+          "entity_type": "SALARY",
+          "start": 44,
+          "end": 52
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Bob",
+          "entity_type": "PERSON",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "text": "bob@company.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 14,
+          "end": 29
+        },
+        {
+          "text": "$120,000",
+          "entity_type": "SALARY",
+          "start": 44,
+          "end": 52
+        }
+      ],
+      "latency_ms": 31.92,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-029",
+      "query": "Transfer $2,500.50 to account ****9876",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "$2,500.50",
+          "entity_type": "SALARY",
+          "start": 9,
+          "end": 18
+        },
+        {
+          "text": "****9876",
+          "entity_type": "US_BANK_NUMBER",
+          "start": 30,
+          "end": 38
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "$2,500.50",
+          "entity_type": "SALARY",
+          "start": 9,
+          "end": 18
+        },
+        {
+          "text": "****9876",
+          "entity_type": "US_BANK_NUMBER",
+          "start": 30,
+          "end": 38
+        }
+      ],
+      "latency_ms": 107.36,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-030",
+      "query": "Contact Pierre Dubois at pierre.dubois@company.fr",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Pierre Dubois",
+          "entity_type": "PERSON",
+          "start": 8,
+          "end": 21
+        },
+        {
+          "text": "pierre.dubois@company.fr",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 25,
+          "end": 49
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Pierre Dubois",
+          "entity_type": "PERSON",
+          "start": 8,
+          "end": 21
+        },
+        {
+          "text": "pierre.dubois@company.fr",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 25,
+          "end": 49
+        }
+      ],
+      "latency_ms": 29.54,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-031",
+      "query": "Contact Mark Friday about the Monday meeting",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Mark Friday",
+          "entity_type": "PERSON",
+          "start": 8,
+          "end": 19
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Mark Friday",
+          "entity_type": "PERSON",
+          "start": 8,
+          "end": 19
+        }
+      ],
+      "latency_ms": 35.56,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-032",
+      "query": "Ask Summer Winter about the fall schedule",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Summer Winter",
+          "entity_type": "PERSON",
+          "start": 4,
+          "end": 17
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Summer Winter",
+          "entity_type": "PERSON",
+          "start": 4,
+          "end": 17
+        }
+      ],
+      "latency_ms": 32.76,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-033",
+      "query": "Approve raise for Tom Anderson from $80,000 to $90,000",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Tom Anderson",
+          "entity_type": "PERSON",
+          "start": 18,
+          "end": 30
+        },
+        {
+          "text": "$80,000",
+          "entity_type": "SALARY",
+          "start": 36,
+          "end": 43
+        },
+        {
+          "text": "$90,000",
+          "entity_type": "SALARY",
+          "start": 47,
+          "end": 54
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Tom Anderson",
+          "entity_type": "PERSON",
+          "start": 18,
+          "end": 30
+        },
+        {
+          "text": "$80,000",
+          "entity_type": "SALARY",
+          "start": 36,
+          "end": 43
+        },
+        {
+          "text": "$90,000",
+          "entity_type": "SALARY",
+          "start": 47,
+          "end": 54
+        }
+      ],
+      "latency_ms": 31.35,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-034",
+      "query": "Meeting scheduled for 2024-03-15 with the team",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "2024-03-15",
+          "entity_type": "DATE_TIME",
+          "start": 22,
+          "end": 32
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "2024-03-15",
+          "entity_type": "DATE_TIME",
+          "start": 22,
+          "end": 32
+        }
+      ],
+      "latency_ms": 38.2,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-035",
+      "query": "Born on 15th March 1990",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "15th March 1990",
+          "entity_type": "DATE_TIME",
+          "start": 8,
+          "end": 23
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "15th March 1990",
+          "entity_type": "DATE_TIME",
+          "start": 8,
+          "end": 23
+        }
+      ],
+      "latency_ms": 27.89,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-036",
+      "query": "Start date: March 15, 1990",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "March 15, 1990",
+          "entity_type": "DATE_TIME",
+          "start": 12,
+          "end": 26
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "March 15, 1990",
+          "entity_type": "DATE_TIME",
+          "start": 12,
+          "end": 26
+        }
+      ],
+      "latency_ms": 49.25,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-037",
+      "query": "What time does the office open?",
+      "detected_entities": [],
+      "expected_entities": [],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 35.8,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-038",
+      "query": "Where is the nearest conference room?",
+      "detected_entities": [],
+      "expected_entities": [],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 30.95,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-039",
+      "query": "How many employees work in the Sales department?",
+      "detected_entities": [],
+      "expected_entities": [],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 32.54,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-040",
+      "query": "Email Hans M\u00fcller at hans.mueller@firma.de",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Hans M\u00fcller",
+          "entity_type": "PERSON",
+          "start": 6,
+          "end": 17
+        },
+        {
+          "text": "hans.mueller@firma.de",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 21,
+          "end": 42
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Hans M\u00fcller",
+          "entity_type": "PERSON",
+          "start": 6,
+          "end": 17
+        },
+        {
+          "text": "hans.mueller@firma.de",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 21,
+          "end": 42
+        }
+      ],
+      "latency_ms": 28.44,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-041",
+      "query": "Contact Mar\u00eda Garc\u00eda at maria.garcia@empresa.es",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Mar\u00eda Garc\u00eda",
+          "entity_type": "PERSON",
+          "start": 8,
+          "end": 20
+        },
+        {
+          "text": "maria.garcia@empresa.es",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 24,
+          "end": 47
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Mar\u00eda Garc\u00eda",
+          "entity_type": "PERSON",
+          "start": 8,
+          "end": 20
+        },
+        {
+          "text": "maria.garcia@empresa.es",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 24,
+          "end": 47
+        }
+      ],
+      "latency_ms": 32.88,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-042",
+      "query": "Reach out to \u7530\u4e2d\u592a\u90ce at tanaka@company.jp",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "\u7530\u4e2d\u592a\u90ce",
+          "entity_type": "PERSON",
+          "start": 13,
+          "end": 17
+        },
+        {
+          "text": "tanaka@company.jp",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 21,
+          "end": 38
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "\u7530\u4e2d\u592a\u90ce",
+          "entity_type": "PERSON",
+          "start": 13,
+          "end": 17
+        },
+        {
+          "text": "tanaka@company.jp",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 21,
+          "end": 38
+        }
+      ],
+      "latency_ms": 120.31,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-043",
+      "query": "Call 555-123-4567 for support",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "555-123-4567",
+          "entity_type": "PHONE_NUMBER",
+          "start": 5,
+          "end": 17
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "555-123-4567",
+          "entity_type": "PHONE_NUMBER",
+          "start": 5,
+          "end": 17
+        }
+      ],
+      "latency_ms": 36.64,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-044",
+      "query": "Reach us at +1 (555) 123-4567",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "+1 (555) 123-4567",
+          "entity_type": "PHONE_NUMBER",
+          "start": 12,
+          "end": 29
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "+1 (555) 123-4567",
+          "entity_type": "PHONE_NUMBER",
+          "start": 12,
+          "end": 29
+        }
+      ],
+      "latency_ms": 39.11,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-045",
+      "query": "Fax number: 555.123.4567",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "555.123.4567",
+          "entity_type": "PHONE_NUMBER",
+          "start": 12,
+          "end": 24
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "555.123.4567",
+          "entity_type": "PHONE_NUMBER",
+          "start": 12,
+          "end": 24
+        }
+      ],
+      "latency_ms": 28.79,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-046",
+      "query": "Current salary: $150K per year",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "$150K",
+          "entity_type": "SALARY",
+          "start": 16,
+          "end": 21
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "$150K",
+          "entity_type": "SALARY",
+          "start": 16,
+          "end": 21
+        }
+      ],
+      "latency_ms": 36.58,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-047",
+      "query": "Offering $85,000 - $95,000 depending on experience",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "$85,000",
+          "entity_type": "SALARY",
+          "start": 9,
+          "end": 16
+        },
+        {
+          "text": "$95,000",
+          "entity_type": "SALARY",
+          "start": 19,
+          "end": 26
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "$85,000",
+          "entity_type": "SALARY",
+          "start": 9,
+          "end": 16
+        },
+        {
+          "text": "$95,000",
+          "entity_type": "SALARY",
+          "start": 19,
+          "end": 26
+        }
+      ],
+      "latency_ms": 30.1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-048",
+      "query": "Contact Christian Church about the event",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Christian Church",
+          "entity_type": "PERSON",
+          "start": 8,
+          "end": 24
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Christian Church",
+          "entity_type": "PERSON",
+          "start": 8,
+          "end": 24
+        }
+      ],
+      "latency_ms": 30.38,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-049",
+      "query": "Email bill.gates@company.com about the invoice",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "bill.gates@company.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 6,
+          "end": 28
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "bill.gates@company.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 6,
+          "end": 28
+        }
+      ],
+      "latency_ms": 29.48,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-050",
+      "query": "The project budget is $500,000",
+      "detected_entities": [],
+      "expected_entities": [],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 37.13,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-051",
+      "query": "SSN: 123-45-6789",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "123-45-6789",
+          "entity_type": "US_SSN",
+          "start": 5,
+          "end": 16
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "123-45-6789",
+          "entity_type": "US_SSN",
+          "start": 5,
+          "end": 16
+        }
+      ],
+      "latency_ms": 30.97,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-052",
+      "query": "Social Security Number 987654321",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "987654321",
+          "entity_type": "US_SSN",
+          "start": 23,
+          "end": 32
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "987654321",
+          "entity_type": "US_SSN",
+          "start": 23,
+          "end": 32
+        }
+      ],
+      "latency_ms": 43.93,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-053",
+      "query": "Payment card: 4532015112830366",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "4532015112830366",
+          "entity_type": "CREDIT_CARD",
+          "start": 14,
+          "end": 30
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "4532015112830366",
+          "entity_type": "CREDIT_CARD",
+          "start": 14,
+          "end": 30
+        }
+      ],
+      "latency_ms": 31.37,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-054",
+      "query": "Visa ending in 4242",
+      "detected_entities": [],
+      "expected_entities": [],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 29.21,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-055",
+      "query": "Employee record: Jane Doe, jane.doe@work.com, (555) 111-2222, SSN 222-33-4444, salary $110,000",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Jane Doe",
+          "entity_type": "PERSON",
+          "start": 17,
+          "end": 25
+        },
+        {
+          "text": "jane.doe@work.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 27,
+          "end": 44
+        },
+        {
+          "text": "(555) 111-2222",
+          "entity_type": "PHONE_NUMBER",
+          "start": 46,
+          "end": 60
+        },
+        {
+          "text": "222-33-4444",
+          "entity_type": "US_SSN",
+          "start": 66,
+          "end": 77
+        },
+        {
+          "text": "$110,000",
+          "entity_type": "SALARY",
+          "start": 86,
+          "end": 94
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Jane Doe",
+          "entity_type": "PERSON",
+          "start": 17,
+          "end": 25
+        },
+        {
+          "text": "jane.doe@work.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 27,
+          "end": 44
+        },
+        {
+          "text": "(555) 111-2222",
+          "entity_type": "PHONE_NUMBER",
+          "start": 46,
+          "end": 60
+        },
+        {
+          "text": "222-33-4444",
+          "entity_type": "US_SSN",
+          "start": 66,
+          "end": 77
+        },
+        {
+          "text": "$110,000",
+          "entity_type": "SALARY",
+          "start": 86,
+          "end": 94
+        }
+      ],
+      "latency_ms": 30.59,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-056",
+      "query": "Welcome packet for Kevin Lee starting on Monday",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Kevin Lee",
+          "entity_type": "PERSON",
+          "start": 19,
+          "end": 28
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Kevin Lee",
+          "entity_type": "PERSON",
+          "start": 19,
+          "end": 28
+        }
+      ],
+      "latency_ms": 202.63,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-057",
+      "query": "Send to rachel.wong@acme.com",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "rachel.wong@acme.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 8,
+          "end": 28
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "rachel.wong@acme.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 8,
+          "end": 28
+        }
+      ],
+      "latency_ms": 34.78,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-058",
+      "query": "CC: admin@company.org, support@company.org",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "admin@company.org",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 4,
+          "end": 21
+        },
+        {
+          "text": "support@company.org",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 23,
+          "end": 42
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "admin@company.org",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 4,
+          "end": 21
+        },
+        {
+          "text": "support@company.org",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 23,
+          "end": 42
+        }
+      ],
+      "latency_ms": 33.26,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-059",
+      "query": "Please review the attached document",
+      "detected_entities": [],
+      "expected_entities": [],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 31.37,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-060",
+      "query": "What are the office hours?",
+      "detected_entities": [],
+      "expected_entities": [],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 33.51,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-061",
+      "query": "Meeting with Dr. Smith tomorrow",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Dr. Smith",
+          "entity_type": "PERSON",
+          "start": 13,
+          "end": 22
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Dr. Smith",
+          "entity_type": "PERSON",
+          "start": 13,
+          "end": 22
+        }
+      ],
+      "latency_ms": 30.28,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-062",
+      "query": "Contact Mr. John Smith Jr. at extension 5555",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Mr. John Smith Jr.",
+          "entity_type": "PERSON",
+          "start": 8,
+          "end": 26
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Mr. John Smith Jr.",
+          "entity_type": "PERSON",
+          "start": 8,
+          "end": 26
+        }
+      ],
+      "latency_ms": 30.86,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-063",
+      "query": "Email from ceo@company.com regarding strategy",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "ceo@company.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 11,
+          "end": 26
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "ceo@company.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 11,
+          "end": 26
+        }
+      ],
+      "latency_ms": 31.71,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-064",
+      "query": "Direct deposit to ****1234",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "****1234",
+          "entity_type": "US_BANK_NUMBER",
+          "start": 18,
+          "end": 26
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "****1234",
+          "entity_type": "US_BANK_NUMBER",
+          "start": 18,
+          "end": 26
+        }
+      ],
+      "latency_ms": 32.85,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-065",
+      "query": "Route to account #5678 at Chase Bank",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "account #5678",
+          "entity_type": "US_BANK_NUMBER",
+          "start": 9,
+          "end": 22
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "account #5678",
+          "entity_type": "US_BANK_NUMBER",
+          "start": 9,
+          "end": 22
+        }
+      ],
+      "latency_ms": 41.54,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-066",
+      "query": "Base: $100,000, Bonus: $20,000, Total: $120,000",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "$100,000",
+          "entity_type": "SALARY",
+          "start": 6,
+          "end": 14
+        },
+        {
+          "text": "$20,000",
+          "entity_type": "SALARY",
+          "start": 23,
+          "end": 30
+        },
+        {
+          "text": "$120,000",
+          "entity_type": "SALARY",
+          "start": 39,
+          "end": 47
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "$100,000",
+          "entity_type": "SALARY",
+          "start": 6,
+          "end": 14
+        },
+        {
+          "text": "$20,000",
+          "entity_type": "SALARY",
+          "start": 23,
+          "end": 30
+        },
+        {
+          "text": "$120,000",
+          "entity_type": "SALARY",
+          "start": 39,
+          "end": 47
+        }
+      ],
+      "latency_ms": 110.87,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-067",
+      "query": "Contact Fran\u00e7ois L\u00e9ger at francois.leger@societe.fr",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Fran\u00e7ois L\u00e9ger",
+          "entity_type": "PERSON",
+          "start": 8,
+          "end": 22
+        },
+        {
+          "text": "francois.leger@societe.fr",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 26,
+          "end": 51
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Fran\u00e7ois L\u00e9ger",
+          "entity_type": "PERSON",
+          "start": 8,
+          "end": 22
+        },
+        {
+          "text": "francois.leger@societe.fr",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 26,
+          "end": 51
+        }
+      ],
+      "latency_ms": 33.72,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-068",
+      "query": "Reach S\u00f8ren \u00d8deg\u00e5rd at soren@nordic.no",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "S\u00f8ren \u00d8deg\u00e5rd",
+          "entity_type": "PERSON",
+          "start": 6,
+          "end": 19
+        },
+        {
+          "text": "soren@nordic.no",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 23,
+          "end": 38
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "S\u00f8ren \u00d8deg\u00e5rd",
+          "entity_type": "PERSON",
+          "start": 6,
+          "end": 19
+        },
+        {
+          "text": "soren@nordic.no",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 23,
+          "end": 38
+        }
+      ],
+      "latency_ms": 38.67,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-069",
+      "query": "Office at 123 Main St",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "123 Main St",
+          "entity_type": "LOCATION",
+          "start": 10,
+          "end": 21
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "123 Main St",
+          "entity_type": "LOCATION",
+          "start": 10,
+          "end": 21
+        }
+      ],
+      "latency_ms": 32.43,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-070",
+      "query": "Ship to: 456 Oak Avenue, Suite 100, Chicago, IL 60601",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "456 Oak Avenue, Suite 100, Chicago, IL 60601",
+          "entity_type": "LOCATION",
+          "start": 9,
+          "end": 53
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "456 Oak Avenue, Suite 100, Chicago, IL 60601",
+          "entity_type": "LOCATION",
+          "start": 9,
+          "end": 53
+        }
+      ],
+      "latency_ms": 31.35,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-071",
+      "query": "Update: Mike Chen, mike.chen@corp.com, 555-321-9876, born 05/20/1985",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Mike Chen",
+          "entity_type": "PERSON",
+          "start": 8,
+          "end": 17
+        },
+        {
+          "text": "mike.chen@corp.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 19,
+          "end": 37
+        },
+        {
+          "text": "555-321-9876",
+          "entity_type": "PHONE_NUMBER",
+          "start": 39,
+          "end": 51
+        },
+        {
+          "text": "05/20/1985",
+          "entity_type": "DATE_TIME",
+          "start": 58,
+          "end": 68
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Mike Chen",
+          "entity_type": "PERSON",
+          "start": 8,
+          "end": 17
+        },
+        {
+          "text": "mike.chen@corp.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 19,
+          "end": 37
+        },
+        {
+          "text": "555-321-9876",
+          "entity_type": "PHONE_NUMBER",
+          "start": 39,
+          "end": 51
+        },
+        {
+          "text": "05/20/1985",
+          "entity_type": "DATE_TIME",
+          "start": 58,
+          "end": 68
+        }
+      ],
+      "latency_ms": 43.09,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-072",
+      "query": "Send to Angel Santos at angel.santos@mail.com",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Angel Santos",
+          "entity_type": "PERSON",
+          "start": 8,
+          "end": 20
+        },
+        {
+          "text": "angel.santos@mail.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 24,
+          "end": 45
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Angel Santos",
+          "entity_type": "PERSON",
+          "start": 8,
+          "end": 20
+        },
+        {
+          "text": "angel.santos@mail.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 24,
+          "end": 45
+        }
+      ],
+      "latency_ms": 29.91,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-073",
+      "query": "Check with Art Williams on the design",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Art Williams",
+          "entity_type": "PERSON",
+          "start": 11,
+          "end": 23
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Art Williams",
+          "entity_type": "PERSON",
+          "start": 11,
+          "end": 23
+        }
+      ],
+      "latency_ms": 27.52,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-074",
+      "query": "The building is at 100 Corporate Drive",
+      "detected_entities": [],
+      "expected_entities": [],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 30.49,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-075",
+      "query": "Call the main line at 555-000-0000",
+      "detected_entities": [],
+      "expected_entities": [],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 32.37,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-076",
+      "query": "New employee: Sara Johnson, starting 01/15/2024, salary $72,000",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Sara Johnson",
+          "entity_type": "PERSON",
+          "start": 14,
+          "end": 26
+        },
+        {
+          "text": "01/15/2024",
+          "entity_type": "DATE_TIME",
+          "start": 37,
+          "end": 47
+        },
+        {
+          "text": "$72,000",
+          "entity_type": "SALARY",
+          "start": 56,
+          "end": 63
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Sara Johnson",
+          "entity_type": "PERSON",
+          "start": 14,
+          "end": 26
+        },
+        {
+          "text": "01/15/2024",
+          "entity_type": "DATE_TIME",
+          "start": 37,
+          "end": 47
+        },
+        {
+          "text": "$72,000",
+          "entity_type": "SALARY",
+          "start": 56,
+          "end": 63
+        }
+      ],
+      "latency_ms": 28.37,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-077",
+      "query": "401k enrollment for Chris Park, SSN 444-55-6666",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Chris Park",
+          "entity_type": "PERSON",
+          "start": 20,
+          "end": 30
+        },
+        {
+          "text": "444-55-6666",
+          "entity_type": "US_SSN",
+          "start": 36,
+          "end": 47
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Chris Park",
+          "entity_type": "PERSON",
+          "start": 20,
+          "end": 30
+        },
+        {
+          "text": "444-55-6666",
+          "entity_type": "US_SSN",
+          "start": 36,
+          "end": 47
+        }
+      ],
+      "latency_ms": 32.73,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-078",
+      "query": "Exit interview scheduled for Amy Liu",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Amy Liu",
+          "entity_type": "PERSON",
+          "start": 29,
+          "end": 36
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Amy Liu",
+          "entity_type": "PERSON",
+          "start": 29,
+          "end": 36
+        }
+      ],
+      "latency_ms": 31.33,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-079",
+      "query": "Reference check for Daniel Kim",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Daniel Kim",
+          "entity_type": "PERSON",
+          "start": 20,
+          "end": 30
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Daniel Kim",
+          "entity_type": "PERSON",
+          "start": 20,
+          "end": 30
+        }
+      ],
+      "latency_ms": 35.13,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-080",
+      "query": "Hired on the 1st of January, 2020",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "1st of January, 2020",
+          "entity_type": "DATE_TIME",
+          "start": 13,
+          "end": 33
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "1st of January, 2020",
+          "entity_type": "DATE_TIME",
+          "start": 13,
+          "end": 33
+        }
+      ],
+      "latency_ms": 96.83,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-081",
+      "query": "Hourly rate: $45/hr",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "$45",
+          "entity_type": "SALARY",
+          "start": 13,
+          "end": 16
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "$45",
+          "entity_type": "SALARY",
+          "start": 13,
+          "end": 16
+        }
+      ],
+      "latency_ms": 35.58,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-082",
+      "query": "Contractor rate is $150 per hour",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "$150",
+          "entity_type": "SALARY",
+          "start": 19,
+          "end": 23
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "$150",
+          "entity_type": "SALARY",
+          "start": 19,
+          "end": 23
+        }
+      ],
+      "latency_ms": 40.45,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-083",
+      "query": "Emergency contact: Mary Smith (555) 444-3333, relationship: spouse",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Mary Smith",
+          "entity_type": "PERSON",
+          "start": 19,
+          "end": 29
+        },
+        {
+          "text": "(555) 444-3333",
+          "entity_type": "PHONE_NUMBER",
+          "start": 30,
+          "end": 44
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Mary Smith",
+          "entity_type": "PERSON",
+          "start": 19,
+          "end": 29
+        },
+        {
+          "text": "(555) 444-3333",
+          "entity_type": "PHONE_NUMBER",
+          "start": 30,
+          "end": 44
+        }
+      ],
+      "latency_ms": 32.38,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-084",
+      "query": "Payroll: Alex Turner, acct ****5555, $3,200 biweekly",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Alex Turner",
+          "entity_type": "PERSON",
+          "start": 9,
+          "end": 20
+        },
+        {
+          "text": "****5555",
+          "entity_type": "US_BANK_NUMBER",
+          "start": 27,
+          "end": 35
+        },
+        {
+          "text": "$3,200",
+          "entity_type": "SALARY",
+          "start": 37,
+          "end": 43
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Alex Turner",
+          "entity_type": "PERSON",
+          "start": 9,
+          "end": 20
+        },
+        {
+          "text": "****5555",
+          "entity_type": "US_BANK_NUMBER",
+          "start": 27,
+          "end": 35
+        },
+        {
+          "text": "$3,200",
+          "entity_type": "SALARY",
+          "start": 37,
+          "end": 43
+        }
+      ],
+      "latency_ms": 34.15,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-085",
+      "query": "Schedule the quarterly review meeting",
+      "detected_entities": [],
+      "expected_entities": [],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 31.34,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-086",
+      "query": "Update the employee handbook",
+      "detected_entities": [],
+      "expected_entities": [],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 34.29,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-087",
+      "query": "Forward to Bob Hope in accounting",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Bob Hope",
+          "entity_type": "PERSON",
+          "start": 11,
+          "end": 19
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Bob Hope",
+          "entity_type": "PERSON",
+          "start": 11,
+          "end": 19
+        }
+      ],
+      "latency_ms": 323.11,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-088",
+      "query": "Contact Grace Kelly about the presentation",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Grace Kelly",
+          "entity_type": "PERSON",
+          "start": 8,
+          "end": 19
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Grace Kelly",
+          "entity_type": "PERSON",
+          "start": 8,
+          "end": 19
+        }
+      ],
+      "latency_ms": 40.85,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-089",
+      "query": "Send to kimlee@company.kr for Kim Lee",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "kimlee@company.kr",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 8,
+          "end": 25
+        },
+        {
+          "text": "Kim Lee",
+          "entity_type": "PERSON",
+          "start": 30,
+          "end": 37
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "kimlee@company.kr",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 8,
+          "end": 25
+        },
+        {
+          "text": "Kim Lee",
+          "entity_type": "PERSON",
+          "start": 30,
+          "end": 37
+        }
+      ],
+      "latency_ms": 31.24,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-090",
+      "query": "Contact Chen Wei at chen.wei@company.cn",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Chen Wei",
+          "entity_type": "PERSON",
+          "start": 8,
+          "end": 16
+        },
+        {
+          "text": "chen.wei@company.cn",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 20,
+          "end": 39
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Chen Wei",
+          "entity_type": "PERSON",
+          "start": 8,
+          "end": 16
+        },
+        {
+          "text": "chen.wei@company.cn",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 20,
+          "end": 39
+        }
+      ],
+      "latency_ms": 35.32,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-091",
+      "query": "Wire transfer to IBAN DE89370400440532013000 for supplier payment",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "DE89370400440532013000",
+          "entity_type": "IBAN_CODE",
+          "start": 22,
+          "end": 44
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "DE89370400440532013000",
+          "entity_type": "IBAN_CODE",
+          "start": 22,
+          "end": 44
+        }
+      ],
+      "latency_ms": 29.87,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-092",
+      "query": "Stock options: 1000 shares at $25 strike price",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "$25",
+          "entity_type": "SALARY",
+          "start": 30,
+          "end": 33
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "$25",
+          "entity_type": "SALARY",
+          "start": 30,
+          "end": 33
+        }
+      ],
+      "latency_ms": 34.44,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-093",
+      "query": "Remote employee in Tokyo, Japan",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Tokyo, Japan",
+          "entity_type": "LOCATION",
+          "start": 19,
+          "end": 31
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Tokyo, Japan",
+          "entity_type": "LOCATION",
+          "start": 19,
+          "end": 31
+        }
+      ],
+      "latency_ms": 29.06,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-094",
+      "query": "Working from home in San Francisco, CA",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "San Francisco, CA",
+          "entity_type": "LOCATION",
+          "start": 21,
+          "end": 38
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "San Francisco, CA",
+          "entity_type": "LOCATION",
+          "start": 21,
+          "end": 38
+        }
+      ],
+      "latency_ms": 30.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-095",
+      "query": "Transfer $50,000 from account ****1111 to ****2222 for Emma Wilson",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "$50,000",
+          "entity_type": "SALARY",
+          "start": 9,
+          "end": 16
+        },
+        {
+          "text": "****1111",
+          "entity_type": "US_BANK_NUMBER",
+          "start": 30,
+          "end": 38
+        },
+        {
+          "text": "****2222",
+          "entity_type": "US_BANK_NUMBER",
+          "start": 42,
+          "end": 50
+        },
+        {
+          "text": "Emma Wilson",
+          "entity_type": "PERSON",
+          "start": 55,
+          "end": 66
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "$50,000",
+          "entity_type": "SALARY",
+          "start": 9,
+          "end": 16
+        },
+        {
+          "text": "****1111",
+          "entity_type": "US_BANK_NUMBER",
+          "start": 30,
+          "end": 38
+        },
+        {
+          "text": "****2222",
+          "entity_type": "US_BANK_NUMBER",
+          "start": 42,
+          "end": 50
+        },
+        {
+          "text": "Emma Wilson",
+          "entity_type": "PERSON",
+          "start": 55,
+          "end": 66
+        }
+      ],
+      "latency_ms": 28.35,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-096",
+      "query": "Review Q4 financial projections",
+      "detected_entities": [],
+      "expected_entities": [],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 27.44,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-097",
+      "query": "Prepare the annual budget report",
+      "detected_entities": [],
+      "expected_entities": [],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 39.22,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-098",
+      "query": "Badge access for Ryan O'Brien starting 2024-02-01",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Ryan O'Brien",
+          "entity_type": "PERSON",
+          "start": 17,
+          "end": 29
+        },
+        {
+          "text": "2024-02-01",
+          "entity_type": "DATE_TIME",
+          "start": 39,
+          "end": 49
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Ryan O'Brien",
+          "entity_type": "PERSON",
+          "start": 17,
+          "end": 29
+        },
+        {
+          "text": "2024-02-01",
+          "entity_type": "DATE_TIME",
+          "start": 39,
+          "end": 49
+        }
+      ],
+      "latency_ms": 30.75,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-099",
+      "query": "Email test@test.com is for testing only",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "test@test.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 6,
+          "end": 19
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "test@test.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 6,
+          "end": 19
+        }
+      ],
+      "latency_ms": 31.29,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "case_id": "GS-100",
+      "query": "Full profile: Dr. James Wilson III, PhD, james.wilson@university.edu, (555) 777-8888, born 12/25/1975, SSN 555-66-7777, earning $185,000 annually at 789 Academic Way, Boston, MA 02115",
+      "detected_entities": [],
+      "expected_entities": [
+        {
+          "text": "Dr. James Wilson III, PhD",
+          "entity_type": "PERSON",
+          "start": 14,
+          "end": 39
+        },
+        {
+          "text": "james.wilson@university.edu",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 41,
+          "end": 68
+        },
+        {
+          "text": "(555) 777-8888",
+          "entity_type": "PHONE_NUMBER",
+          "start": 70,
+          "end": 84
+        },
+        {
+          "text": "12/25/1975",
+          "entity_type": "DATE_TIME",
+          "start": 91,
+          "end": 101
+        },
+        {
+          "text": "555-66-7777",
+          "entity_type": "US_SSN",
+          "start": 107,
+          "end": 118
+        },
+        {
+          "text": "$185,000",
+          "entity_type": "SALARY",
+          "start": 128,
+          "end": 136
+        },
+        {
+          "text": "789 Academic Way, Boston, MA 02115",
+          "entity_type": "LOCATION",
+          "start": 149,
+          "end": 183
+        }
+      ],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "text": "Dr. James Wilson III, PhD",
+          "entity_type": "PERSON",
+          "start": 14,
+          "end": 39
+        },
+        {
+          "text": "james.wilson@university.edu",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 41,
+          "end": 68
+        },
+        {
+          "text": "(555) 777-8888",
+          "entity_type": "PHONE_NUMBER",
+          "start": 70,
+          "end": 84
+        },
+        {
+          "text": "12/25/1975",
+          "entity_type": "DATE_TIME",
+          "start": 91,
+          "end": 101
+        },
+        {
+          "text": "555-66-7777",
+          "entity_type": "US_SSN",
+          "start": 107,
+          "end": 118
+        },
+        {
+          "text": "$185,000",
+          "entity_type": "SALARY",
+          "start": 128,
+          "end": 136
+        },
+        {
+          "text": "789 Academic Way, Boston, MA 02115",
+          "entity_type": "LOCATION",
+          "start": 149,
+          "end": 183
+        }
+      ],
+      "latency_ms": 32.2,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "passed": false,
+      "error": "API error: 401 - {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    }
+  ]
+}

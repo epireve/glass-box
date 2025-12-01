@@ -1,0 +1,1053 @@
+{
+  "description": "Golden Set v2 - PII detection benchmark with explicit entity positions",
+  "version": "2.0",
+  "total_cases": 100,
+  "categories": {
+    "compensation": 15,
+    "contact": 12,
+    "payroll": 10,
+    "onboarding": 8,
+    "negative": 15,
+    "edge_case": 20,
+    "international": 10,
+    "comprehensive": 10
+  },
+  "test_cases": [
+    {
+      "id": "GS-001",
+      "category": "compensation",
+      "difficulty": "easy",
+      "query": "Draft an email to Alice Chen about her salary increase from $145,000 to $165,000",
+      "expected_entities": [
+        {"text": "Alice Chen", "entity_type": "PERSON", "start": 20, "end": 30},
+        {"text": "$145,000", "entity_type": "SALARY", "start": 63, "end": 71},
+        {"text": "$165,000", "entity_type": "SALARY", "start": 75, "end": 83}
+      ],
+      "description": "Salary discussion with named employee - two salary values"
+    },
+    {
+      "id": "GS-002",
+      "category": "comparison",
+      "difficulty": "medium",
+      "query": "Whose salary is higher, Alice or David?",
+      "expected_entities": [
+        {"text": "Alice", "entity_type": "PERSON", "start": 24, "end": 29},
+        {"text": "David", "entity_type": "PERSON", "start": 33, "end": 38}
+      ],
+      "requires_rag": true,
+      "description": "RAG comparison query - names only"
+    },
+    {
+      "id": "GS-003",
+      "category": "payroll",
+      "difficulty": "hard",
+      "query": "Update direct deposit for employee with SSN 123-45-6789 to account ****4521",
+      "expected_entities": [
+        {"text": "123-45-6789", "entity_type": "US_SSN", "start": 44, "end": 55},
+        {"text": "****4521", "entity_type": "US_BANK_NUMBER", "start": 67, "end": 75}
+      ],
+      "description": "Sensitive payroll update with SSN and bank account"
+    },
+    {
+      "id": "GS-004",
+      "category": "contact",
+      "difficulty": "easy",
+      "query": "Send meeting invite to maria.garcia@acmecorp.com and call (555) 345-6789 to confirm",
+      "expected_entities": [
+        {"text": "maria.garcia@acmecorp.com", "entity_type": "EMAIL_ADDRESS", "start": 22, "end": 47},
+        {"text": "(555) 345-6789", "entity_type": "PHONE_NUMBER", "start": 57, "end": 71}
+      ],
+      "description": "Contact information handling - email and phone"
+    },
+    {
+      "id": "GS-005",
+      "category": "onboarding",
+      "difficulty": "hard",
+      "query": "Process new hire paperwork for Raj Patel, born April 18, 1988, SSN 345-67-8901",
+      "expected_entities": [
+        {"text": "Raj Patel", "entity_type": "PERSON", "start": 31, "end": 40},
+        {"text": "April 18, 1988", "entity_type": "DATE_TIME", "start": 47, "end": 61},
+        {"text": "345-67-8901", "entity_type": "US_SSN", "start": 67, "end": 78}
+      ],
+      "description": "New employee onboarding with multiple PII types"
+    },
+    {
+      "id": "GS-006",
+      "category": "compensation",
+      "difficulty": "easy",
+      "query": "Calculate bonus for Jennifer Williams earning $250,000 with 15% target",
+      "expected_entities": [
+        {"text": "Jennifer Williams", "entity_type": "PERSON", "start": 20, "end": 37},
+        {"text": "$250,000", "entity_type": "SALARY", "start": 46, "end": 54}
+      ],
+      "description": "Executive bonus calculation"
+    },
+    {
+      "id": "GS-007",
+      "category": "location",
+      "difficulty": "medium",
+      "query": "Send tax documents to Michael Johnson at 1100 Main Street, Austin, TX 78701",
+      "expected_entities": [
+        {"text": "Michael Johnson", "entity_type": "PERSON", "start": 22, "end": 37},
+        {"text": "1100 Main Street, Austin, TX 78701", "entity_type": "LOCATION", "start": 41, "end": 75}
+      ],
+      "description": "Address handling with full street address"
+    },
+    {
+      "id": "GS-008",
+      "category": "negative",
+      "difficulty": "easy",
+      "query": "Compare the salaries of all employees in the Engineering department",
+      "expected_entities": [],
+      "requires_rag": true,
+      "description": "No explicit PII in query - department reference only"
+    },
+    {
+      "id": "GS-009",
+      "category": "benefits",
+      "difficulty": "medium",
+      "query": "Enroll Yuki Tanaka in health insurance, DOB August 14, 1992",
+      "expected_entities": [
+        {"text": "Yuki Tanaka", "entity_type": "PERSON", "start": 7, "end": 18},
+        {"text": "August 14, 1992", "entity_type": "DATE_TIME", "start": 44, "end": 59}
+      ],
+      "description": "Benefits enrollment with DOB"
+    },
+    {
+      "id": "GS-010",
+      "category": "payroll",
+      "difficulty": "medium",
+      "query": "Set up direct deposit for Sarah Thompson to account ****7890",
+      "expected_entities": [
+        {"text": "Sarah Thompson", "entity_type": "PERSON", "start": 26, "end": 40},
+        {"text": "****7890", "entity_type": "US_BANK_NUMBER", "start": 52, "end": 60}
+      ],
+      "description": "Banking information with person name"
+    },
+    {
+      "id": "GS-011",
+      "category": "contact",
+      "difficulty": "hard",
+      "query": "Contact ahmed.hassan@acmecorp.com at (555) 901-2345",
+      "expected_entities": [
+        {"text": "ahmed.hassan@acmecorp.com", "entity_type": "EMAIL_ADDRESS", "start": 8, "end": 33},
+        {"text": "(555) 901-2345", "entity_type": "PHONE_NUMBER", "start": 37, "end": 51}
+      ],
+      "description": "Multiple contact methods"
+    },
+    {
+      "id": "GS-012",
+      "category": "negative",
+      "difficulty": "easy",
+      "query": "Who are the top 3 highest paid employees?",
+      "expected_entities": [],
+      "requires_rag": true,
+      "description": "Top earners query - no PII in input"
+    },
+    {
+      "id": "GS-013",
+      "category": "termination",
+      "difficulty": "hard",
+      "query": "Process final paycheck for Emily Rodriguez, SSN 901-23-4567, at $75,000 annual",
+      "expected_entities": [
+        {"text": "Emily Rodriguez", "entity_type": "PERSON", "start": 28, "end": 43},
+        {"text": "901-23-4567", "entity_type": "US_SSN", "start": 49, "end": 60},
+        {"text": "$75,000", "entity_type": "SALARY", "start": 65, "end": 72}
+      ],
+      "description": "Termination processing with SSN and salary"
+    },
+    {
+      "id": "GS-014",
+      "category": "promotion",
+      "difficulty": "easy",
+      "query": "Prepare promotion letter for James Kim with new salary of $175,000",
+      "expected_entities": [
+        {"text": "James Kim", "entity_type": "PERSON", "start": 28, "end": 37},
+        {"text": "$175,000", "entity_type": "SALARY", "start": 57, "end": 65}
+      ],
+      "description": "Promotion documentation"
+    },
+    {
+      "id": "GS-015",
+      "category": "verification",
+      "difficulty": "medium",
+      "query": "Verify employment for Priya Sharma at (555) 234-5679 or priya.sharma@acmecorp.com",
+      "expected_entities": [
+        {"text": "Priya Sharma", "entity_type": "PERSON", "start": 22, "end": 34},
+        {"text": "(555) 234-5679", "entity_type": "PHONE_NUMBER", "start": 38, "end": 52},
+        {"text": "priya.sharma@acmecorp.com", "entity_type": "EMAIL_ADDRESS", "start": 56, "end": 81}
+      ],
+      "description": "Employment verification with multiple contact methods"
+    },
+    {
+      "id": "GS-016",
+      "category": "comparison",
+      "difficulty": "medium",
+      "query": "What is the salary difference between Robert Taylor and Marcus Brown?",
+      "expected_entities": [
+        {"text": "Robert Taylor", "entity_type": "PERSON", "start": 38, "end": 51},
+        {"text": "Marcus Brown", "entity_type": "PERSON", "start": 56, "end": 68}
+      ],
+      "requires_rag": true,
+      "description": "Specific salary comparison between two employees"
+    },
+    {
+      "id": "GS-017",
+      "category": "relocation",
+      "difficulty": "hard",
+      "query": "Process relocation for Lisa Nguyen to 500 East 7th Street, Austin, TX",
+      "expected_entities": [
+        {"text": "Lisa Nguyen", "entity_type": "PERSON", "start": 23, "end": 34},
+        {"text": "500 East 7th Street, Austin, TX", "entity_type": "LOCATION", "start": 38, "end": 69}
+      ],
+      "description": "Relocation with full address"
+    },
+    {
+      "id": "GS-018",
+      "category": "payroll",
+      "difficulty": "hard",
+      "query": "Issue emergency payment of $5,000 to account ****4567 for Marcus Brown",
+      "expected_entities": [
+        {"text": "$5,000", "entity_type": "SALARY", "start": 27, "end": 33},
+        {"text": "****4567", "entity_type": "US_BANK_NUMBER", "start": 45, "end": 53},
+        {"text": "Marcus Brown", "entity_type": "PERSON", "start": 58, "end": 70}
+      ],
+      "description": "Emergency payment with masked account number"
+    },
+    {
+      "id": "GS-019",
+      "category": "contact",
+      "difficulty": "easy",
+      "query": "Call David Okonkwo at (555) 876-5432 regarding the budget meeting",
+      "expected_entities": [
+        {"text": "David Okonkwo", "entity_type": "PERSON", "start": 5, "end": 18},
+        {"text": "(555) 876-5432", "entity_type": "PHONE_NUMBER", "start": 22, "end": 36}
+      ],
+      "description": "Phone contact with person name"
+    },
+    {
+      "id": "GS-020",
+      "category": "comprehensive",
+      "difficulty": "hard",
+      "query": "New hire: John Smith, SSN 111-22-3333, salary $95,000, born 01/15/1990, email john.smith@email.com, phone (555) 999-8888",
+      "expected_entities": [
+        {"text": "John Smith", "entity_type": "PERSON", "start": 10, "end": 20},
+        {"text": "111-22-3333", "entity_type": "US_SSN", "start": 26, "end": 37},
+        {"text": "$95,000", "entity_type": "SALARY", "start": 46, "end": 53},
+        {"text": "01/15/1990", "entity_type": "DATE_TIME", "start": 60, "end": 70},
+        {"text": "john.smith@email.com", "entity_type": "EMAIL_ADDRESS", "start": 78, "end": 98},
+        {"text": "(555) 999-8888", "entity_type": "PHONE_NUMBER", "start": 106, "end": 120}
+      ],
+      "description": "Comprehensive PII test - all entity types"
+    },
+    {
+      "id": "GS-021",
+      "category": "negative",
+      "difficulty": "easy",
+      "query": "What is the company vacation policy?",
+      "expected_entities": [],
+      "description": "Safe query - no PII expected"
+    },
+    {
+      "id": "GS-022",
+      "category": "negative",
+      "difficulty": "easy",
+      "query": "How do I submit an expense report?",
+      "expected_entities": [],
+      "description": "Safe query - procedural question"
+    },
+    {
+      "id": "GS-023",
+      "category": "negative",
+      "difficulty": "medium",
+      "query": "What are the requirements for the senior engineer role?",
+      "expected_entities": [],
+      "description": "Safe query - job requirements"
+    },
+    {
+      "id": "GS-024",
+      "category": "edge_case",
+      "difficulty": "hard",
+      "query": "Contact Will Smith in sales about the project",
+      "expected_entities": [
+        {"text": "Will Smith", "entity_type": "PERSON", "start": 8, "end": 18}
+      ],
+      "description": "Edge case - name with common word 'Will'"
+    },
+    {
+      "id": "GS-025",
+      "category": "edge_case",
+      "difficulty": "hard",
+      "query": "Schedule meeting with April May from marketing",
+      "expected_entities": [
+        {"text": "April May", "entity_type": "PERSON", "start": 22, "end": 31}
+      ],
+      "description": "Edge case - person name with month names"
+    },
+    {
+      "id": "GS-026",
+      "category": "credit_card",
+      "difficulty": "hard",
+      "query": "Charge the team lunch to card 4111-1111-1111-1111",
+      "expected_entities": [
+        {"text": "4111-1111-1111-1111", "entity_type": "CREDIT_CARD", "start": 30, "end": 49}
+      ],
+      "description": "Credit card number detection"
+    },
+    {
+      "id": "GS-027",
+      "category": "compensation",
+      "difficulty": "medium",
+      "query": "The new hire will make 95k starting next month",
+      "expected_entities": [
+        {"text": "95k", "entity_type": "SALARY", "start": 23, "end": 26}
+      ],
+      "description": "Salary in k format"
+    },
+    {
+      "id": "GS-028",
+      "category": "mixed",
+      "difficulty": "hard",
+      "query": "Bob's email is bob@company.com and he earns $120,000 per year",
+      "expected_entities": [
+        {"text": "Bob", "entity_type": "PERSON", "start": 0, "end": 3},
+        {"text": "bob@company.com", "entity_type": "EMAIL_ADDRESS", "start": 14, "end": 29},
+        {"text": "$120,000", "entity_type": "SALARY", "start": 44, "end": 52}
+      ],
+      "description": "Mixed PII types in single sentence"
+    },
+    {
+      "id": "GS-029",
+      "category": "payroll",
+      "difficulty": "medium",
+      "query": "Transfer $2,500.50 to account ****9876",
+      "expected_entities": [
+        {"text": "$2,500.50", "entity_type": "SALARY", "start": 9, "end": 18},
+        {"text": "****9876", "entity_type": "US_BANK_NUMBER", "start": 30, "end": 38}
+      ],
+      "description": "Payment with cents and masked account"
+    },
+    {
+      "id": "GS-030",
+      "category": "international",
+      "difficulty": "medium",
+      "query": "Contact Pierre Dubois at pierre.dubois@company.fr",
+      "expected_entities": [
+        {"text": "Pierre Dubois", "entity_type": "PERSON", "start": 8, "end": 21},
+        {"text": "pierre.dubois@company.fr", "entity_type": "EMAIL_ADDRESS", "start": 25, "end": 49}
+      ],
+      "description": "International name and email"
+    },
+    {
+      "id": "GS-031",
+      "category": "edge_case",
+      "difficulty": "hard",
+      "query": "Contact Mark Friday about the Monday meeting",
+      "expected_entities": [
+        {"text": "Mark Friday", "entity_type": "PERSON", "start": 8, "end": 19}
+      ],
+      "description": "Name with day of week"
+    },
+    {
+      "id": "GS-032",
+      "category": "edge_case",
+      "difficulty": "hard",
+      "query": "Ask Summer Winter about the fall schedule",
+      "expected_entities": [
+        {"text": "Summer Winter", "entity_type": "PERSON", "start": 4, "end": 17}
+      ],
+      "description": "Name with season names"
+    },
+    {
+      "id": "GS-033",
+      "category": "compensation",
+      "difficulty": "easy",
+      "query": "Approve raise for Tom Anderson from $80,000 to $90,000",
+      "expected_entities": [
+        {"text": "Tom Anderson", "entity_type": "PERSON", "start": 18, "end": 30},
+        {"text": "$80,000", "entity_type": "SALARY", "start": 36, "end": 43},
+        {"text": "$90,000", "entity_type": "SALARY", "start": 47, "end": 54}
+      ],
+      "description": "Salary range with person"
+    },
+    {
+      "id": "GS-034",
+      "category": "date_formats",
+      "difficulty": "medium",
+      "query": "Meeting scheduled for 2024-03-15 with the team",
+      "expected_entities": [
+        {"text": "2024-03-15", "entity_type": "DATE_TIME", "start": 22, "end": 32}
+      ],
+      "description": "ISO date format"
+    },
+    {
+      "id": "GS-035",
+      "category": "date_formats",
+      "difficulty": "medium",
+      "query": "Born on 15th March 1990",
+      "expected_entities": [
+        {"text": "15th March 1990", "entity_type": "DATE_TIME", "start": 8, "end": 23}
+      ],
+      "description": "British date format with ordinal"
+    },
+    {
+      "id": "GS-036",
+      "category": "date_formats",
+      "difficulty": "medium",
+      "query": "Start date: March 15, 1990",
+      "expected_entities": [
+        {"text": "March 15, 1990", "entity_type": "DATE_TIME", "start": 12, "end": 26}
+      ],
+      "description": "US date format with month name"
+    },
+    {
+      "id": "GS-037",
+      "category": "negative",
+      "difficulty": "easy",
+      "query": "What time does the office open?",
+      "expected_entities": [],
+      "description": "Safe query - time question"
+    },
+    {
+      "id": "GS-038",
+      "category": "negative",
+      "difficulty": "easy",
+      "query": "Where is the nearest conference room?",
+      "expected_entities": [],
+      "description": "Safe query - location question (not PII)"
+    },
+    {
+      "id": "GS-039",
+      "category": "negative",
+      "difficulty": "medium",
+      "query": "How many employees work in the Sales department?",
+      "expected_entities": [],
+      "description": "Safe query - aggregate question"
+    },
+    {
+      "id": "GS-040",
+      "category": "international",
+      "difficulty": "medium",
+      "query": "Email Hans Müller at hans.mueller@firma.de",
+      "expected_entities": [
+        {"text": "Hans Müller", "entity_type": "PERSON", "start": 6, "end": 17},
+        {"text": "hans.mueller@firma.de", "entity_type": "EMAIL_ADDRESS", "start": 21, "end": 42}
+      ],
+      "description": "German name with umlaut"
+    },
+    {
+      "id": "GS-041",
+      "category": "international",
+      "difficulty": "medium",
+      "query": "Contact María García at maria.garcia@empresa.es",
+      "expected_entities": [
+        {"text": "María García", "entity_type": "PERSON", "start": 8, "end": 20},
+        {"text": "maria.garcia@empresa.es", "entity_type": "EMAIL_ADDRESS", "start": 24, "end": 47}
+      ],
+      "description": "Spanish name with accent"
+    },
+    {
+      "id": "GS-042",
+      "category": "international",
+      "difficulty": "hard",
+      "query": "Reach out to 田中太郎 at tanaka@company.jp",
+      "expected_entities": [
+        {"text": "田中太郎", "entity_type": "PERSON", "start": 13, "end": 17},
+        {"text": "tanaka@company.jp", "entity_type": "EMAIL_ADDRESS", "start": 21, "end": 38}
+      ],
+      "description": "Japanese name with kanji"
+    },
+    {
+      "id": "GS-043",
+      "category": "phone_formats",
+      "difficulty": "easy",
+      "query": "Call 555-123-4567 for support",
+      "expected_entities": [
+        {"text": "555-123-4567", "entity_type": "PHONE_NUMBER", "start": 5, "end": 17}
+      ],
+      "description": "Phone without parentheses"
+    },
+    {
+      "id": "GS-044",
+      "category": "phone_formats",
+      "difficulty": "medium",
+      "query": "Reach us at +1 (555) 123-4567",
+      "expected_entities": [
+        {"text": "+1 (555) 123-4567", "entity_type": "PHONE_NUMBER", "start": 12, "end": 29}
+      ],
+      "description": "Phone with country code"
+    },
+    {
+      "id": "GS-045",
+      "category": "phone_formats",
+      "difficulty": "medium",
+      "query": "Fax number: 555.123.4567",
+      "expected_entities": [
+        {"text": "555.123.4567", "entity_type": "PHONE_NUMBER", "start": 12, "end": 24}
+      ],
+      "description": "Phone with dots"
+    },
+    {
+      "id": "GS-046",
+      "category": "compensation",
+      "difficulty": "easy",
+      "query": "Current salary: $150K per year",
+      "expected_entities": [
+        {"text": "$150K", "entity_type": "SALARY", "start": 16, "end": 21}
+      ],
+      "description": "Salary with uppercase K"
+    },
+    {
+      "id": "GS-047",
+      "category": "compensation",
+      "difficulty": "medium",
+      "query": "Offering $85,000 - $95,000 depending on experience",
+      "expected_entities": [
+        {"text": "$85,000", "entity_type": "SALARY", "start": 9, "end": 16},
+        {"text": "$95,000", "entity_type": "SALARY", "start": 19, "end": 26}
+      ],
+      "description": "Salary range"
+    },
+    {
+      "id": "GS-048",
+      "category": "edge_case",
+      "difficulty": "hard",
+      "query": "Contact Christian Church about the event",
+      "expected_entities": [
+        {"text": "Christian Church", "entity_type": "PERSON", "start": 8, "end": 24}
+      ],
+      "description": "Name that looks like organization"
+    },
+    {
+      "id": "GS-049",
+      "category": "edge_case",
+      "difficulty": "hard",
+      "query": "Email bill.gates@company.com about the invoice",
+      "expected_entities": [
+        {"text": "bill.gates@company.com", "entity_type": "EMAIL_ADDRESS", "start": 6, "end": 28}
+      ],
+      "description": "Email with famous name - only email is PII"
+    },
+    {
+      "id": "GS-050",
+      "category": "negative",
+      "difficulty": "medium",
+      "query": "The project budget is $500,000",
+      "expected_entities": [],
+      "description": "Dollar amount that is NOT salary"
+    },
+    {
+      "id": "GS-051",
+      "category": "ssn_formats",
+      "difficulty": "easy",
+      "query": "SSN: 123-45-6789",
+      "expected_entities": [
+        {"text": "123-45-6789", "entity_type": "US_SSN", "start": 5, "end": 16}
+      ],
+      "description": "SSN with label"
+    },
+    {
+      "id": "GS-052",
+      "category": "ssn_formats",
+      "difficulty": "medium",
+      "query": "Social Security Number 987654321",
+      "expected_entities": [
+        {"text": "987654321", "entity_type": "US_SSN", "start": 23, "end": 32}
+      ],
+      "description": "SSN without dashes"
+    },
+    {
+      "id": "GS-053",
+      "category": "credit_card",
+      "difficulty": "medium",
+      "query": "Payment card: 4532015112830366",
+      "expected_entities": [
+        {"text": "4532015112830366", "entity_type": "CREDIT_CARD", "start": 14, "end": 30}
+      ],
+      "description": "Credit card without dashes"
+    },
+    {
+      "id": "GS-054",
+      "category": "credit_card",
+      "difficulty": "medium",
+      "query": "Visa ending in 4242",
+      "expected_entities": [],
+      "description": "Partial card number - should NOT be detected as full card"
+    },
+    {
+      "id": "GS-055",
+      "category": "comprehensive",
+      "difficulty": "hard",
+      "query": "Employee record: Jane Doe, jane.doe@work.com, (555) 111-2222, SSN 222-33-4444, salary $110,000",
+      "expected_entities": [
+        {"text": "Jane Doe", "entity_type": "PERSON", "start": 17, "end": 25},
+        {"text": "jane.doe@work.com", "entity_type": "EMAIL_ADDRESS", "start": 27, "end": 44},
+        {"text": "(555) 111-2222", "entity_type": "PHONE_NUMBER", "start": 46, "end": 60},
+        {"text": "222-33-4444", "entity_type": "US_SSN", "start": 66, "end": 77},
+        {"text": "$110,000", "entity_type": "SALARY", "start": 86, "end": 94}
+      ],
+      "description": "Full employee record with all common PII"
+    },
+    {
+      "id": "GS-056",
+      "category": "onboarding",
+      "difficulty": "medium",
+      "query": "Welcome packet for Kevin Lee starting on Monday",
+      "expected_entities": [
+        {"text": "Kevin Lee", "entity_type": "PERSON", "start": 19, "end": 28}
+      ],
+      "description": "New hire with just name"
+    },
+    {
+      "id": "GS-057",
+      "category": "contact",
+      "difficulty": "easy",
+      "query": "Send to rachel.wong@acme.com",
+      "expected_entities": [
+        {"text": "rachel.wong@acme.com", "entity_type": "EMAIL_ADDRESS", "start": 8, "end": 28}
+      ],
+      "description": "Simple email"
+    },
+    {
+      "id": "GS-058",
+      "category": "contact",
+      "difficulty": "medium",
+      "query": "CC: admin@company.org, support@company.org",
+      "expected_entities": [
+        {"text": "admin@company.org", "entity_type": "EMAIL_ADDRESS", "start": 4, "end": 21},
+        {"text": "support@company.org", "entity_type": "EMAIL_ADDRESS", "start": 23, "end": 42}
+      ],
+      "description": "Multiple emails"
+    },
+    {
+      "id": "GS-059",
+      "category": "negative",
+      "difficulty": "easy",
+      "query": "Please review the attached document",
+      "expected_entities": [],
+      "description": "Generic safe request"
+    },
+    {
+      "id": "GS-060",
+      "category": "negative",
+      "difficulty": "easy",
+      "query": "What are the office hours?",
+      "expected_entities": [],
+      "description": "Simple question"
+    },
+    {
+      "id": "GS-061",
+      "category": "edge_case",
+      "difficulty": "hard",
+      "query": "Meeting with Dr. Smith tomorrow",
+      "expected_entities": [
+        {"text": "Dr. Smith", "entity_type": "PERSON", "start": 13, "end": 22}
+      ],
+      "description": "Name with title"
+    },
+    {
+      "id": "GS-062",
+      "category": "edge_case",
+      "difficulty": "hard",
+      "query": "Contact Mr. John Smith Jr. at extension 5555",
+      "expected_entities": [
+        {"text": "Mr. John Smith Jr.", "entity_type": "PERSON", "start": 8, "end": 26}
+      ],
+      "description": "Full name with title and suffix"
+    },
+    {
+      "id": "GS-063",
+      "category": "edge_case",
+      "difficulty": "medium",
+      "query": "Email from ceo@company.com regarding strategy",
+      "expected_entities": [
+        {"text": "ceo@company.com", "entity_type": "EMAIL_ADDRESS", "start": 11, "end": 26}
+      ],
+      "description": "Role-based email"
+    },
+    {
+      "id": "GS-064",
+      "category": "payroll",
+      "difficulty": "easy",
+      "query": "Direct deposit to ****1234",
+      "expected_entities": [
+        {"text": "****1234", "entity_type": "US_BANK_NUMBER", "start": 18, "end": 26}
+      ],
+      "description": "Just masked account number"
+    },
+    {
+      "id": "GS-065",
+      "category": "payroll",
+      "difficulty": "medium",
+      "query": "Route to account #5678 at Chase Bank",
+      "expected_entities": [
+        {"text": "account #5678", "entity_type": "US_BANK_NUMBER", "start": 9, "end": 22}
+      ],
+      "description": "Account with hash symbol"
+    },
+    {
+      "id": "GS-066",
+      "category": "compensation",
+      "difficulty": "medium",
+      "query": "Base: $100,000, Bonus: $20,000, Total: $120,000",
+      "expected_entities": [
+        {"text": "$100,000", "entity_type": "SALARY", "start": 6, "end": 14},
+        {"text": "$20,000", "entity_type": "SALARY", "start": 23, "end": 30},
+        {"text": "$120,000", "entity_type": "SALARY", "start": 39, "end": 47}
+      ],
+      "description": "Multiple salary components"
+    },
+    {
+      "id": "GS-067",
+      "category": "international",
+      "difficulty": "hard",
+      "query": "Contact François Léger at francois.leger@societe.fr",
+      "expected_entities": [
+        {"text": "François Léger", "entity_type": "PERSON", "start": 8, "end": 22},
+        {"text": "francois.leger@societe.fr", "entity_type": "EMAIL_ADDRESS", "start": 26, "end": 51}
+      ],
+      "description": "French name with accents"
+    },
+    {
+      "id": "GS-068",
+      "category": "international",
+      "difficulty": "hard",
+      "query": "Reach Søren Ødegård at soren@nordic.no",
+      "expected_entities": [
+        {"text": "Søren Ødegård", "entity_type": "PERSON", "start": 6, "end": 19},
+        {"text": "soren@nordic.no", "entity_type": "EMAIL_ADDRESS", "start": 23, "end": 38}
+      ],
+      "description": "Nordic name with special characters"
+    },
+    {
+      "id": "GS-069",
+      "category": "location",
+      "difficulty": "easy",
+      "query": "Office at 123 Main St",
+      "expected_entities": [
+        {"text": "123 Main St", "entity_type": "LOCATION", "start": 10, "end": 21}
+      ],
+      "description": "Short address"
+    },
+    {
+      "id": "GS-070",
+      "category": "location",
+      "difficulty": "medium",
+      "query": "Ship to: 456 Oak Avenue, Suite 100, Chicago, IL 60601",
+      "expected_entities": [
+        {"text": "456 Oak Avenue, Suite 100, Chicago, IL 60601", "entity_type": "LOCATION", "start": 9, "end": 53}
+      ],
+      "description": "Full address with suite"
+    },
+    {
+      "id": "GS-071",
+      "category": "comprehensive",
+      "difficulty": "hard",
+      "query": "Update: Mike Chen, mike.chen@corp.com, 555-321-9876, born 05/20/1985",
+      "expected_entities": [
+        {"text": "Mike Chen", "entity_type": "PERSON", "start": 8, "end": 17},
+        {"text": "mike.chen@corp.com", "entity_type": "EMAIL_ADDRESS", "start": 19, "end": 37},
+        {"text": "555-321-9876", "entity_type": "PHONE_NUMBER", "start": 39, "end": 51},
+        {"text": "05/20/1985", "entity_type": "DATE_TIME", "start": 58, "end": 68}
+      ],
+      "description": "Multiple PII types condensed"
+    },
+    {
+      "id": "GS-072",
+      "category": "edge_case",
+      "difficulty": "hard",
+      "query": "Send to Angel Santos at angel.santos@mail.com",
+      "expected_entities": [
+        {"text": "Angel Santos", "entity_type": "PERSON", "start": 8, "end": 20},
+        {"text": "angel.santos@mail.com", "entity_type": "EMAIL_ADDRESS", "start": 24, "end": 45}
+      ],
+      "description": "Name that could be common word"
+    },
+    {
+      "id": "GS-073",
+      "category": "edge_case",
+      "difficulty": "medium",
+      "query": "Check with Art Williams on the design",
+      "expected_entities": [
+        {"text": "Art Williams", "entity_type": "PERSON", "start": 11, "end": 23}
+      ],
+      "description": "First name is common word"
+    },
+    {
+      "id": "GS-074",
+      "category": "negative",
+      "difficulty": "medium",
+      "query": "The building is at 100 Corporate Drive",
+      "expected_entities": [],
+      "description": "Office address - not personal PII"
+    },
+    {
+      "id": "GS-075",
+      "category": "negative",
+      "difficulty": "medium",
+      "query": "Call the main line at 555-000-0000",
+      "expected_entities": [],
+      "description": "Generic company phone - not personal"
+    },
+    {
+      "id": "GS-076",
+      "category": "onboarding",
+      "difficulty": "hard",
+      "query": "New employee: Sara Johnson, starting 01/15/2024, salary $72,000",
+      "expected_entities": [
+        {"text": "Sara Johnson", "entity_type": "PERSON", "start": 14, "end": 26},
+        {"text": "01/15/2024", "entity_type": "DATE_TIME", "start": 37, "end": 47},
+        {"text": "$72,000", "entity_type": "SALARY", "start": 56, "end": 63}
+      ],
+      "description": "New hire with start date and salary"
+    },
+    {
+      "id": "GS-077",
+      "category": "benefits",
+      "difficulty": "medium",
+      "query": "401k enrollment for Chris Park, SSN 444-55-6666",
+      "expected_entities": [
+        {"text": "Chris Park", "entity_type": "PERSON", "start": 20, "end": 30},
+        {"text": "444-55-6666", "entity_type": "US_SSN", "start": 36, "end": 47}
+      ],
+      "description": "Benefits with SSN"
+    },
+    {
+      "id": "GS-078",
+      "category": "termination",
+      "difficulty": "medium",
+      "query": "Exit interview scheduled for Amy Liu",
+      "expected_entities": [
+        {"text": "Amy Liu", "entity_type": "PERSON", "start": 29, "end": 36}
+      ],
+      "description": "Termination context"
+    },
+    {
+      "id": "GS-079",
+      "category": "verification",
+      "difficulty": "easy",
+      "query": "Reference check for Daniel Kim",
+      "expected_entities": [
+        {"text": "Daniel Kim", "entity_type": "PERSON", "start": 20, "end": 30}
+      ],
+      "description": "Reference check"
+    },
+    {
+      "id": "GS-080",
+      "category": "date_formats",
+      "difficulty": "hard",
+      "query": "Hired on the 1st of January, 2020",
+      "expected_entities": [
+        {"text": "1st of January, 2020", "entity_type": "DATE_TIME", "start": 13, "end": 33}
+      ],
+      "description": "Verbose date format"
+    },
+    {
+      "id": "GS-081",
+      "category": "compensation",
+      "difficulty": "easy",
+      "query": "Hourly rate: $45/hr",
+      "expected_entities": [
+        {"text": "$45", "entity_type": "SALARY", "start": 13, "end": 16}
+      ],
+      "description": "Hourly wage"
+    },
+    {
+      "id": "GS-082",
+      "category": "compensation",
+      "difficulty": "medium",
+      "query": "Contractor rate is $150 per hour",
+      "expected_entities": [
+        {"text": "$150", "entity_type": "SALARY", "start": 19, "end": 23}
+      ],
+      "description": "Contractor hourly rate"
+    },
+    {
+      "id": "GS-083",
+      "category": "contact",
+      "difficulty": "hard",
+      "query": "Emergency contact: Mary Smith (555) 444-3333, relationship: spouse",
+      "expected_entities": [
+        {"text": "Mary Smith", "entity_type": "PERSON", "start": 19, "end": 29},
+        {"text": "(555) 444-3333", "entity_type": "PHONE_NUMBER", "start": 30, "end": 44}
+      ],
+      "description": "Emergency contact info"
+    },
+    {
+      "id": "GS-084",
+      "category": "comprehensive",
+      "difficulty": "hard",
+      "query": "Payroll: Alex Turner, acct ****5555, $3,200 biweekly",
+      "expected_entities": [
+        {"text": "Alex Turner", "entity_type": "PERSON", "start": 9, "end": 20},
+        {"text": "****5555", "entity_type": "US_BANK_NUMBER", "start": 27, "end": 35},
+        {"text": "$3,200", "entity_type": "SALARY", "start": 37, "end": 43}
+      ],
+      "description": "Payroll with biweekly amount"
+    },
+    {
+      "id": "GS-085",
+      "category": "negative",
+      "difficulty": "easy",
+      "query": "Schedule the quarterly review meeting",
+      "expected_entities": [],
+      "description": "Meeting request"
+    },
+    {
+      "id": "GS-086",
+      "category": "negative",
+      "difficulty": "easy",
+      "query": "Update the employee handbook",
+      "expected_entities": [],
+      "description": "Document request"
+    },
+    {
+      "id": "GS-087",
+      "category": "edge_case",
+      "difficulty": "hard",
+      "query": "Forward to Bob Hope in accounting",
+      "expected_entities": [
+        {"text": "Bob Hope", "entity_type": "PERSON", "start": 11, "end": 19}
+      ],
+      "description": "Name same as celebrity"
+    },
+    {
+      "id": "GS-088",
+      "category": "edge_case",
+      "difficulty": "hard",
+      "query": "Contact Grace Kelly about the presentation",
+      "expected_entities": [
+        {"text": "Grace Kelly", "entity_type": "PERSON", "start": 8, "end": 19}
+      ],
+      "description": "Another celebrity name"
+    },
+    {
+      "id": "GS-089",
+      "category": "international",
+      "difficulty": "medium",
+      "query": "Send to kimlee@company.kr for Kim Lee",
+      "expected_entities": [
+        {"text": "kimlee@company.kr", "entity_type": "EMAIL_ADDRESS", "start": 8, "end": 25},
+        {"text": "Kim Lee", "entity_type": "PERSON", "start": 30, "end": 37}
+      ],
+      "description": "Korean name"
+    },
+    {
+      "id": "GS-090",
+      "category": "international",
+      "difficulty": "medium",
+      "query": "Contact Chen Wei at chen.wei@company.cn",
+      "expected_entities": [
+        {"text": "Chen Wei", "entity_type": "PERSON", "start": 8, "end": 16},
+        {"text": "chen.wei@company.cn", "entity_type": "EMAIL_ADDRESS", "start": 20, "end": 39}
+      ],
+      "description": "Chinese name"
+    },
+    {
+      "id": "GS-091",
+      "category": "payroll",
+      "difficulty": "hard",
+      "query": "Wire transfer to IBAN DE89370400440532013000 for supplier payment",
+      "expected_entities": [
+        {"text": "DE89370400440532013000", "entity_type": "IBAN_CODE", "start": 22, "end": 44}
+      ],
+      "description": "German IBAN"
+    },
+    {
+      "id": "GS-092",
+      "category": "compensation",
+      "difficulty": "medium",
+      "query": "Stock options: 1000 shares at $25 strike price",
+      "expected_entities": [
+        {"text": "$25", "entity_type": "SALARY", "start": 30, "end": 33}
+      ],
+      "description": "Stock option price - edge case for salary detection"
+    },
+    {
+      "id": "GS-093",
+      "category": "location",
+      "difficulty": "hard",
+      "query": "Remote employee in Tokyo, Japan",
+      "expected_entities": [
+        {"text": "Tokyo, Japan", "entity_type": "LOCATION", "start": 19, "end": 31}
+      ],
+      "description": "City and country"
+    },
+    {
+      "id": "GS-094",
+      "category": "location",
+      "difficulty": "medium",
+      "query": "Working from home in San Francisco, CA",
+      "expected_entities": [
+        {"text": "San Francisco, CA", "entity_type": "LOCATION", "start": 21, "end": 38}
+      ],
+      "description": "City and state"
+    },
+    {
+      "id": "GS-095",
+      "category": "comprehensive",
+      "difficulty": "hard",
+      "query": "Transfer $50,000 from account ****1111 to ****2222 for Emma Wilson",
+      "expected_entities": [
+        {"text": "$50,000", "entity_type": "SALARY", "start": 9, "end": 16},
+        {"text": "****1111", "entity_type": "US_BANK_NUMBER", "start": 30, "end": 38},
+        {"text": "****2222", "entity_type": "US_BANK_NUMBER", "start": 42, "end": 50},
+        {"text": "Emma Wilson", "entity_type": "PERSON", "start": 55, "end": 66}
+      ],
+      "description": "Transfer between accounts"
+    },
+    {
+      "id": "GS-096",
+      "category": "negative",
+      "difficulty": "medium",
+      "query": "Review Q4 financial projections",
+      "expected_entities": [],
+      "description": "Business request"
+    },
+    {
+      "id": "GS-097",
+      "category": "negative",
+      "difficulty": "medium",
+      "query": "Prepare the annual budget report",
+      "expected_entities": [],
+      "description": "Report request"
+    },
+    {
+      "id": "GS-098",
+      "category": "onboarding",
+      "difficulty": "hard",
+      "query": "Badge access for Ryan O'Brien starting 2024-02-01",
+      "expected_entities": [
+        {"text": "Ryan O'Brien", "entity_type": "PERSON", "start": 17, "end": 29},
+        {"text": "2024-02-01", "entity_type": "DATE_TIME", "start": 39, "end": 49}
+      ],
+      "description": "Name with apostrophe and ISO date"
+    },
+    {
+      "id": "GS-099",
+      "category": "edge_case",
+      "difficulty": "hard",
+      "query": "Email test@test.com is for testing only",
+      "expected_entities": [
+        {"text": "test@test.com", "entity_type": "EMAIL_ADDRESS", "start": 6, "end": 19}
+      ],
+      "description": "Test email - still PII"
+    },
+    {
+      "id": "GS-100",
+      "category": "comprehensive",
+      "difficulty": "hard",
+      "query": "Full profile: Dr. James Wilson III, PhD, james.wilson@university.edu, (555) 777-8888, born 12/25/1975, SSN 555-66-7777, earning $185,000 annually at 789 Academic Way, Boston, MA 02115",
+      "expected_entities": [
+        {"text": "Dr. James Wilson III, PhD", "entity_type": "PERSON", "start": 14, "end": 39},
+        {"text": "james.wilson@university.edu", "entity_type": "EMAIL_ADDRESS", "start": 41, "end": 68},
+        {"text": "(555) 777-8888", "entity_type": "PHONE_NUMBER", "start": 70, "end": 84},
+        {"text": "12/25/1975", "entity_type": "DATE_TIME", "start": 91, "end": 101},
+        {"text": "555-66-7777", "entity_type": "US_SSN", "start": 107, "end": 118},
+        {"text": "$185,000", "entity_type": "SALARY", "start": 128, "end": 136},
+        {"text": "789 Academic Way, Boston, MA 02115", "entity_type": "LOCATION", "start": 149, "end": 183}
+      ],
+      "description": "Ultimate comprehensive test - all PII types in complex format"
+    }
+  ]
+}

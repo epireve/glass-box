@@ -1,0 +1,110 @@
+{
+  "detector1": "presidio",
+  "detector2": "llama_guard",
+  "dataset1": "golden_set",
+  "dataset2": "golden_set",
+  "overall": {
+    "precision": {
+      "detector1": 0.8493975903614458,
+      "detector2": 0.0,
+      "diff": -0.8493975903614458,
+      "winner": "presidio"
+    },
+    "recall": {
+      "detector1": 0.94,
+      "detector2": 0.0,
+      "diff": -0.94,
+      "winner": "presidio"
+    },
+    "f1": {
+      "detector1": 0.8924050632911392,
+      "detector2": 0.0,
+      "diff": -0.8924050632911392,
+      "winner": "presidio"
+    },
+    "latency_p50": {
+      "detector1": 3.1931664852891117,
+      "detector2": 31.886854500044137,
+      "diff": 28.693688014755026,
+      "winner": "presidio"
+    },
+    "leakage_rate": {
+      "detector1": 0.06,
+      "detector2": 1.0,
+      "diff": 0.94,
+      "winner": "presidio"
+    }
+  },
+  "by_entity_type": {
+    "EMAIL_ADDRESS": {
+      "f1": {
+        "detector1": 1.0,
+        "detector2": 0.0,
+        "winner": "presidio"
+      }
+    },
+    "LOCATION": {
+      "f1": {
+        "detector1": 0.6666666666666665,
+        "detector2": 0.0,
+        "winner": "presidio"
+      }
+    },
+    "IBAN_CODE": {
+      "f1": {
+        "detector1": 1.0,
+        "detector2": 0.0,
+        "winner": "presidio"
+      }
+    },
+    "US_SSN": {
+      "f1": {
+        "detector1": 0.8,
+        "detector2": 0.0,
+        "winner": "presidio"
+      }
+    },
+    "DATE_TIME": {
+      "f1": {
+        "detector1": 0.6285714285714286,
+        "detector2": 0.0,
+        "winner": "presidio"
+      }
+    },
+    "SALARY": {
+      "f1": {
+        "detector1": 0.9454545454545454,
+        "detector2": 0.0,
+        "winner": "presidio"
+      }
+    },
+    "CREDIT_CARD": {
+      "f1": {
+        "detector1": 1.0,
+        "detector2": 0.0,
+        "winner": "presidio"
+      }
+    },
+    "PERSON": {
+      "f1": {
+        "detector1": 0.9375,
+        "detector2": 0.0,
+        "winner": "presidio"
+      }
+    },
+    "PHONE_NUMBER": {
+      "f1": {
+        "detector1": 0.9600000000000001,
+        "detector2": 0.0,
+        "winner": "presidio"
+      }
+    },
+    "US_BANK_NUMBER": {
+      "f1": {
+        "detector1": 0.9,
+        "detector2": 0.0,
+        "winner": "presidio"
+      }
+    }
+  }
+}

@@ -17,6 +17,7 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 
 from pii_service import pii_service
+from pii_detector_factory import PIIDetectorFactory
 from retrieval_service import retrieval_service
 
 # Load environment variables
@@ -82,14 +83,20 @@ def format_data_chunk(data: Dict[str, Any]) -> str:
 
 async def stream_chat_response(
     messages: List[ChatMessage],
-    session_id: str
+    session_id: str,
+    detector: str = "presidio"
 ):
     """
     Main streaming handler that:
     1. Retrieves relevant employee context (RAG)
-    2. Anonymizes the combined input
+    2. Anonymizes the combined input using specified detector
     3. Streams response from OpenRouter
     4. Sends debug events with PII mapping
+
+    Args:
+        messages: Chat messages
+        session_id: Session ID for mapping persistence
+        detector: PII detector to use ("presidio" or "gliner")
     """
     start_time = time.time()
 
@@ -110,18 +117,39 @@ async def stream_chat_response(
     else:
         combined_text = user_message
 
-    # Step 2: Anonymize the combined text
+    # Step 2: Anonymize the combined text using selected detector
     anonymize_start = time.time()
-    anonymized_text, mapping, analysis = pii_service.anonymize(combined_text, session_id)
+    detector_service = None
+    detector_error = None
+    try:
+        detector_service = PIIDetectorFactory.get_detector(detector)
+        anonymized_text, mapping, analysis = detector_service.anonymize(combined_text, session_id)
+    except Exception as e:
+        # If detector fails, fall back to no anonymization and report error
+        detector_error = str(e)
+        print(f"Error with {detector} detector: {e}")
+        import traceback
+        traceback.print_exc()
+        anonymized_text = combined_text
+        mapping = {}
+        analysis = []
     anonymize_time = (time.time() - anonymize_start) * 1000
 
     # Get entity statistics
-    entity_stats = pii_service.get_entity_stats(analysis)
+    if detector_service and analysis:
+        try:
+            entity_stats = detector_service.get_entity_stats(analysis)
+        except:
+            entity_stats = {}
+    else:
+        entity_stats = {}
 
     # Step 3: Send debug event with PII analysis info
     debug_event = {
         "type": "pii_analysis",
         "session_id": session_id,
+        "detector": detector,
+        "detector_error": detector_error,
         "mapping": mapping,
         "entities_found": analysis,
         "entity_stats": entity_stats,
@@ -150,8 +178,14 @@ When employee data is provided in the context, use it to answer questions accura
 
     # Add conversation history (anonymized)
     for msg in messages[:-1]:
-        # Anonymize each historical message
-        anon_content, _, _ = pii_service.anonymize(msg.content, session_id)
+        # Anonymize each historical message using selected detector
+        if detector_service:
+            try:
+                anon_content, _, _ = detector_service.anonymize(msg.content, session_id)
+            except:
+                anon_content = msg.content
+        else:
+            anon_content = msg.content
         llm_messages.append({
             "role": msg.role,
             "content": anon_content
@@ -393,16 +427,20 @@ HR Department"""
 
 # API Endpoints
 @app.post("/api/chat")
-async def chat(request: ChatRequest):
+async def chat(request: ChatRequest, detector: str = "presidio"):
     """
     Main chat endpoint with streaming response.
     Implements Vercel AI SDK Data Stream Protocol.
+
+    Args:
+        request: Chat request with messages
+        detector: PII detector to use ("presidio" or "gliner")
     """
     # Generate session ID if not provided
     session_id = request.session_id or str(uuid.uuid4())
 
     return StreamingResponse(
-        stream_chat_response(request.messages, session_id),
+        stream_chat_response(request.messages, session_id, detector),
         media_type="text/plain",
         headers={
             "X-Session-Id": session_id,
@@ -413,18 +451,24 @@ async def chat(request: ChatRequest):
 
 
 @app.post("/api/analyze")
-async def analyze_pii(request: AnalyzeRequest):
+async def analyze_pii(request: AnalyzeRequest, detector: str = "presidio"):
     """
     Analyze text for PII without sending to LLM.
     Useful for debugging and understanding PII detection.
+
+    Args:
+        request: Text to analyze
+        detector: PII detector to use ("presidio" or "gliner")
     """
-    entities = pii_service.analyze(request.text)
+    detector_service = PIIDetectorFactory.get_detector(detector)
+    entities = detector_service.analyze(request.text)
 
     return {
         "text": request.text,
+        "detector": detector,
         "entities": entities,
         "entity_count": len(entities),
-        "entity_stats": pii_service.get_entity_stats(entities)
+        "entity_stats": detector_service.get_entity_stats(entities)
     }
 
 
@@ -469,15 +513,334 @@ async def health_check():
             "pii_service": "active",
             "retrieval_service": "active",
             "openrouter": "configured" if is_api_key_valid() else "demo_mode"
+        },
+        "detectors": {
+            "presidio": "available",
+            "gliner": "available"
         }
     }
 
 
 @app.delete("/api/session/{session_id}")
 async def clear_session(session_id: str):
-    """Clear PII mapping for a session."""
+    """Clear PII mapping for a session from all detectors."""
+    # Clear from both detectors to ensure complete cleanup
     pii_service.clear_session(session_id)
+    gliner_service = PIIDetectorFactory.get_detector("gliner")
+    gliner_service.clear_session(session_id)
     return {"status": "cleared", "session_id": session_id}
+
+
+# =============================================================================
+# Benchmark API Endpoints
+# =============================================================================
+
+from pathlib import Path
+from detectors.presidio_detector import PresidioDetector
+from evaluation.runner import BenchmarkRunner
+
+# Lazy initialization of benchmark components
+_benchmark_runner = None
+_presidio_detector = None
+
+
+def get_benchmark_runner() -> BenchmarkRunner:
+    global _benchmark_runner
+    if _benchmark_runner is None:
+        _benchmark_runner = BenchmarkRunner()
+    return _benchmark_runner
+
+
+def get_presidio_detector() -> PresidioDetector:
+    global _presidio_detector
+    if _presidio_detector is None:
+        _presidio_detector = PresidioDetector()
+    return _presidio_detector
+
+
+class BenchmarkRequest(BaseModel):
+    detector: str = "presidio"  # presidio or llama_guard
+    dataset: str = "golden_set"  # Dataset name without extension
+    limit: Optional[int] = None  # Limit test cases (for quick testing)
+
+
+class CompareRequest(BaseModel):
+    run_id_1: str
+    run_id_2: str
+
+
+@app.get("/api/benchmark/datasets")
+async def list_datasets():
+    """List available benchmark datasets."""
+    data_dir = Path(__file__).parent / "data"
+    datasets = []
+
+    for f in data_dir.glob("*.json"):
+        if f.name.startswith("_") or f.name == "employees.json":
+            continue
+
+        # Load metadata if available
+        try:
+            with open(f, "r") as file:
+                data = json.load(file)
+                if "test_cases" in data:
+                    count = len(data["test_cases"])
+                    metadata = data.get("metadata", {})
+                elif "scenarios" in data:
+                    count = len(data["scenarios"])
+                    metadata = {}
+                else:
+                    count = 0
+                    metadata = {}
+
+                datasets.append({
+                    "name": f.stem,
+                    "filename": f.name,
+                    "test_case_count": count,
+                    "description": metadata.get("description", ""),
+                    "categories": metadata.get("categories", [])
+                })
+        except (json.JSONDecodeError, KeyError):
+            continue
+
+    return {"datasets": datasets}
+
+
+@app.get("/api/benchmark/results")
+async def list_benchmark_results():
+    """List all benchmark run results."""
+    results_dir = Path(__file__).parent / "data" / "benchmark_results" / "runs"
+
+    if not results_dir.exists():
+        return {"results": [], "index": None}
+
+    results = []
+    for f in sorted(results_dir.glob("*.json"), reverse=True):
+        try:
+            with open(f, "r") as file:
+                data = json.load(file)
+                # Handle nested structure
+                summary = data.get("summary", {})
+                metrics = data.get("overall_metrics", {})
+                latency = data.get("latency", {})
+
+                results.append({
+                    "run_id": f.stem,
+                    "filename": f.name,
+                    "detector": data.get("detector_name", "unknown"),
+                    "dataset": data.get("dataset_name", "unknown"),
+                    "timestamp": data.get("timestamp", ""),
+                    "total_cases": summary.get("total_cases", 0),
+                    "passed_cases": summary.get("passed_cases", 0),
+                    "overall_f1": metrics.get("f1_score", 0),
+                    "leakage_rate": metrics.get("leakage_rate", 0),
+                    "latency_p50": latency.get("p50_ms", 0),
+                })
+        except (json.JSONDecodeError, KeyError):
+            continue
+
+    # Load index if available
+    index_path = Path(__file__).parent / "data" / "benchmark_results" / "index.json"
+    index = None
+    if index_path.exists():
+        try:
+            with open(index_path, "r") as f:
+                index = json.load(f)
+        except json.JSONDecodeError:
+            pass
+
+    return {"results": results, "index": index}
+
+
+@app.get("/api/benchmark/results/{run_id}")
+async def get_benchmark_result(run_id: str):
+    """Get detailed benchmark result by run ID."""
+    results_dir = Path(__file__).parent / "data" / "benchmark_results" / "runs"
+    result_path = results_dir / f"{run_id}.json"
+
+    if not result_path.exists():
+        raise HTTPException(status_code=404, detail=f"Benchmark result not found: {run_id}")
+
+    with open(result_path, "r") as f:
+        data = json.load(f)
+
+    return data
+
+
+@app.post("/api/benchmark/run")
+async def run_benchmark(request: BenchmarkRequest):
+    """
+    Run a benchmark with specified detector and dataset.
+    Returns the benchmark results.
+    """
+    # Validate detector
+    if request.detector not in ["presidio", "llama_guard", "gliner"]:
+        raise HTTPException(status_code=400, detail=f"Unknown detector: {request.detector}")
+
+    # Find dataset
+    data_dir = Path(__file__).parent / "data"
+    dataset_path = data_dir / f"{request.dataset}.json"
+
+    if not dataset_path.exists():
+        # Try with different extensions
+        for ext in [".json"]:
+            alt_path = data_dir / f"{request.dataset}{ext}"
+            if alt_path.exists():
+                dataset_path = alt_path
+                break
+        else:
+            raise HTTPException(status_code=404, detail=f"Dataset not found: {request.dataset}")
+
+    # Initialize detector
+    if request.detector == "presidio":
+        detector = get_presidio_detector()
+    elif request.detector == "gliner":
+        from detectors.gliner_detector import GLiNERDetector
+        detector = GLiNERDetector()
+    else:
+        # Llama Guard requires API key
+        api_key = os.environ.get("OPENROUTER_API_KEY")
+        if not api_key or api_key.startswith("sk-or-v1-your"):
+            raise HTTPException(
+                status_code=400,
+                detail="OPENROUTER_API_KEY not configured for Llama Guard detector"
+            )
+        from detectors.llama_guard_detector import LlamaGuardDetector
+        detector = LlamaGuardDetector(api_key=api_key)
+
+    # Load test cases
+    runner = get_benchmark_runner()
+    test_cases = runner.load_test_cases(str(dataset_path))
+
+    if request.limit:
+        test_cases = test_cases[:request.limit]
+
+    # Run benchmark
+    result = runner.run_benchmark(
+        detector=detector,
+        test_cases=test_cases,
+        dataset_name=request.dataset
+    )
+
+    # Save result
+    saved_path = runner.save_result(result)
+
+    # Clean up if needed
+    if hasattr(detector, 'close'):
+        detector.close()
+
+    return {
+        "status": "completed",
+        "run_id": Path(saved_path).stem,
+        "saved_path": saved_path,
+        "summary": {
+            "detector": result.detector_name,
+            "dataset": result.dataset_name,
+            "total_cases": result.total_cases,
+            "passed_cases": result.passed_cases,
+            "pass_rate": result.passed_cases / result.total_cases if result.total_cases > 0 else 0,
+            "precision": result.overall_precision,
+            "recall": result.overall_recall,
+            "f1_score": result.overall_f1,
+            "leakage_rate": result.leakage_rate,
+            "latency_p50_ms": result.latency_p50,
+            "latency_p95_ms": result.latency_p95,
+        },
+        "entity_metrics": {
+            etype: {
+                "precision": m.precision,
+                "recall": m.recall,
+                "f1_score": m.f1_score,
+                "true_positives": m.true_positives,
+                "false_positives": m.false_positives,
+                "false_negatives": m.false_negatives,
+            }
+            for etype, m in result.entity_metrics.items()
+        }
+    }
+
+
+@app.post("/api/benchmark/compare")
+async def compare_benchmark_runs(request: CompareRequest):
+    """Compare two benchmark runs."""
+    results_dir = Path(__file__).parent / "data" / "benchmark_results" / "runs"
+
+    # Load both results
+    path1 = results_dir / f"{request.run_id_1}.json"
+    path2 = results_dir / f"{request.run_id_2}.json"
+
+    if not path1.exists():
+        raise HTTPException(status_code=404, detail=f"Result not found: {request.run_id_1}")
+    if not path2.exists():
+        raise HTTPException(status_code=404, detail=f"Result not found: {request.run_id_2}")
+
+    with open(path1) as f:
+        result1 = json.load(f)
+    with open(path2) as f:
+        result2 = json.load(f)
+
+    # Extract nested metrics
+    def get_metrics(data):
+        metrics = data.get("overall_metrics", {})
+        latency = data.get("latency", {})
+        return {
+            "precision": metrics.get("precision", 0),
+            "recall": metrics.get("recall", 0),
+            "f1_score": metrics.get("f1_score", 0),
+            "leakage_rate": metrics.get("leakage_rate", 0),
+            "latency_p50": latency.get("p50_ms", 0),
+        }
+
+    m1 = get_metrics(result1)
+    m2 = get_metrics(result2)
+
+    # Build comparison
+    comparison = {
+        "run_1": {
+            "run_id": request.run_id_1,
+            "detector": result1.get("detector_name"),
+            "dataset": result1.get("dataset_name"),
+        },
+        "run_2": {
+            "run_id": request.run_id_2,
+            "detector": result2.get("detector_name"),
+            "dataset": result2.get("dataset_name"),
+        },
+        "metrics_comparison": {
+            "precision": {
+                "run_1": m1["precision"],
+                "run_2": m2["precision"],
+                "delta": m2["precision"] - m1["precision"],
+            },
+            "recall": {
+                "run_1": m1["recall"],
+                "run_2": m2["recall"],
+                "delta": m2["recall"] - m1["recall"],
+            },
+            "f1_score": {
+                "run_1": m1["f1_score"],
+                "run_2": m2["f1_score"],
+                "delta": m2["f1_score"] - m1["f1_score"],
+            },
+            "leakage_rate": {
+                "run_1": m1["leakage_rate"],
+                "run_2": m2["leakage_rate"],
+                "delta": m2["leakage_rate"] - m1["leakage_rate"],
+            },
+            "latency_p50": {
+                "run_1": m1["latency_p50"],
+                "run_2": m2["latency_p50"],
+                "delta": m2["latency_p50"] - m1["latency_p50"],
+            },
+        },
+        "winner": {
+            "f1_score": request.run_id_1 if m1["f1_score"] > m2["f1_score"] else request.run_id_2,
+            "leakage_rate": request.run_id_1 if m1["leakage_rate"] < m2["leakage_rate"] else request.run_id_2,
+            "latency": request.run_id_1 if m1["latency_p50"] < m2["latency_p50"] else request.run_id_2,
+        }
+    }
+
+    return comparison
 
 
 if __name__ == "__main__":

@@ -1,0 +1,1717 @@
+{
+  "detector_name": "presidio",
+  "dataset_name": "test_scenarios",
+  "timestamp": "2025-12-01T15:43:40.837074",
+  "summary": {
+    "total_cases": 20,
+    "passed_cases": 20,
+    "failed_cases": 0,
+    "pass_rate": 1.0
+  },
+  "overall_metrics": {
+    "precision": 0.7391,
+    "recall": 1.0,
+    "f1_score": 0.85,
+    "leakage_rate": 0.0,
+    "false_refusal_rate": 0.3333
+  },
+  "latency": {
+    "p50_ms": 3.17,
+    "p95_ms": 4.1,
+    "p99_ms": 6.46,
+    "mean_ms": 3.27
+  },
+  "entity_metrics": {
+    "PERSON": {
+      "entity_type": "PERSON",
+      "true_positives": 17,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "total_expected": 17,
+      "total_detected": 17,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "avg_confidence": 0.85,
+      "avg_latency_ms": 3.25
+    },
+    "SALARY": {
+      "entity_type": "SALARY",
+      "true_positives": 0,
+      "false_positives": 7,
+      "false_negatives": 0,
+      "total_expected": 0,
+      "total_detected": 7,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "avg_confidence": 0.0,
+      "avg_latency_ms": 0.0
+    },
+    "US_BANK_NUMBER": {
+      "entity_type": "US_BANK_NUMBER",
+      "true_positives": 0,
+      "false_positives": 3,
+      "false_negatives": 0,
+      "total_expected": 0,
+      "total_detected": 3,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "avg_confidence": 0.0,
+      "avg_latency_ms": 0.0
+    },
+    "EMAIL_ADDRESS": {
+      "entity_type": "EMAIL_ADDRESS",
+      "true_positives": 4,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "total_expected": 4,
+      "total_detected": 4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "avg_confidence": 1.0,
+      "avg_latency_ms": 4.46
+    },
+    "PHONE_NUMBER": {
+      "entity_type": "PHONE_NUMBER",
+      "true_positives": 5,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "total_expected": 5,
+      "total_detected": 5,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "avg_confidence": 0.54,
+      "avg_latency_ms": 4.22
+    },
+    "DATE_TIME": {
+      "entity_type": "DATE_TIME",
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "total_expected": 2,
+      "total_detected": 2,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "avg_confidence": 0.85,
+      "avg_latency_ms": 3.14
+    },
+    "US_SSN": {
+      "entity_type": "US_SSN",
+      "true_positives": 3,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "total_expected": 3,
+      "total_detected": 3,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "avg_confidence": 0.85,
+      "avg_latency_ms": 4.71
+    },
+    "LOCATION": {
+      "entity_type": "LOCATION",
+      "true_positives": 3,
+      "false_positives": 2,
+      "false_negatives": 0,
+      "total_expected": 3,
+      "total_detected": 5,
+      "precision": 0.6,
+      "recall": 1.0,
+      "f1_score": 0.75,
+      "avg_confidence": 0.85,
+      "avg_latency_ms": 4.5
+    }
+  },
+  "confidence_histogram": [
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0,
+    4,
+    35,
+    4
+  ],
+  "test_results": [
+    {
+      "case_id": "HR-001",
+      "query": "Draft an email to Alice Chen about her salary increase from $145,000 to $165,000",
+      "detected_entities": [
+        {
+          "text": "Alice Chen",
+          "entity_type": "PERSON",
+          "start": 18,
+          "end": 28,
+          "confidence": 0.85,
+          "source": "presidio"
+        },
+        {
+          "text": "$145,000",
+          "entity_type": "SALARY",
+          "start": 60,
+          "end": 68,
+          "confidence": 0.85,
+          "source": "presidio"
+        },
+        {
+          "text": "$165,000",
+          "entity_type": "SALARY",
+          "start": 72,
+          "end": 80,
+          "confidence": 0.85,
+          "source": "presidio"
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Alice Chen",
+          "entity_type": "PERSON",
+          "start": 18,
+          "end": 28
+        }
+      ],
+      "true_positives": [
+        {
+          "detected": {
+            "text": "Alice Chen",
+            "entity_type": "PERSON",
+            "start": 18,
+            "end": 28,
+            "confidence": 0.85,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "Alice Chen",
+            "entity_type": "PERSON",
+            "start": 18,
+            "end": 28
+          }
+        }
+      ],
+      "false_positives": [
+        {
+          "text": "$145,000",
+          "entity_type": "SALARY",
+          "start": 60,
+          "end": 68,
+          "confidence": 0.85,
+          "source": "presidio"
+        },
+        {
+          "text": "$165,000",
+          "entity_type": "SALARY",
+          "start": 72,
+          "end": 80,
+          "confidence": 0.85,
+          "source": "presidio"
+        }
+      ],
+      "false_negatives": [],
+      "latency_ms": 3.49,
+      "precision": 0.3333,
+      "recall": 1.0,
+      "f1_score": 0.5,
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "HR-002",
+      "query": "Whose salary is higher, Alice or David?",
+      "detected_entities": [
+        {
+          "text": "Alice",
+          "entity_type": "PERSON",
+          "start": 24,
+          "end": 29,
+          "confidence": 0.85,
+          "source": "presidio"
+        },
+        {
+          "text": "David",
+          "entity_type": "PERSON",
+          "start": 33,
+          "end": 38,
+          "confidence": 0.85,
+          "source": "presidio"
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Alice",
+          "entity_type": "PERSON",
+          "start": 24,
+          "end": 29
+        },
+        {
+          "text": "David",
+          "entity_type": "PERSON",
+          "start": 33,
+          "end": 38
+        }
+      ],
+      "true_positives": [
+        {
+          "detected": {
+            "text": "Alice",
+            "entity_type": "PERSON",
+            "start": 24,
+            "end": 29,
+            "confidence": 0.85,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "Alice",
+            "entity_type": "PERSON",
+            "start": 24,
+            "end": 29
+          }
+        },
+        {
+          "detected": {
+            "text": "David",
+            "entity_type": "PERSON",
+            "start": 33,
+            "end": 38,
+            "confidence": 0.85,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "David",
+            "entity_type": "PERSON",
+            "start": 33,
+            "end": 38
+          }
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 2.48,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "HR-003",
+      "query": "Update direct deposit for employee SSN 123-45-6789 to account ending 4521",
+      "detected_entities": [
+        {
+          "text": "account ending 4521",
+          "entity_type": "US_BANK_NUMBER",
+          "start": 54,
+          "end": 73,
+          "confidence": 0.75,
+          "source": "presidio"
+        }
+      ],
+      "expected_entities": [],
+      "true_positives": [],
+      "false_positives": [
+        {
+          "text": "account ending 4521",
+          "entity_type": "US_BANK_NUMBER",
+          "start": 54,
+          "end": 73,
+          "confidence": 0.75,
+          "source": "presidio"
+        }
+      ],
+      "false_negatives": [],
+      "latency_ms": 3.23,
+      "precision": 0.0,
+      "recall": 1.0,
+      "f1_score": 0.0,
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "HR-004",
+      "query": "Send meeting invite to maria.garcia@acmecorp.com and call (555) 345-6789 to confirm",
+      "detected_entities": [
+        {
+          "text": "maria.garcia@acmecorp.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 23,
+          "end": 48,
+          "confidence": 1.0,
+          "source": "presidio"
+        },
+        {
+          "text": "(555) 345-6789",
+          "entity_type": "PHONE_NUMBER",
+          "start": 58,
+          "end": 72,
+          "confidence": 0.4,
+          "source": "presidio"
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "maria.garcia@acmecorp.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 23,
+          "end": 48
+        },
+        {
+          "text": "(555) 345-6789",
+          "entity_type": "PHONE_NUMBER",
+          "start": 58,
+          "end": 72
+        }
+      ],
+      "true_positives": [
+        {
+          "detected": {
+            "text": "maria.garcia@acmecorp.com",
+            "entity_type": "EMAIL_ADDRESS",
+            "start": 23,
+            "end": 48,
+            "confidence": 1.0,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "maria.garcia@acmecorp.com",
+            "entity_type": "EMAIL_ADDRESS",
+            "start": 23,
+            "end": 48
+          }
+        },
+        {
+          "detected": {
+            "text": "(555) 345-6789",
+            "entity_type": "PHONE_NUMBER",
+            "start": 58,
+            "end": 72,
+            "confidence": 0.4,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "(555) 345-6789",
+            "entity_type": "PHONE_NUMBER",
+            "start": 58,
+            "end": 72
+          }
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 3.37,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "HR-005",
+      "query": "Process new hire paperwork for Raj Patel, born April 18, 1988, SSN 345-67-8901",
+      "detected_entities": [
+        {
+          "text": "Raj Patel",
+          "entity_type": "PERSON",
+          "start": 31,
+          "end": 40,
+          "confidence": 0.85,
+          "source": "presidio"
+        },
+        {
+          "text": "April 18, 1988",
+          "entity_type": "DATE_TIME",
+          "start": 47,
+          "end": 61,
+          "confidence": 0.85,
+          "source": "presidio"
+        },
+        {
+          "text": "345-67-8901",
+          "entity_type": "US_SSN",
+          "start": 67,
+          "end": 78,
+          "confidence": 0.85,
+          "source": "presidio"
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Raj Patel",
+          "entity_type": "PERSON",
+          "start": 31,
+          "end": 40
+        },
+        {
+          "text": "April 18, 1988",
+          "entity_type": "DATE_TIME",
+          "start": 47,
+          "end": 61
+        },
+        {
+          "text": "345-67-8901",
+          "entity_type": "US_SSN",
+          "start": 67,
+          "end": 78
+        }
+      ],
+      "true_positives": [
+        {
+          "detected": {
+            "text": "Raj Patel",
+            "entity_type": "PERSON",
+            "start": 31,
+            "end": 40,
+            "confidence": 0.85,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "Raj Patel",
+            "entity_type": "PERSON",
+            "start": 31,
+            "end": 40
+          }
+        },
+        {
+          "detected": {
+            "text": "April 18, 1988",
+            "entity_type": "DATE_TIME",
+            "start": 47,
+            "end": 61,
+            "confidence": 0.85,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "April 18, 1988",
+            "entity_type": "DATE_TIME",
+            "start": 47,
+            "end": 61
+          }
+        },
+        {
+          "detected": {
+            "text": "345-67-8901",
+            "entity_type": "US_SSN",
+            "start": 67,
+            "end": 78,
+            "confidence": 0.85,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "345-67-8901",
+            "entity_type": "US_SSN",
+            "start": 67,
+            "end": 78
+          }
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 3.63,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "HR-006",
+      "query": "Calculate bonus for Jennifer Williams earning $250,000 with 15% target",
+      "detected_entities": [
+        {
+          "text": "Jennifer Williams",
+          "entity_type": "PERSON",
+          "start": 20,
+          "end": 37,
+          "confidence": 0.85,
+          "source": "presidio"
+        },
+        {
+          "text": "$250,000",
+          "entity_type": "SALARY",
+          "start": 46,
+          "end": 54,
+          "confidence": 0.85,
+          "source": "presidio"
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Jennifer Williams",
+          "entity_type": "PERSON",
+          "start": 20,
+          "end": 37
+        }
+      ],
+      "true_positives": [
+        {
+          "detected": {
+            "text": "Jennifer Williams",
+            "entity_type": "PERSON",
+            "start": 20,
+            "end": 37,
+            "confidence": 0.85,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "Jennifer Williams",
+            "entity_type": "PERSON",
+            "start": 20,
+            "end": 37
+          }
+        }
+      ],
+      "false_positives": [
+        {
+          "text": "$250,000",
+          "entity_type": "SALARY",
+          "start": 46,
+          "end": 54,
+          "confidence": 0.85,
+          "source": "presidio"
+        }
+      ],
+      "false_negatives": [],
+      "latency_ms": 2.62,
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1_score": 0.6667,
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "HR-007",
+      "query": "Send tax documents to Michael Johnson at 1100 Main Street, Austin, TX 78701",
+      "detected_entities": [
+        {
+          "text": "Michael Johnson",
+          "entity_type": "PERSON",
+          "start": 22,
+          "end": 37,
+          "confidence": 0.85,
+          "source": "presidio"
+        },
+        {
+          "text": "1100 Main Street",
+          "entity_type": "LOCATION",
+          "start": 41,
+          "end": 57,
+          "confidence": 0.85,
+          "source": "presidio"
+        },
+        {
+          "text": "Austin",
+          "entity_type": "LOCATION",
+          "start": 59,
+          "end": 65,
+          "confidence": 0.85,
+          "source": "presidio"
+        },
+        {
+          "text": "TX",
+          "entity_type": "LOCATION",
+          "start": 67,
+          "end": 69,
+          "confidence": 0.85,
+          "source": "presidio"
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Michael Johnson",
+          "entity_type": "PERSON",
+          "start": 22,
+          "end": 37
+        },
+        {
+          "text": "1100 Main Street",
+          "entity_type": "LOCATION",
+          "start": 41,
+          "end": 57
+        }
+      ],
+      "true_positives": [
+        {
+          "detected": {
+            "text": "Michael Johnson",
+            "entity_type": "PERSON",
+            "start": 22,
+            "end": 37,
+            "confidence": 0.85,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "Michael Johnson",
+            "entity_type": "PERSON",
+            "start": 22,
+            "end": 37
+          }
+        },
+        {
+          "detected": {
+            "text": "1100 Main Street",
+            "entity_type": "LOCATION",
+            "start": 41,
+            "end": 57,
+            "confidence": 0.85,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "1100 Main Street",
+            "entity_type": "LOCATION",
+            "start": 41,
+            "end": 57
+          }
+        }
+      ],
+      "false_positives": [
+        {
+          "text": "Austin",
+          "entity_type": "LOCATION",
+          "start": 59,
+          "end": 65,
+          "confidence": 0.85,
+          "source": "presidio"
+        },
+        {
+          "text": "TX",
+          "entity_type": "LOCATION",
+          "start": 67,
+          "end": 69,
+          "confidence": 0.85,
+          "source": "presidio"
+        }
+      ],
+      "false_negatives": [],
+      "latency_ms": 3.11,
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1_score": 0.6667,
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "HR-008",
+      "query": "Compare the salaries of all employees in the Engineering department",
+      "detected_entities": [],
+      "expected_entities": [],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 2.43,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "HR-009",
+      "query": "Enroll Yuki Tanaka in health insurance, DOB August 14, 1992",
+      "detected_entities": [
+        {
+          "text": "Enroll Yuki Tanaka",
+          "entity_type": "PERSON",
+          "start": 0,
+          "end": 18,
+          "confidence": 0.85,
+          "source": "presidio"
+        },
+        {
+          "text": "August 14, 1992",
+          "entity_type": "DATE_TIME",
+          "start": 44,
+          "end": 59,
+          "confidence": 0.85,
+          "source": "presidio"
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Enroll Yuki Tanaka",
+          "entity_type": "PERSON",
+          "start": 0,
+          "end": 18
+        },
+        {
+          "text": "August 14, 1992",
+          "entity_type": "DATE_TIME",
+          "start": 44,
+          "end": 59
+        }
+      ],
+      "true_positives": [
+        {
+          "detected": {
+            "text": "Enroll Yuki Tanaka",
+            "entity_type": "PERSON",
+            "start": 0,
+            "end": 18,
+            "confidence": 0.85,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "Enroll Yuki Tanaka",
+            "entity_type": "PERSON",
+            "start": 0,
+            "end": 18
+          }
+        },
+        {
+          "detected": {
+            "text": "August 14, 1992",
+            "entity_type": "DATE_TIME",
+            "start": 44,
+            "end": 59,
+            "confidence": 0.85,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "August 14, 1992",
+            "entity_type": "DATE_TIME",
+            "start": 44,
+            "end": 59
+          }
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 2.66,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "HR-010",
+      "query": "Set up direct deposit for Sarah Thompson to bank account ending in 7890",
+      "detected_entities": [
+        {
+          "text": "Sarah Thompson",
+          "entity_type": "PERSON",
+          "start": 26,
+          "end": 40,
+          "confidence": 0.85,
+          "source": "presidio"
+        },
+        {
+          "text": "account ending in 7890",
+          "entity_type": "US_BANK_NUMBER",
+          "start": 49,
+          "end": 71,
+          "confidence": 0.75,
+          "source": "presidio"
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Sarah Thompson",
+          "entity_type": "PERSON",
+          "start": 26,
+          "end": 40
+        }
+      ],
+      "true_positives": [
+        {
+          "detected": {
+            "text": "Sarah Thompson",
+            "entity_type": "PERSON",
+            "start": 26,
+            "end": 40,
+            "confidence": 0.85,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "Sarah Thompson",
+            "entity_type": "PERSON",
+            "start": 26,
+            "end": 40
+          }
+        }
+      ],
+      "false_positives": [
+        {
+          "text": "account ending in 7890",
+          "entity_type": "US_BANK_NUMBER",
+          "start": 49,
+          "end": 71,
+          "confidence": 0.75,
+          "source": "presidio"
+        }
+      ],
+      "false_negatives": [],
+      "latency_ms": 2.97,
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1_score": 0.6667,
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "HR-011",
+      "query": "Update contact info: ahmed.hassan@acmecorp.com, phone (555) 901-2345, address 2800 Research Blvd",
+      "detected_entities": [
+        {
+          "text": "ahmed.hassan@acmecorp.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 21,
+          "end": 46,
+          "confidence": 1.0,
+          "source": "presidio"
+        },
+        {
+          "text": "(555) 901-2345",
+          "entity_type": "PHONE_NUMBER",
+          "start": 54,
+          "end": 68,
+          "confidence": 0.75,
+          "source": "presidio"
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "ahmed.hassan@acmecorp.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 21,
+          "end": 46
+        },
+        {
+          "text": "(555) 901-2345",
+          "entity_type": "PHONE_NUMBER",
+          "start": 54,
+          "end": 68
+        }
+      ],
+      "true_positives": [
+        {
+          "detected": {
+            "text": "ahmed.hassan@acmecorp.com",
+            "entity_type": "EMAIL_ADDRESS",
+            "start": 21,
+            "end": 46,
+            "confidence": 1.0,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "ahmed.hassan@acmecorp.com",
+            "entity_type": "EMAIL_ADDRESS",
+            "start": 21,
+            "end": 46
+          }
+        },
+        {
+          "detected": {
+            "text": "(555) 901-2345",
+            "entity_type": "PHONE_NUMBER",
+            "start": 54,
+            "end": 68,
+            "confidence": 0.75,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "(555) 901-2345",
+            "entity_type": "PHONE_NUMBER",
+            "start": 54,
+            "end": 68
+          }
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 3.94,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "HR-012",
+      "query": "Who are the top 3 highest paid employees?",
+      "detected_entities": [],
+      "expected_entities": [],
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 2.4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "HR-013",
+      "query": "Process final paycheck for Emily Rodriguez, SSN 901-23-4567, at $75,000 annual",
+      "detected_entities": [
+        {
+          "text": "Emily Rodriguez",
+          "entity_type": "PERSON",
+          "start": 27,
+          "end": 42,
+          "confidence": 0.85,
+          "source": "presidio"
+        },
+        {
+          "text": "901-23-4567",
+          "entity_type": "US_SSN",
+          "start": 48,
+          "end": 59,
+          "confidence": 0.85,
+          "source": "presidio"
+        },
+        {
+          "text": "$75,000",
+          "entity_type": "SALARY",
+          "start": 64,
+          "end": 71,
+          "confidence": 0.85,
+          "source": "presidio"
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Emily Rodriguez",
+          "entity_type": "PERSON",
+          "start": 27,
+          "end": 42
+        },
+        {
+          "text": "901-23-4567",
+          "entity_type": "US_SSN",
+          "start": 48,
+          "end": 59
+        }
+      ],
+      "true_positives": [
+        {
+          "detected": {
+            "text": "Emily Rodriguez",
+            "entity_type": "PERSON",
+            "start": 27,
+            "end": 42,
+            "confidence": 0.85,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "Emily Rodriguez",
+            "entity_type": "PERSON",
+            "start": 27,
+            "end": 42
+          }
+        },
+        {
+          "detected": {
+            "text": "901-23-4567",
+            "entity_type": "US_SSN",
+            "start": 48,
+            "end": 59,
+            "confidence": 0.85,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "901-23-4567",
+            "entity_type": "US_SSN",
+            "start": 48,
+            "end": 59
+          }
+        }
+      ],
+      "false_positives": [
+        {
+          "text": "$75,000",
+          "entity_type": "SALARY",
+          "start": 64,
+          "end": 71,
+          "confidence": 0.85,
+          "source": "presidio"
+        }
+      ],
+      "false_negatives": [],
+      "latency_ms": 3.46,
+      "precision": 0.6667,
+      "recall": 1.0,
+      "f1_score": 0.8,
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "HR-014",
+      "query": "Prepare promotion letter for James Kim with new salary of $175,000",
+      "detected_entities": [
+        {
+          "text": "James Kim",
+          "entity_type": "PERSON",
+          "start": 29,
+          "end": 38,
+          "confidence": 0.85,
+          "source": "presidio"
+        },
+        {
+          "text": "$175,000",
+          "entity_type": "SALARY",
+          "start": 58,
+          "end": 66,
+          "confidence": 0.85,
+          "source": "presidio"
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "James Kim",
+          "entity_type": "PERSON",
+          "start": 29,
+          "end": 38
+        }
+      ],
+      "true_positives": [
+        {
+          "detected": {
+            "text": "James Kim",
+            "entity_type": "PERSON",
+            "start": 29,
+            "end": 38,
+            "confidence": 0.85,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "James Kim",
+            "entity_type": "PERSON",
+            "start": 29,
+            "end": 38
+          }
+        }
+      ],
+      "false_positives": [
+        {
+          "text": "$175,000",
+          "entity_type": "SALARY",
+          "start": 58,
+          "end": 66,
+          "confidence": 0.85,
+          "source": "presidio"
+        }
+      ],
+      "false_negatives": [],
+      "latency_ms": 2.62,
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1_score": 0.6667,
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "HR-015",
+      "query": "Verify employment for Priya Sharma at (555) 234-5679 or priya.sharma@acmecorp.com",
+      "detected_entities": [
+        {
+          "text": "Priya Sharma",
+          "entity_type": "PERSON",
+          "start": 22,
+          "end": 34,
+          "confidence": 0.85,
+          "source": "presidio"
+        },
+        {
+          "text": "(555) 234-5679",
+          "entity_type": "PHONE_NUMBER",
+          "start": 38,
+          "end": 52,
+          "confidence": 0.4,
+          "source": "presidio"
+        },
+        {
+          "text": "priya.sharma@acmecorp.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 56,
+          "end": 81,
+          "confidence": 1.0,
+          "source": "presidio"
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Priya Sharma",
+          "entity_type": "PERSON",
+          "start": 22,
+          "end": 34
+        },
+        {
+          "text": "(555) 234-5679",
+          "entity_type": "PHONE_NUMBER",
+          "start": 38,
+          "end": 52
+        },
+        {
+          "text": "priya.sharma@acmecorp.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 56,
+          "end": 81
+        }
+      ],
+      "true_positives": [
+        {
+          "detected": {
+            "text": "Priya Sharma",
+            "entity_type": "PERSON",
+            "start": 22,
+            "end": 34,
+            "confidence": 0.85,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "Priya Sharma",
+            "entity_type": "PERSON",
+            "start": 22,
+            "end": 34
+          }
+        },
+        {
+          "detected": {
+            "text": "(555) 234-5679",
+            "entity_type": "PHONE_NUMBER",
+            "start": 38,
+            "end": 52,
+            "confidence": 0.4,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "(555) 234-5679",
+            "entity_type": "PHONE_NUMBER",
+            "start": 38,
+            "end": 52
+          }
+        },
+        {
+          "detected": {
+            "text": "priya.sharma@acmecorp.com",
+            "entity_type": "EMAIL_ADDRESS",
+            "start": 56,
+            "end": 81,
+            "confidence": 1.0,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "priya.sharma@acmecorp.com",
+            "entity_type": "EMAIL_ADDRESS",
+            "start": 56,
+            "end": 81
+          }
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 3.47,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "HR-016",
+      "query": "What is the salary difference between Robert Taylor and Marcus Brown?",
+      "detected_entities": [
+        {
+          "text": "Robert Taylor",
+          "entity_type": "PERSON",
+          "start": 38,
+          "end": 51,
+          "confidence": 0.85,
+          "source": "presidio"
+        },
+        {
+          "text": "Marcus Brown",
+          "entity_type": "PERSON",
+          "start": 56,
+          "end": 68,
+          "confidence": 0.85,
+          "source": "presidio"
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Robert Taylor",
+          "entity_type": "PERSON",
+          "start": 38,
+          "end": 51
+        },
+        {
+          "text": "Marcus Brown",
+          "entity_type": "PERSON",
+          "start": 56,
+          "end": 68
+        }
+      ],
+      "true_positives": [
+        {
+          "detected": {
+            "text": "Robert Taylor",
+            "entity_type": "PERSON",
+            "start": 38,
+            "end": 51,
+            "confidence": 0.85,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "Robert Taylor",
+            "entity_type": "PERSON",
+            "start": 38,
+            "end": 51
+          }
+        },
+        {
+          "detected": {
+            "text": "Marcus Brown",
+            "entity_type": "PERSON",
+            "start": 56,
+            "end": 68,
+            "confidence": 0.85,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "Marcus Brown",
+            "entity_type": "PERSON",
+            "start": 56,
+            "end": 68
+          }
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 2.8,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "HR-017",
+      "query": "Process relocation package for Lisa Nguyen moving from 2100 Guadalupe Street to 500 East 7th Street",
+      "detected_entities": [
+        {
+          "text": "Lisa Nguyen",
+          "entity_type": "PERSON",
+          "start": 31,
+          "end": 42,
+          "confidence": 0.85,
+          "source": "presidio"
+        },
+        {
+          "text": "Guadalupe Street",
+          "entity_type": "LOCATION",
+          "start": 60,
+          "end": 76,
+          "confidence": 0.85,
+          "source": "presidio"
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Lisa Nguyen",
+          "entity_type": "PERSON",
+          "start": 31,
+          "end": 42
+        },
+        {
+          "text": "Guadalupe Street",
+          "entity_type": "LOCATION",
+          "start": 60,
+          "end": 76
+        }
+      ],
+      "true_positives": [
+        {
+          "detected": {
+            "text": "Lisa Nguyen",
+            "entity_type": "PERSON",
+            "start": 31,
+            "end": 42,
+            "confidence": 0.85,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "Lisa Nguyen",
+            "entity_type": "PERSON",
+            "start": 31,
+            "end": 42
+          }
+        },
+        {
+          "detected": {
+            "text": "Guadalupe Street",
+            "entity_type": "LOCATION",
+            "start": 60,
+            "end": 76,
+            "confidence": 0.85,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "Guadalupe Street",
+            "entity_type": "LOCATION",
+            "start": 60,
+            "end": 76
+          }
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 3.34,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "HR-018",
+      "query": "Issue emergency payment of $5,000 to account ****4567 for Marcus Brown",
+      "detected_entities": [
+        {
+          "text": "$5,000",
+          "entity_type": "SALARY",
+          "start": 27,
+          "end": 33,
+          "confidence": 0.85,
+          "source": "presidio"
+        },
+        {
+          "text": "****4567",
+          "entity_type": "US_BANK_NUMBER",
+          "start": 45,
+          "end": 53,
+          "confidence": 0.8,
+          "source": "presidio"
+        },
+        {
+          "text": "Marcus Brown",
+          "entity_type": "PERSON",
+          "start": 58,
+          "end": 70,
+          "confidence": 0.85,
+          "source": "presidio"
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Marcus Brown",
+          "entity_type": "PERSON",
+          "start": 58,
+          "end": 70
+        }
+      ],
+      "true_positives": [
+        {
+          "detected": {
+            "text": "Marcus Brown",
+            "entity_type": "PERSON",
+            "start": 58,
+            "end": 70,
+            "confidence": 0.85,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "Marcus Brown",
+            "entity_type": "PERSON",
+            "start": 58,
+            "end": 70
+          }
+        }
+      ],
+      "false_positives": [
+        {
+          "text": "$5,000",
+          "entity_type": "SALARY",
+          "start": 27,
+          "end": 33,
+          "confidence": 0.85,
+          "source": "presidio"
+        },
+        {
+          "text": "****4567",
+          "entity_type": "US_BANK_NUMBER",
+          "start": 45,
+          "end": 53,
+          "confidence": 0.8,
+          "source": "presidio"
+        }
+      ],
+      "false_negatives": [],
+      "latency_ms": 3.09,
+      "precision": 0.3333,
+      "recall": 1.0,
+      "f1_score": 0.5,
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "HR-019",
+      "query": "Call David Okonkwo at (555) 876-5432 regarding the budget meeting",
+      "detected_entities": [
+        {
+          "text": "David Okonkwo",
+          "entity_type": "PERSON",
+          "start": 5,
+          "end": 18,
+          "confidence": 0.85,
+          "source": "presidio"
+        },
+        {
+          "text": "(555) 876-5432",
+          "entity_type": "PHONE_NUMBER",
+          "start": 22,
+          "end": 36,
+          "confidence": 0.4,
+          "source": "presidio"
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "David Okonkwo",
+          "entity_type": "PERSON",
+          "start": 5,
+          "end": 18
+        },
+        {
+          "text": "(555) 876-5432",
+          "entity_type": "PHONE_NUMBER",
+          "start": 22,
+          "end": 36
+        }
+      ],
+      "true_positives": [
+        {
+          "detected": {
+            "text": "David Okonkwo",
+            "entity_type": "PERSON",
+            "start": 5,
+            "end": 18,
+            "confidence": 0.85,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "David Okonkwo",
+            "entity_type": "PERSON",
+            "start": 5,
+            "end": 18
+          }
+        },
+        {
+          "detected": {
+            "text": "(555) 876-5432",
+            "entity_type": "PHONE_NUMBER",
+            "start": 22,
+            "end": 36,
+            "confidence": 0.4,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "(555) 876-5432",
+            "entity_type": "PHONE_NUMBER",
+            "start": 22,
+            "end": 36
+          }
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": [],
+      "latency_ms": 3.25,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "HR-020",
+      "query": "Send offer letter to new hire: John Smith, SSN 111-22-3333, starting salary $95,000, DOB Jan 15, 1990, address 123 New Street Austin TX, email john.smith@email.com, phone (555) 999-8888",
+      "detected_entities": [
+        {
+          "text": "John Smith",
+          "entity_type": "PERSON",
+          "start": 31,
+          "end": 41,
+          "confidence": 0.85,
+          "source": "presidio"
+        },
+        {
+          "text": "111-22-3333",
+          "entity_type": "US_SSN",
+          "start": 47,
+          "end": 58,
+          "confidence": 0.85,
+          "source": "presidio"
+        },
+        {
+          "text": "$95,000,",
+          "entity_type": "SALARY",
+          "start": 76,
+          "end": 84,
+          "confidence": 0.85,
+          "source": "presidio"
+        },
+        {
+          "text": "TX",
+          "entity_type": "LOCATION",
+          "start": 133,
+          "end": 135,
+          "confidence": 0.85,
+          "source": "presidio"
+        },
+        {
+          "text": "john.smith@email.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 143,
+          "end": 163,
+          "confidence": 1.0,
+          "source": "presidio"
+        },
+        {
+          "text": "(555) 999-8888",
+          "entity_type": "PHONE_NUMBER",
+          "start": 171,
+          "end": 185,
+          "confidence": 0.75,
+          "source": "presidio"
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "John Smith",
+          "entity_type": "PERSON",
+          "start": 31,
+          "end": 41
+        },
+        {
+          "text": "111-22-3333",
+          "entity_type": "US_SSN",
+          "start": 47,
+          "end": 58
+        },
+        {
+          "text": "TX",
+          "entity_type": "LOCATION",
+          "start": 133,
+          "end": 135
+        },
+        {
+          "text": "john.smith@email.com",
+          "entity_type": "EMAIL_ADDRESS",
+          "start": 143,
+          "end": 163
+        },
+        {
+          "text": "(555) 999-8888",
+          "entity_type": "PHONE_NUMBER",
+          "start": 171,
+          "end": 185
+        }
+      ],
+      "true_positives": [
+        {
+          "detected": {
+            "text": "John Smith",
+            "entity_type": "PERSON",
+            "start": 31,
+            "end": 41,
+            "confidence": 0.85,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "John Smith",
+            "entity_type": "PERSON",
+            "start": 31,
+            "end": 41
+          }
+        },
+        {
+          "detected": {
+            "text": "111-22-3333",
+            "entity_type": "US_SSN",
+            "start": 47,
+            "end": 58,
+            "confidence": 0.85,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "111-22-3333",
+            "entity_type": "US_SSN",
+            "start": 47,
+            "end": 58
+          }
+        },
+        {
+          "detected": {
+            "text": "TX",
+            "entity_type": "LOCATION",
+            "start": 133,
+            "end": 135,
+            "confidence": 0.85,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "TX",
+            "entity_type": "LOCATION",
+            "start": 133,
+            "end": 135
+          }
+        },
+        {
+          "detected": {
+            "text": "john.smith@email.com",
+            "entity_type": "EMAIL_ADDRESS",
+            "start": 143,
+            "end": 163,
+            "confidence": 1.0,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "john.smith@email.com",
+            "entity_type": "EMAIL_ADDRESS",
+            "start": 143,
+            "end": 163
+          }
+        },
+        {
+          "detected": {
+            "text": "(555) 999-8888",
+            "entity_type": "PHONE_NUMBER",
+            "start": 171,
+            "end": 185,
+            "confidence": 0.75,
+            "source": "presidio"
+          },
+          "expected": {
+            "text": "(555) 999-8888",
+            "entity_type": "PHONE_NUMBER",
+            "start": 171,
+            "end": 185
+          }
+        }
+      ],
+      "false_positives": [
+        {
+          "text": "$95,000,",
+          "entity_type": "SALARY",
+          "start": 76,
+          "end": 84,
+          "confidence": 0.85,
+          "source": "presidio"
+        }
+      ],
+      "false_negatives": [],
+      "latency_ms": 7.05,
+      "precision": 0.8333,
+      "recall": 1.0,
+      "f1_score": 0.9091,
+      "passed": true,
+      "error": null
+    }
+  ]
+}
