@@ -115,6 +115,10 @@ We evaluated three fundamentally different approaches:
 - **Leakage Rate**: Percentage of PII that slips through undetected (critical for security)
 - **Latency**: Processing time added to each query
 
+### Interactive Benchmark
+
+Explore the benchmark results interactively at **[/comparison](https://pii-guardrails.vercel.app/comparison)**—filter by dataset, compare detectors head-to-head, and view detailed metrics including F1 scores, latency distributions, and leakage rates.
+
 ---
 
 ## The Results

@@ -10,7 +10,9 @@
         "recall": 1.0,
         "f1": 0.85,
         "total_cases": 20,
-        "passed_cases": 20
+        "passed_cases": 20,
+        "leakage_rate": 0.0,
+        "latency_p50": 3.44
       }
     },
     {
@@ -23,7 +25,9 @@
         "recall": 0.9167,
         "f1": 0.9167,
         "total_cases": 30,
-        "passed_cases": 25
+        "passed_cases": 25,
+        "leakage_rate": 0.0833,
+        "latency_p50": 5.72
       }
     },
     {
@@ -36,7 +40,9 @@
         "recall": 0.9407,
         "f1": 0.8707,
         "total_cases": 300,
-        "passed_cases": 255
+        "passed_cases": 255,
+        "leakage_rate": 0.0593,
+        "latency_p50": 3.24
       }
     },
     {
@@ -49,7 +55,9 @@
         "recall": 0.569,
         "f1": 0.5841,
         "total_cases": 100,
-        "passed_cases": 50
+        "passed_cases": 50,
+        "leakage_rate": 0.431,
+        "latency_p50": 3.2
       }
     },
     {
@@ -62,7 +70,9 @@
         "recall": 0.94,
         "f1": 0.8924,
         "total_cases": 100,
-        "passed_cases": 91
+        "passed_cases": 91,
+        "leakage_rate": 0.06,
+        "latency_p50": 2.53
       }
     },
     {
@@ -75,7 +85,9 @@
         "recall": 0.0,
         "f1": 0.0,
         "total_cases": 5,
-        "passed_cases": 0
+        "passed_cases": 0,
+        "leakage_rate": 1.0,
+        "latency_p50": 37.58
       }
     },
     {
@@ -88,7 +100,9 @@
         "recall": 0.0,
         "f1": 0.0,
         "total_cases": 100,
-        "passed_cases": 18
+        "passed_cases": 18,
+        "leakage_rate": 1.0,
+        "latency_p50": 31.17
       }
     },
     {
@@ -101,7 +115,9 @@
         "recall": 0.94,
         "f1": 0.8924,
         "total_cases": 100,
-        "passed_cases": 91
+        "passed_cases": 91,
+        "leakage_rate": 0.06,
+        "latency_p50": 2.73
       }
     },
     {
@@ -114,7 +130,9 @@
         "recall": 0.0,
         "f1": 0.0,
         "total_cases": 20,
-        "passed_cases": 3
+        "passed_cases": 3,
+        "leakage_rate": 1.0,
+        "latency_p50": 31.6
       }
     },
     {
@@ -127,7 +145,9 @@
         "recall": 1.0,
         "f1": 0.85,
         "total_cases": 20,
-        "passed_cases": 20
+        "passed_cases": 20,
+        "leakage_rate": 0.0,
+        "latency_p50": 3.47
       }
     },
     {
@@ -140,7 +160,9 @@
         "recall": 0.9407,
         "f1": 0.8707,
         "total_cases": 300,
-        "passed_cases": 255
+        "passed_cases": 255,
+        "leakage_rate": 0.0593,
+        "latency_p50": 3.06
       }
     },
     {
@@ -153,7 +175,9 @@
         "recall": 0.94,
         "f1": 0.8924,
         "total_cases": 100,
-        "passed_cases": 91
+        "passed_cases": 91,
+        "leakage_rate": 0.06,
+        "latency_p50": 3.19
       }
     },
     {
@@ -166,7 +190,9 @@
         "recall": 0.0,
         "f1": 0.0,
         "total_cases": 100,
-        "passed_cases": 18
+        "passed_cases": 18,
+        "leakage_rate": 1.0,
+        "latency_p50": 31.89
       }
     },
     {
@@ -179,7 +205,9 @@
         "recall": 0.0,
         "f1": 0.0,
         "total_cases": 100,
-        "passed_cases": 18
+        "passed_cases": 18,
+        "leakage_rate": 1.0,
+        "latency_p50": 41.45
       }
     },
     {
@@ -192,7 +220,9 @@
         "recall": 0.0,
         "f1": 0.0,
         "total_cases": 100,
-        "passed_cases": 18
+        "passed_cases": 18,
+        "leakage_rate": 1.0,
+        "latency_p50": 32.74
       }
     },
     {
@@ -205,7 +235,9 @@
         "recall": 0.0,
         "f1": 0.0,
         "total_cases": 20,
-        "passed_cases": 3
+        "passed_cases": 3,
+        "leakage_rate": 1.0,
+        "latency_p50": 35.9
       }
     },
     {
@@ -218,7 +250,9 @@
         "recall": 0.0,
         "f1": 0.0,
         "total_cases": 20,
-        "passed_cases": 3
+        "passed_cases": 3,
+        "leakage_rate": 1.0,
+        "latency_p50": 33.38
       }
     },
     {
@@ -231,7 +265,9 @@
         "recall": 0.0,
         "f1": 0.0,
         "total_cases": 20,
-        "passed_cases": 3
+        "passed_cases": 3,
+        "leakage_rate": 1.0,
+        "latency_p50": 569.36
       }
     },
     {
@@ -244,7 +280,9 @@
         "recall": 0.9118,
         "f1": 0.8052,
         "total_cases": 20,
-        "passed_cases": 17
+        "passed_cases": 17,
+        "leakage_rate": 0.0882,
+        "latency_p50": 139.77
       }
     },
     {
@@ -257,7 +295,9 @@
         "recall": 1.0,
         "f1": 0.85,
         "total_cases": 20,
-        "passed_cases": 20
+        "passed_cases": 20,
+        "leakage_rate": 0.0,
+        "latency_p50": 3.46
       }
     },
     {
@@ -270,7 +310,9 @@
         "recall": 0.9118,
         "f1": 0.8052,
         "total_cases": 20,
-        "passed_cases": 17
+        "passed_cases": 17,
+        "leakage_rate": 0.0882,
+        "latency_p50": 143.08
       }
     },
     {
@@ -283,7 +325,9 @@
         "recall": 0.0,
         "f1": 0.0,
         "total_cases": 20,
-        "passed_cases": 3
+        "passed_cases": 3,
+        "leakage_rate": 1.0,
+        "latency_p50": 630.92
       }
     },
     {
@@ -296,7 +340,9 @@
         "recall": 0.7273,
         "f1": 0.822,
         "total_cases": 300,
-        "passed_cases": 145
+        "passed_cases": 145,
+        "leakage_rate": 0.2727,
+        "latency_p50": 37.56
       }
     },
     {
@@ -309,7 +355,9 @@
         "recall": 0.8793,
         "f1": 0.85,
         "total_cases": 100,
-        "passed_cases": 86
+        "passed_cases": 86,
+        "leakage_rate": 0.1207,
+        "latency_p50": 32.54
       }
     },
     {
@@ -322,7 +370,9 @@
         "recall": 0.9118,
         "f1": 0.8052,
         "total_cases": 20,
-        "passed_cases": 17
+        "passed_cases": 17,
+        "leakage_rate": 0.0882,
+        "latency_p50": 36.25
       }
     },
     {
@@ -335,7 +385,9 @@
         "recall": 0.7267,
         "f1": 0.7814,
         "total_cases": 100,
-        "passed_cases": 64
+        "passed_cases": 64,
+        "leakage_rate": 0.2733,
+        "latency_p50": 30.02
       }
     },
     {
@@ -348,7 +400,9 @@
         "recall": 0.94,
         "f1": 0.8924,
         "total_cases": 100,
-        "passed_cases": 91
+        "passed_cases": 91,
+        "leakage_rate": 0.06,
+        "latency_p50": 2.23
       }
     },
     {
@@ -361,7 +415,9 @@
         "recall": 1.0,
         "f1": 0.85,
         "total_cases": 20,
-        "passed_cases": 20
+        "passed_cases": 20,
+        "leakage_rate": 0.0,
+        "latency_p50": 3.17
       }
     },
     {
@@ -374,7 +430,9 @@
         "recall": 0.569,
         "f1": 0.5841,
         "total_cases": 100,
-        "passed_cases": 50
+        "passed_cases": 50,
+        "leakage_rate": 0.431,
+        "latency_p50": 2.87
       }
     },
     {
@@ -387,7 +445,9 @@
         "recall": 0.9407,
         "f1": 0.8707,
         "total_cases": 300,
-        "passed_cases": 255
+        "passed_cases": 255,
+        "leakage_rate": 0.0593,
+        "latency_p50": 2.99
       }
     }
   ]

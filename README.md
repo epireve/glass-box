@@ -2,7 +2,7 @@
 
 A privacy layer for AI applications that protects sensitive information through **reversible anonymization** - with full transparency into the process.
 
-**[Live Demo](https://pii-guardrails.vercel.app)** | **[Project Analysis](./ANALYSIS.md)**
+**[Live Demo](https://pii-guardrails.vercel.app)** | **[Benchmark Comparison](https://pii-guardrails.vercel.app/comparison)** | **[Project Analysis](./ANALYSIS.md)**
 
 ## Why "Glass Box"?
 
